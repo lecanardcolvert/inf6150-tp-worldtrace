@@ -14,7 +14,7 @@ cette documentation efficacement.
 complète et <br> efficace du système pour une évaluation. Les pairs doivent avoir accès tout les fichiers qui 
 ont été produits pour la <br> création du système ainsi que les dépendances requises.La qualité de la documentation 
 inclut des instructions aux <br> évaluateurs pour l’installation et l’ouverture du logiciel. Celle-ci doit aussi 
-faire part aux évaluateurs des conditions nécessaires pour <br> l'utilisation du logiciel, par exemple les exigences 
+faire part aux évaluateurs des conditions <br> nécessaires pour l'utilisation du logiciel, par exemple les exigences 
 logicielles et matérielles.
 
 
