@@ -1,5 +1,5 @@
 # C-(3pts) Tactique -Définition de « terminé » (une demi-page)
-## La définition de « terminé » comprend la liste de toutes les conditions requises des  
+## La définition de « terminé » comprend la liste de toutes les conditions requises des<br>
 ## deux activités à réaliser afin d’avoir des livrables de qualité.
 <br><br>
 **1)** La première activité, la réalisation, a comme condition de qualité logiciel la planification des tâches grâce au kanbab ainsi que le développement du
