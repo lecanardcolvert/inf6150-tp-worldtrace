@@ -3,8 +3,9 @@
 **requises des deux activités à réaliser afin d’avoir des livrables de qualité.**
 <br><br>
 **1)** La première activité, la réalisation, a comme condition de qualité logiciel la planification des tâches 
-grâce au Kanban <br> ainsi que le développement du système qui sera vérifié et analysé par le client. À chaque 
-fin de sprint, le logiciel sera <br> évalué par celui-ci et donc grâce à cette intégration continue, on assurera 
+grâce au Kanban <br> ainsi que le développement du système qui sera approuvé par le client lors d'une réunion
+avec l'équipe. À chaque fin de sprint, le logiciel sera <br> évalué par celui-ci et donc grâce à cette intégration 
+continue, on assurera 
 l'intégrité des éléments requis pour la remise <br> finale du système. La qualité de la documentation sera les 
 fichiers fournis afin d’expliquer le fonctionnement du logiciel <br> et le client doit être en mesure d'utiliser 
 cette documentation efficacement.
