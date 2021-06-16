@@ -11,10 +11,10 @@ cette documentation efficacement.
 <br><br>
 
 **2)** La deuxième activité, la revue par les pairs, aura comme attribut de qualité logiciel une remise simple, 
-complète et efficace <br> du système pour une évaluation. Les pairs doivent avoir accès tout les fichiers qui 
-ont été produits pour la création du système <br> ainsi que les dépendances requises.La qualité de la documentation 
-inclut des instructions aux évaluateurs pour l’installation <br> et l’ouverture du logiciel. Celle-ci doit aussi 
-faire part aux évaluateurs des conditions nécessaires pour l'utilisation du logiciel, par <br> exemple les exigences 
+complète et <br> efficace du système pour une évaluation. Les pairs doivent avoir accès tout les fichiers qui 
+ont été produits pour la création du <br> système ainsi que les dépendances requises.La qualité de la documentation 
+inclut des instructions aux évaluateurs pour <br> l’installation et l’ouverture du logiciel. Celle-ci doit aussi 
+faire part aux évaluateurs des conditions nécessaires pour l'utilisation du <br> logiciel, par exemple les exigences 
 logicielles et matérielles.
 
 
