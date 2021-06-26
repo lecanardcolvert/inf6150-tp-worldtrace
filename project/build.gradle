@@ -42,9 +42,11 @@ allprojects {
     }
 }
 
-project(":desktop") {
+subprojects {
     apply plugin: "java-library"
+}
 
+project(":desktop") {
     dependencies {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -54,8 +56,6 @@ project(":desktop") {
 }
 
 project(":core") {
-    apply plugin: "java-library"
-
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
