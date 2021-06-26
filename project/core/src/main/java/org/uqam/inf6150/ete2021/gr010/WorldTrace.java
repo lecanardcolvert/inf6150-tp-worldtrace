@@ -5,10 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+/**
+ * Test JavaDoc generation.
+ * TODO : remove JavaDoc test.
+ */
 public class WorldTrace extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -22,7 +26,7 @@ public class WorldTrace extends ApplicationAdapter {
 		batch.draw(img, 0, 0);
 		batch.end();
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
