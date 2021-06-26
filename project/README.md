@@ -6,10 +6,14 @@
 Il est nécessaire que le poste de travail utilisé respecte les contraintes suivantes dans le but d'effectuer du développement logiciel pour le projet *WorldTrace*.
 
 - Système d'exploitation
-  - Windows 10
-  - Linux
+  - PC
+    - Windows 10
+    - Linux
 - Architecture de l'UCT (CPU)
   - x86-64 (x64, x86_64, AMD64, Intel 64...)
+- API infographique
+  - OpenGL ES 3.0
+    - Équivaut à OpenGL 4.3 sur PC.
 
 ### Environnement
 Il est nécessaire que les outils suivants soient installés sur le poste de travail utilisé dans le but d'effectuer du développement logiciel pour le projet *WorldTrace*.
