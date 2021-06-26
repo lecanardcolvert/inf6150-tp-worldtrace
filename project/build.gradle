@@ -44,7 +44,6 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java-library"
-    // application au lieu de lib? ?
 
     dependencies {
         implementation project(":core")
