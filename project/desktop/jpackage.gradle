@@ -1,9 +1,11 @@
-task("copyDependencies", Copy::class) {
-    from(configurations.runtimeClasspath).into("$buildDir/jpackage/jar")
+tasks.register('copyDependencies', Copy) {
+    from(configurations.runtimeClasspath)
+    into("$buildDir/jpackage/jar")
 }
 
-task("copyJar", Copy::class) {
-    from(tasks.jar).into("$buildDir/jpackage/jar")
+tasks.register('copyJar', Copy) {
+    from(tasks.jar)
+    into("$buildDir/jpackage/jar")
 }
 
 tasks.jpackage {
