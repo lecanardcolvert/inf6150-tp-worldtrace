@@ -18,7 +18,7 @@ tasks.jpackage {
     appVersion = project.version.toString()
     vendor = 'uqam.ca'
 
-    mainJar = tasks.jar.get().archiveFileName.get()
+    mainJar = tasks.dist.archiveFileName.get()
     mainClass = project.mainClassName
 
     linux {
