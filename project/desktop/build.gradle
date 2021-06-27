@@ -20,7 +20,7 @@ task debug(dependsOn: classes, type: JavaExec) {
     debug = true
 }
 
-task dist(type: Jar) {
+task dist(dependsOn: classes, type: Jar) {
     manifest {
         attributes 'Main-Class': project.mainClassName
     }
@@ -30,6 +30,3 @@ task dist(type: Jar) {
     }
     with jar
 }
-
-
-dist.dependsOn classes
