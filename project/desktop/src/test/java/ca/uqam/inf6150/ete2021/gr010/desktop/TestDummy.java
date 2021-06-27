@@ -1,4 +1,4 @@
-package org.uqam.inf6150.ete2021.gr010;
+package ca.uqam.inf6150.ete2021.gr010.desktop;
 
 import org.junit.jupiter.api.Test;
 

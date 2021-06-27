@@ -1,4 +1,4 @@
-package org.uqam.inf6150.ete2021.gr010;
+package ca.uqam.inf6150.ete2021.gr010;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;

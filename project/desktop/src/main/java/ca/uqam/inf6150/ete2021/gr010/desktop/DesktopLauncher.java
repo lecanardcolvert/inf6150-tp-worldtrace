@@ -1,8 +1,8 @@
-package org.uqam.inf6150.ete2021.gr010.desktop;
+package ca.uqam.inf6150.ete2021.gr010.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import org.uqam.inf6150.ete2021.gr010.WorldTrace;
+import ca.uqam.inf6150.ete2021.gr010.WorldTrace;
 
 /**
  * Test JavaDoc generation.
