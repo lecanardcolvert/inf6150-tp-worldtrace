@@ -20,6 +20,15 @@ task debug(dependsOn: classes, type: JavaExec) {
     debug = true
 }
 
+tasks.named('jar') {
+    archiveBaseName = project.appName
+
+    manifest {
+        attributes('Implementation-Title': project.appName,
+                'Implementation-Version': project.version)
+    }
+}
+
 task dist(dependsOn: classes, type: Jar) {
     manifest {
         attributes 'Main-Class': project.mainClassName
