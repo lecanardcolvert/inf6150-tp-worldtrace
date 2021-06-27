@@ -23,5 +23,7 @@ Il est nécessaire que les outils suivants soient installés sur le poste de tra
     - La version choisie doit supporter l'utilisation de *wrapper*s.
 - Langage de programmation
   - JDK 16 (Java)
+    - jPackage
+        - Voir les requis dans le [manuel d'utilisation](https://docs.oracle.com/en/java/javase/16/jpackage/packaging-tool-user-guide.pdf).
 - IDE
   - IntelliJ
