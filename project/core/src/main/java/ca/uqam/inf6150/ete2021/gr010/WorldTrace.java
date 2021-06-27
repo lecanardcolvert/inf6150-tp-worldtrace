@@ -18,7 +18,7 @@ public class WorldTrace
     @Override
     public void create() {
         batch = new SpriteBatch();
-        img   = new Texture("badlogic.jpg");
+        img   = new Texture("assets/badlogic.jpg");
     }
 
     @Override
