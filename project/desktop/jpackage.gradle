@@ -1,20 +1,16 @@
-tasks.register('copyDependencies', Copy) {
-    from(configurations.runtimeClasspath)
-    into("$buildDir/jpackage/jar")
-}
-
-tasks.register('copyJar', Copy) {
-    from(tasks.jar)
-    into("$buildDir/jpackage/jar")
+tasks.register('ensureDistDir', ) {
+    doLast {
+        mkdir layout.buildDirectory.dir('dist')
+    }
 }
 
 tasks.jpackage {
-    dependsOn('dist', 'copyDependencies', 'copyJar')
+    dependsOn('dist', 'ensureDistDir')
 
-    input = "$buildDir/jpackage/jar"
+    input = "$buildDir/libs"
     destination = "$buildDir/dist"
 
-    appName = project.name
+    appName = project.appName
     appVersion = project.version.toString()
     vendor = 'uqam.ca'
 
