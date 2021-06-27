@@ -9,14 +9,14 @@ tasks.register('copyJar', Copy) {
 }
 
 tasks.jpackage {
-    dependsOn("build", "copyDependencies", "copyJar")
+    dependsOn('dist', 'copyDependencies', 'copyJar')
 
     input = "$buildDir/jpackage/jar"
     destination = "$buildDir/dist"
 
     appName = project.name
     appVersion = project.version.toString()
-    vendor = "uqam.ca"
+    vendor = 'uqam.ca'
 
     mainJar = tasks.jar.get().archiveFileName.get()
     mainClass = project.mainClassName
