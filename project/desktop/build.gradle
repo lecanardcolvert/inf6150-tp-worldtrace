@@ -1,15 +1,6 @@
 application {
     mainClass = 'ca.uqam.inf6150.ete2021.gr010.desktop.DesktopLauncher'
-}
-
-tasks.named('jar') {
-    archiveBaseName = project.appName
-
-    manifest {
-        attributes 'Implementation-Title': project.appName,
-                   'Implementation-Version': project.version,
-                   'Implementation-Vendor': project.vendor
-    }
+    applicationName = project.appName
 }
 
 apply from: 'jpackage.gradle'
