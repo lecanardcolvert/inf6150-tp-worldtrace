@@ -1,16 +1,28 @@
 final jPackageName = 'jPackage'
 
-tasks.register('ensurejPackageDir',) {
+tasks.register('ensurejPackageDir') {
     doLast {
         mkdir layout.buildDirectory.dir(jPackageName)
     }
 }
 
-tasks.named(jPackageName).configure {
-    dependsOn tasks.dist, tasks.ensureDistDir
+tasks.register(jPackageName) {
+    dependsOn 'ensurejPackageDir'
+    dependsOn 'installDist'
+}
 
-    input = "$buildDir/libs"
-    destination = "$buildDir/dist"
+tasks.installDist.configure {
+    doLast {
+        def libDir = getDistsDirectory().dir('lib')
+
+        tasks.named(jPackageName).configure {
+            input = libDir
+        }
+    }
+}
+
+tasks.named(jPackageName).configure {
+    destination = "$buildDir/$jPackageName"
 
     appName = project.appName
     appVersion = project.version.toString()
