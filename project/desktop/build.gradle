@@ -1,10 +1,12 @@
 sourceSets.main.resources.srcDirs = ["../core/assets"]
 
-project.ext.mainClassName = "ca.uqam.inf6150.ete2021.gr010.desktop.DesktopLauncher"
+application {
+    mainClass = 'ca.uqam.inf6150.ete2021.gr010.desktop.DesktopLauncher'
+}
+
 project.ext.assetsDir = new File("../core/assets")
 
 task run(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
@@ -12,7 +14,6 @@ task run(dependsOn: classes, type: JavaExec) {
 }
 
 task debug(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
@@ -26,19 +27,17 @@ tasks.named('jar') {
     manifest {
         attributes 'Implementation-Title': project.appName,
                    'Implementation-Version': project.version,
-                   'Implementation-Vendor': project.vendor,
-                   'Main-Class': project.mainClassName
+                   'Implementation-Vendor': project.vendor
     }
 }
 
 task dist(dependsOn: classes, type: Jar) {
-    manifest {
-        attributes 'Main-Class': project.mainClassName
-    }
     dependsOn configurations.runtimeClasspath
+
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+
     with jar
 }
 
