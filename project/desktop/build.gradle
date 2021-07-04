@@ -4,13 +4,6 @@ application {
     mainClass = 'ca.uqam.inf6150.ete2021.gr010.desktop.DesktopLauncher'
 }
 
-project.ext.assetsDir = new File("../core/assets")
-
-task run(dependsOn: classes, type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-    workingDir = project.assetsDir
-}
-
 tasks.named('jar') {
     archiveBaseName = project.appName
 
