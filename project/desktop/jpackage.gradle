@@ -1,10 +1,12 @@
-tasks.register('ensureDistDir', ) {
+final jPackageName = 'jPackage'
+
+tasks.register('ensurejPackageDir',) {
     doLast {
-        mkdir layout.buildDirectory.dir('dist')
+        mkdir layout.buildDirectory.dir(jPackageName)
     }
 }
 
-tasks.jpackage {
+tasks.named(jPackageName).configure {
     dependsOn tasks.dist, tasks.ensureDistDir
 
     input = "$buildDir/libs"
