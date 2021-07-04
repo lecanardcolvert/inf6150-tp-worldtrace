@@ -24,8 +24,10 @@ tasks.named('jar') {
     archiveBaseName = project.appName
 
     manifest {
-        attributes('Implementation-Title': project.appName,
-                'Implementation-Version': project.version)
+        attributes 'Implementation-Title': project.appName,
+                   'Implementation-Version': project.version,
+                   'Implementation-Vendor': project.vendor,
+                   'Main-Class': project.mainClassName
     }
 }
 
