@@ -5,7 +5,7 @@ tasks.register('ensureDistDir', ) {
 }
 
 tasks.jpackage {
-    dependsOn('dist', 'ensureDistDir')
+    dependsOn tasks.dist, tasks.ensureDistDir
 
     input = "$buildDir/libs"
     destination = "$buildDir/dist"
