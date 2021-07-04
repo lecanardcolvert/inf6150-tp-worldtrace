@@ -18,7 +18,7 @@ plugins {
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
-    
+
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(16)
@@ -28,7 +28,8 @@ allprojects {
     version = '0.0'
 
     ext {
-        appName = "world-trace"
+        appName = 'world-trace'
+        vendor = 'ca.uqam.inf6150.ete2021.gr010'
         gdxVersion = '1.10.0'
         roboVMVersion = '2.3.12'
         box2DLightsVersion = '1.5'
