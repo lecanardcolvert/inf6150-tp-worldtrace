@@ -14,7 +14,6 @@ tasks.jpackage {
     destination = "$buildDir/$jPackageName"
 
     appName = project.appName
-    appVersion = project.version.toString()
     vendor = project.vendor
 
     mainJar = tasks.jar.archiveFileName.get()
