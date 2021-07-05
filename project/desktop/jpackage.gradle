@@ -28,7 +28,7 @@ tasks.named(jPackageName).configure {
     appVersion = project.version.toString()
     vendor = project.vendor
 
-    mainJar = tasks.dist.archiveFileName.get()
+    mainJar = tasks.jar.archiveFileName.get()
     mainClass = project.mainClassName
 
     linux {
