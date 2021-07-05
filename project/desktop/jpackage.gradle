@@ -6,7 +6,7 @@ tasks.register('ensurejPackageDir') {
     }
 }
 
-tasks.register(jPackageName) {
+tasks.jpackage {
     dependsOn 'ensurejPackageDir'
     dependsOn 'installDist'
 }
