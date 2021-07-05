@@ -2,12 +2,22 @@ import java.nio.file.Paths
 
 final jPackageName = 'jpackage'
 
-tasks.register('ensurejPackageDir') {
+tasks.register('ensureJPackageDir') {
     mkdir layout.buildDirectory.dir(jPackageName)
 }
 
+tasks.register('deleteOldJPackageOutput', Delete) {
+    dependsOn 'ensureJPackageDir'
+
+    def jPackageDir = layout.buildDirectory.dir(jPackageName).get()
+
+    delete fileTree(jPackageDir) {
+        include "${project.appName}-${project.version.toString()}.*"
+    }
+}
+
 tasks.jpackage {
-    dependsOn 'ensurejPackageDir'
+    dependsOn 'deleteOldJPackageOutput'
     dependsOn 'installDist'
 
     input = Paths.get(tasks.installDist.getDestinationDir().getPath(), 'lib')
