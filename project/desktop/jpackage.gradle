@@ -29,7 +29,7 @@ tasks.named(jPackageName).configure {
     vendor = project.vendor
 
     mainJar = tasks.jar.archiveFileName.get()
-    mainClass = project.mainClassName
+    mainClass = project.application.mainClassName
 
     linux {
         linuxShortcut = true
