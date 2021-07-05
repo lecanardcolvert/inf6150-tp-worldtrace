@@ -50,8 +50,6 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: "java-library"
-
     test {
         useJUnitPlatform()
     }
@@ -64,23 +62,26 @@ subprojects {
     }
 }
 
-project(":desktop") {
-    // TODO : Add missing argument: --input or --app-image
-    apply plugin: 'org.panteleyev.jpackageplugin'
-
-    dependencies {
-        implementation project(":core")
-
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-    }
-}
-
 project(":core") {
+    apply plugin: 'java-library'
+
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
     }
 }
+
+project(":desktop") {
+    apply plugin: 'application'
+    apply plugin: 'org.panteleyev.jpackageplugin'
+
+    dependencies {
+        implementation project(":core")
+
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+    }
+}
+

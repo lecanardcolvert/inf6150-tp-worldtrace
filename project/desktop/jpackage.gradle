@@ -1,21 +1,26 @@
-tasks.register('ensureDistDir', ) {
+import java.nio.file.Paths
+
+final jPackageName = 'jpackage'
+
+tasks.register('ensurejPackageDir') {
     doLast {
-        mkdir layout.buildDirectory.dir('dist')
+        mkdir layout.buildDirectory.dir(jPackageName)
     }
 }
 
 tasks.jpackage {
-    dependsOn tasks.dist, tasks.ensureDistDir
+    dependsOn 'ensurejPackageDir'
+    dependsOn 'installDist'
 
-    input = "$buildDir/libs"
-    destination = "$buildDir/dist"
+    input = Paths.get(tasks.installDist.getDestinationDir().getPath(), 'lib')
+    destination = "$buildDir/$jPackageName"
 
     appName = project.appName
     appVersion = project.version.toString()
-    vendor = 'uqam.ca'
+    vendor = project.vendor
 
-    mainJar = tasks.dist.archiveFileName.get()
-    mainClass = project.mainClassName
+    mainJar = tasks.jar.archiveFileName.get()
+    mainClass = project.application.mainClassName
 
     linux {
         linuxShortcut = true
