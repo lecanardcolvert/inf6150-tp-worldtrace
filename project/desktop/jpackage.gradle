@@ -11,7 +11,7 @@ tasks.jpackage {
     dependsOn 'installDist'
 
     input = Paths.get(tasks.installDist.getDestinationDir().getPath(), 'lib')
-    destination = "$buildDir/$jPackageName"
+    destination = "${buildDir}/${jPackageName}"
 
     appName = project.appName
     vendor = project.vendor
