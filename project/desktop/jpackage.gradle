@@ -26,7 +26,7 @@ tasks.named(jPackageName).configure {
 
     appName = project.appName
     appVersion = project.version.toString()
-    vendor = 'uqam.ca'
+    vendor = project.vendor
 
     mainJar = tasks.dist.archiveFileName.get()
     mainClass = project.mainClassName
