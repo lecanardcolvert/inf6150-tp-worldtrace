@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 final jPackageName = 'jpackage'
 
 tasks.register('ensurejPackageDir') {
@@ -9,19 +11,8 @@ tasks.register('ensurejPackageDir') {
 tasks.jpackage {
     dependsOn 'ensurejPackageDir'
     dependsOn 'installDist'
-}
 
-tasks.installDist.configure {
-    doLast {
-        def libDir = getDistsDirectory().dir('lib')
-
-        tasks.named(jPackageName).configure {
-            input = libDir
-        }
-    }
-}
-
-tasks.named(jPackageName).configure {
+    input = Paths.get(tasks.installDist.getDestinationDir().getPath(), 'lib')
     destination = "$buildDir/$jPackageName"
 
     appName = project.appName
