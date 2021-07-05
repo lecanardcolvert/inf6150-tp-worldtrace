@@ -1,4 +1,4 @@
-final jPackageName = 'jPackage'
+final jPackageName = 'jpackage'
 
 tasks.register('ensurejPackageDir') {
     doLast {
