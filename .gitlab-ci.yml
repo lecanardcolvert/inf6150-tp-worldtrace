@@ -14,16 +14,32 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-build:
+stages:
+  - build
+  - test
+
+core :
   stage: build
   script:
     - cd project/
-    - gradle --build-cache build
+    - gradle --build-cache build:core
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
       - build
+      - .gradle
+
+desktop :
+  stage: build
+  script:
+    - cd project/
+    - gradle --build-cache build:desktop
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - builds
       - .gradle
 
 test:
