@@ -18,8 +18,7 @@ build:
   stage: build
   script:
     - cd project/
-    - ls
-    - gradle task projects
+    - gradle --build-cache build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -31,7 +30,7 @@ test:
   stage: test
   script:
     - cd project/
-    - gradle --build-cache build
+    - gradle test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
