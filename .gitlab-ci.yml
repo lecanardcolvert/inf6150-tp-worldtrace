@@ -26,7 +26,7 @@ build:
 
 test:
   stage: test
-  script: gradle verification
+  script: gradle test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
