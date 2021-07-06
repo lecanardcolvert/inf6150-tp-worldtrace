@@ -12,7 +12,7 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=true"
 
 include:
-  - project: /project/
+  - project: project/
     file: /project/.gitlab-ci.yml
 
 before_script:
