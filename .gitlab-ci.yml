@@ -17,6 +17,7 @@ before_script:
 stages:
   - build
   - test
+  - deploy
 
 core :
   stage: build
@@ -53,3 +54,19 @@ test:
     paths:
       - build
       - .gradle
+
+dep :
+  stage: deploy
+  script:
+    - cd project/
+    - gradle :core:javadoc
+    - gradle :desktop:javadoc
+    - gradle :installDist
+    - gradle :jpackage
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - build
+      - .gradle
+  only:
+    - merge_requests
