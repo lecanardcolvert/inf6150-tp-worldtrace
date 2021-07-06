@@ -6,9 +6,6 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         google()
     }
-
-    dependencies {
-    }
 }
 
 plugins {
