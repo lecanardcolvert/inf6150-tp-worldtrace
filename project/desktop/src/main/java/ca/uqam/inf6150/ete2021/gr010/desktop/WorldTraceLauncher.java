@@ -14,6 +14,7 @@ public class WorldTraceLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
         config.setWindowedMode(1280, 720);
+        config.setResizable(false);
         config.useOpenGL3(true, 4, 2);
         config.useVsync(true);
         config.setIdleFPS(15);
