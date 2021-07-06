@@ -1,6 +1,7 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -10,15 +11,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
  * TODO : remove JavaDoc test.
  */
 public class WorldTrace
-        extends ApplicationAdapter {
+        extends Game {
 
     private SpriteBatch m_batch;
     private Texture     m_img;
 
     @Override
     public void create() {
-        super.create();
-
         m_batch = new SpriteBatch();
         m_img   = new Texture("assets/badlogic.jpg");
     }
