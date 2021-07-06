@@ -12,11 +12,11 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=true"
 
 before_script:
-  - export GRADLE_USER_HOME=`pwd`/project/.gradle
+  - export GRADLE_USER_HOME=`pwd`/.gradle
 
 build:
   stage: build
-  script: gradle --build-cache assemble
+  script: project/gradle --build-cache assemble
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
