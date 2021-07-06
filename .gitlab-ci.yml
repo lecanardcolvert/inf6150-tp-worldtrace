@@ -16,7 +16,9 @@ before_script:
 
 build:
   stage: build
-  script: gradle --build-cache build
+  script:
+    - cd project/
+    - gradle --build-cache build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -26,7 +28,9 @@ build:
 
 test:
   stage: test
-  script: gradle task projects
+  script:
+    - cd project/
+    - gradle task projects
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
