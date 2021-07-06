@@ -13,6 +13,7 @@ variables:
 
 include:
   - project: /project/
+    file: /project/.gitlab-ci.yml
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
