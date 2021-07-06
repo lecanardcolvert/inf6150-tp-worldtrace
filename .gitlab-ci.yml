@@ -11,12 +11,14 @@ image: gradle:alpine
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=true"
 
+include:
+  - project: /project/
+
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
 build:
   stage: build
-  project: ./project/
   script: gradle --build-cache build
   cache:
     key: "$CI_COMMIT_REF_NAME"
