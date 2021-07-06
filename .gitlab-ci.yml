@@ -22,7 +22,7 @@ core :
   stage: build
   script:
     - cd project/
-    - gradle --build-cache build:core
+    - gradle --build-cache :core:build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -34,7 +34,7 @@ desktop :
   stage: build
   script:
     - cd project/
-    - gradle --build-cache build:desktop
+    - gradle --build-cache :desktop:build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
