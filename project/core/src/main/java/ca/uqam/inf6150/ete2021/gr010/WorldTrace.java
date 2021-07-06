@@ -23,18 +23,15 @@ public class WorldTrace
     private OrthographicCamera m_camera;
 
     private SpriteBatch m_batch;
-    private Texture     m_texture;
     private Sprite      m_sprite;
 
     @Override
     public void create() {
-        super.create();
-
-        m_camera   = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        m_camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         m_batch   = new SpriteBatch();
-        m_texture = new Texture("assets/badlogic.jpg");
-        m_sprite  = new Sprite(m_texture);
+        Texture texture = new Texture("assets/badlogic.jpg");
+        m_sprite  = new Sprite(texture);
     }
 
     @Override
