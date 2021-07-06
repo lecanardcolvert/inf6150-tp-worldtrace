@@ -39,6 +39,8 @@ public class WorldTrace
 
     @Override
     public void render() {
+        m_camera.zoom += Gdx.graphics.getDeltaTime() * 0.001f;
+
         ScreenUtils.clear(Color.BLACK);
         super.render();
 
