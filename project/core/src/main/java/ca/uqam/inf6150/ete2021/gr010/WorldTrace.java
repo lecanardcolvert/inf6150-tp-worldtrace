@@ -29,9 +29,9 @@ public class WorldTrace
     public void create() {
         m_camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        m_batch   = new SpriteBatch();
+        m_batch = new SpriteBatch();
         Texture texture = new Texture("assets/badlogic.jpg");
-        m_sprite  = new Sprite(texture);
+        m_sprite = new Sprite(texture);
     }
 
     @Override
