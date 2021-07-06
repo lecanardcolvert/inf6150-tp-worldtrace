@@ -21,15 +21,15 @@ build:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
-      - /project/build
-      - /project/.gradle
+      - ./project/build
+      - ./project/.gradle
 
 test:
   stage: test
-  script: gradle test
+  script: gradle task
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
     paths:
-      - /project/build
-      - /project/.gradle
+      - ./project/build
+      - ./project/.gradle
