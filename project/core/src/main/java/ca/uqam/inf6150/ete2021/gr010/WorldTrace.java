@@ -17,14 +17,18 @@ public class WorldTrace
 
     @Override
     public void create() {
+        super.create();
+
         m_batch = new SpriteBatch();
         m_img   = new Texture("assets/badlogic.jpg");
     }
 
     @Override
     public void render() {
+        super.render();
+
         ScreenUtils.clear(1, 0, 0, 1);
-        
+
         m_batch.begin();
         m_batch.draw(m_img, 0, 0);
         m_batch.end();
@@ -32,6 +36,8 @@ public class WorldTrace
 
     @Override
     public void dispose() {
+        super.dispose();
+
         m_batch.dispose();
         m_img.dispose();
     }
