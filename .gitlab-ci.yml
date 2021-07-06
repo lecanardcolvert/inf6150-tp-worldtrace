@@ -12,8 +12,8 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=true"
 
 include:
-  - project: project/
-    file: /project/.gitlab-ci.yml
+  - project: /project/
+    file: .gitlab-ci.yml
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
