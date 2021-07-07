@@ -61,7 +61,7 @@ deploy:
     - cd project/
     - gradle :javadoc
     - gradle :desktop:installDist
-    - gradle :desktop:jpackage --info --stacktrace
+    - gradle :desktop:jpackage --info --stacktrace --build-cache
   cache:
     key: "$CI_JOB_STAGE"
     paths:
