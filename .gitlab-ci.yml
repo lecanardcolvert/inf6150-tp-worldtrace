@@ -55,18 +55,20 @@ test:
       - build
       - .gradle
 
-dep :
-  stage: deploy
-  script:
-    - cd project/
-    - gradle :core:javadoc
-    - gradle :desktop:javadoc
-    - gradle :installDist
-    - gradle :jpackage
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
-      - .gradle
-  only:
-    - merge_requests
+# dep :
+#  stage: deploy
+#  script:
+#    - cd project/
+#    - gradle :core:javadoc
+#    - gradle :desktop:javadoc
+#    - gradle :build
+#    - gradle :installDist
+#    - gradle :jpackage
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    paths:
+#      - build
+#      - .gradle
+#  only:
+#    - merge_requests
+
