@@ -23,7 +23,7 @@ core:
   stage: build
   script:
     - cd project/
-    - gradle core:build --build-cache
+    - gradle :core:build --build-cache
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -35,7 +35,7 @@ desktop:
   stage: build
   script:
     - cd project/
-    - gradle desktop:build --build-cache
+    - gradle :desktop:build --build-cache
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -47,7 +47,7 @@ test:
   stage: test
   script:
     - cd project/
-    - gradle test
+    - gradle :test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
@@ -59,9 +59,9 @@ deploy:
   stage: deploy
   script:
     - cd project/
-    - gradle core:javadoc
-    - gradle desktop:javadoc
-    - gradle installDist
+    - gradle :javadoc
+    - gradle :installDist
+    - gradle :jpackage
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
