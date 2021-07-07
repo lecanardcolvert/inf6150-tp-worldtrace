@@ -1,19 +1,19 @@
 /* 
 Tables.sql 
 
-Permet de créer et supprimer les tables SQL 
+Permet de crÃ©er et supprimer les tables SQL 
 
-Document rédigé dans le cadre du TP3 pour le cours INF6150 -  Groupe 30 
+Document rÃ©digÃ© dans le cadre du TP3 pour le cours INF6150 -  Groupe 30 
 
-Créé par  :  
+CrÃ©Ã© par  :  
 
 REBEI BELKACEM BENSAKHRIA: BENR13129400 
 
 */ 
  
 /* 
-Le bloc ci-dessous permet de retirer toutes les tables créées par ce travail pratique.  
-À utiliser à la fin seulement 
+Le bloc ci-dessous permet de retirer toutes les tables crÃ©Ã©es par ce travail pratique.  
+Ã€ utiliser Ã  la fin seulement 
 */ 
 SET ECHO ON;
 
@@ -21,7 +21,7 @@ SET ECHO ON;
 DROP TABLE VOLS;
 
 /* 
-Début de la création des tables SQL 
+DÃ©but de la crÃ©ation des tables SQL 
 */ 
 
 CREATE TABLE VOLS
@@ -37,7 +37,6 @@ dateDepart DATE,
 dateArrive DATE,
 heureDepart CHAR(5),
 heureArriv CHAR(5),
-
 modelAvion CHAR(6),
 numeroSerieAvion VARCHAR(10),
 iata CHAR (3),
