@@ -61,8 +61,8 @@ deploy:
     - cd project/
     - gradle core:javadoc
     - gradle desktop:javadoc
-    - gradle :installDist
-    - gradle :jpackage
+    - gradle installDist
+    - gradle jpackage
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
