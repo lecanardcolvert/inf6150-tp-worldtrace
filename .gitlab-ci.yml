@@ -47,7 +47,7 @@ desktop:
 #  stage: test
 #  script:
 #    - cd project/
-#    - gradle :test
+#    - gradle :test --build-cache
 #  cache:
 #    key: "$CI_JOB_STAGE"
 #    policy: pull
@@ -59,8 +59,8 @@ deploy:
   stage: deploy
   script:
     - cd project/
-    - gradle :javadoc
-    - gradle :desktop:installDist
+    - gradle :javadoc --build-cache
+    - gradle :desktop:installDist --build-cache
     - gradle :desktop:jpackage --info --stacktrace --build-cache
   cache:
     key: "$CI_JOB_STAGE"
