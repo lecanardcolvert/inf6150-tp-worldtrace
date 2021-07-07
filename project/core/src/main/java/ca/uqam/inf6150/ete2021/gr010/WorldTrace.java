@@ -69,6 +69,8 @@ public class WorldTrace
 
         m_camera.viewportWidth = width;
         m_camera.viewportHeight = height;
+        m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+
         centerCamera();
     }
 
