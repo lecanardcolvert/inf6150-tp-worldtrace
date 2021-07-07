@@ -61,6 +61,7 @@ dep :
     - cd project/
     - gradle :core:javadoc
     - gradle :desktop:javadoc
+    - gradle :build
     - gradle :installDist
     - gradle :jpackage
   cache:
