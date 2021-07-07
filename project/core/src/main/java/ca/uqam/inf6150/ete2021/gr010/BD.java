@@ -90,9 +90,7 @@ public class BD {
                 System.out.println("\n\n-------------------------------------------------------------\n");
 
                 liste.put(noVol,listeString);
-
             }
-
             System.out.println("\n\n\n\n---------------------------------------------------------");
             System.out.println("Hashmap à utiliser pour l'affichage des détails sur la carte");
             System.out.println("---------------------------------------------------------\n\n");
@@ -103,9 +101,7 @@ public class BD {
             sql.close();
             uneConnection.close();
             uneConnection.close();
-
         }
-
     }
 
 
