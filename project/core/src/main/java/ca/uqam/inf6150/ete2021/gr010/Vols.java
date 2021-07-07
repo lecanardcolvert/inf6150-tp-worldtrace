@@ -3,6 +3,7 @@ package ca.uqam.inf6150.ete2021.gr010;
 import lombok.NonNull;
 
 import java.sql.Date;
+import java.util.StringJoiner;
 
 public class Vols {
 
@@ -159,5 +160,30 @@ public class Vols {
     @NonNull
     public String getTempsVol() {
         return m_tempsVol;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Vols.class.getSimpleName() + "[", "]")
+                .add("noVol=" + getNoVol())
+                .add("aeroDep='" + getAeroDep() + "'")
+                .add("aeroArr='" + getAeroArr() + "'")
+                .add("villeAeroDep='" + getVilleAeroDep() + "'")
+                .add("villeAeroArriv='" + getVilleAeroArriv() + "'")
+                .add("paysDep='" + getPaysDep() + "'")
+                .add("paysArriv='" + getPaysArriv() + "'")
+                .add("dateDepart=" + getDateDepart())
+                .add("dateArrive=" + getDateArrive())
+                .add("heureDepart='" + getHeureDepart() + "'")
+                .add("heureArriv='" + getHeureArriv() + "'")
+                .add("modelAvion='" + getModelAvion() + "'")
+                .add("numeroSerieAvion='" + getNumeroSerieAvion() + "'")
+                .add("iata='" + getIata() + "'")
+                .add("immatric='" + getImmatric() + "'")
+                .add("depCoor='" + getDepCoor() + "'")
+                .add("arrCoor='" + getArrCoor() + "'")
+                .add("airline='" + getAirline() + "'")
+                .add("tempsVol='" + getTempsVol() + "'")
+                .toString();
     }
 }
