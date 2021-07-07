@@ -1,0 +1,74 @@
+# This file is a template, and might need editing before it works on your project.
+# This is the Gradle build system for JVM applications
+# https://gradle.org/
+# https://github.com/gradle/gradle
+image: gradle:7.1-jdk16
+
+# Disable the Gradle daemon for Continuous Integration servers as correctness
+# is usually a priority over speed in CI environments. Using a fresh
+# runtime for each build is more reliable since the runtime is completely
+# isolated from any previous builds.
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=true"
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+stages:
+  - build
+  - test
+  - deploy
+
+core :
+  stage: build
+  script:
+    - cd project/
+    - gradle --build-cache :core:build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+
+desktop :
+  stage: build
+  script:
+    - cd project/
+    - gradle --build-cache :desktop:build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - builds
+      - .gradle
+
+test:
+  stage: test
+  script:
+    - cd project/
+    - gradle test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+# dep :
+#  stage: deploy
+#  script:
+#    - cd project/
+#    - gradle :core:javadoc
+#    - gradle :desktop:javadoc
+#    - gradle :build
+#    - gradle :installDist
+#    - gradle :jpackage
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    paths:
+#      - build
+#      - .gradle
+#  only:
+#    - merge_requests
+
