@@ -69,4 +69,4 @@ deploy:
       - build
       - .gradle
   rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME == /^feature/'
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME == "feature/10-setup-ledeploiement-continue"'
