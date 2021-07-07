@@ -1,3 +1,4 @@
+package ca.uqam.inf6150.ete2021.gr010;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
@@ -8,8 +9,7 @@ public class BD {
 
         public static HashMap<Integer,List<String>> liste = new HashMap<>();
 
-        final static  String query = "select * from articles";
-        public static void main (String args []) throws SQLException, ClassNotFoundException, java.io.IOException
+        public static void main (String args []) throws SQLException
         {
 
             String URL="jdbc:oracle:thin:@zeta2.labunix.uqam.ca:1521:baclab";
