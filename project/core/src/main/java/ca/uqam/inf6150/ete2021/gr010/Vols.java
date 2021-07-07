@@ -66,5 +66,98 @@ public class Vols {
         m_airline          = p_airline;
         m_tempsVol         = p_tempsVol;
     }
-    
+
+    public long getNoVol() {
+        return m_noVol;
+    }
+
+    @NonNull
+    public String getAeroDep() {
+        return m_aeroDep;
+    }
+
+    @NonNull
+    public String getAeroArr() {
+        return m_aeroArr;
+    }
+
+    @NonNull
+    public String getVilleAeroDep() {
+        return m_villeAeroDep;
+    }
+
+    @NonNull
+    public String getVilleAeroArriv() {
+        return m_villeAeroArriv;
+    }
+
+    @NonNull
+    public String getPaysDep() {
+        return m_paysDep;
+    }
+
+    @NonNull
+    public String getPaysArriv() {
+        return m_paysArriv;
+    }
+
+    @NonNull
+    public Date getDateDepart() {
+        return m_dateDepart;
+    }
+
+    @NonNull
+    public Date getDateArrive() {
+        return m_dateArrive;
+    }
+
+    @NonNull
+    public String getHeureDepart() {
+        return m_heureDepart;
+    }
+
+    @NonNull
+    public String getHeureArriv() {
+        return m_heureArriv;
+    }
+
+    @NonNull
+    public String getModelAvion() {
+        return m_modelAvion;
+    }
+
+    @NonNull
+    public String getNumeroSerieAvion() {
+        return m_numeroSerieAvion;
+    }
+
+    @NonNull
+    public String getIata() {
+        return m_iata;
+    }
+
+    @NonNull
+    public String getImmatric() {
+        return m_immatric;
+    }
+
+    @NonNull
+    public String getDepCoor() {
+        return m_depCoor;
+    }
+
+    @NonNull
+    public String getArrCoor() {
+        return m_arrCoor;
+    }
+
+    @NonNull
+    public String getAirline() {
+        return m_airline;
+    }
+
+    @NonNull
+    public String getTempsVol() {
+        return m_tempsVol;
+    }
 }
