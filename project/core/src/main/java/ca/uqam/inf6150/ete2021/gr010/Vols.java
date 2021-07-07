@@ -3,6 +3,7 @@ package ca.uqam.inf6150.ete2021.gr010;
 import lombok.NonNull;
 
 import java.sql.Date;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Vols {
@@ -160,6 +161,59 @@ public class Vols {
     @NonNull
     public String getTempsVol() {
         return m_tempsVol;
+    }
+
+    @Override
+    public boolean equals(final Object p_o) {
+        if (this == p_o) {
+            return true;
+        }
+        if (p_o == null || getClass() != p_o.getClass()) {
+            return false;
+        }
+        Vols vols = (Vols) p_o;
+        return getNoVol() == vols.getNoVol()
+               && getAeroDep().equals(vols.getAeroDep())
+               && getAeroArr().equals(vols.getAeroArr())
+               && getVilleAeroDep().equals(vols.getVilleAeroDep())
+               && getVilleAeroArriv().equals(vols.getVilleAeroArriv())
+               && getPaysDep().equals(vols.getPaysDep())
+               && getPaysArriv().equals(vols.getPaysArriv())
+               && getDateDepart().equals(vols.getDateDepart())
+               && getDateArrive().equals(vols.getDateArrive())
+               && getHeureDepart().equals(vols.getHeureDepart())
+               && getHeureArriv().equals(vols.getHeureArriv())
+               && getModelAvion().equals(vols.getModelAvion())
+               && getNumeroSerieAvion().equals(vols.getNumeroSerieAvion())
+               && getIata().equals(vols.getIata())
+               && getImmatric().equals(vols.getImmatric())
+               && getDepCoor().equals(vols.getDepCoor())
+               && getArrCoor().equals(vols.getArrCoor())
+               && getAirline().equals(vols.getAirline())
+               && getTempsVol().equals(vols.getTempsVol());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNoVol(),
+                            getAeroDep(),
+                            getAeroArr(),
+                            getVilleAeroDep(),
+                            getVilleAeroArriv(),
+                            getPaysDep(),
+                            getPaysArriv(),
+                            getDateDepart(),
+                            getDateArrive(),
+                            getHeureDepart(),
+                            getHeureArriv(),
+                            getModelAvion(),
+                            getNumeroSerieAvion(),
+                            getIata(),
+                            getImmatric(),
+                            getDepCoor(),
+                            getArrCoor(),
+                            getAirline(),
+                            getTempsVol());
     }
 
     @Override
