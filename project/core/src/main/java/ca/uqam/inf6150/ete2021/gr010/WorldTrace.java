@@ -33,9 +33,9 @@ public class WorldTrace
         m_camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         centerCamera();
 
-        m_batch = new SpriteBatch();
+        m_batch   = new SpriteBatch();
         m_texture = new Texture("assets/earthmap4k.jpg");
-        m_sprite = new Sprite(m_texture);
+        m_sprite  = new Sprite(m_texture);
         m_sprite.setOrigin(0f, 0f);
         m_sprite.setPosition(0f, 0f);
         m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
@@ -67,7 +67,7 @@ public class WorldTrace
     public void resize(final int width, final int height) {
         super.resize(width, height);
 
-        m_camera.viewportWidth = width;
+        m_camera.viewportWidth  = width;
         m_camera.viewportHeight = height;
         m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
