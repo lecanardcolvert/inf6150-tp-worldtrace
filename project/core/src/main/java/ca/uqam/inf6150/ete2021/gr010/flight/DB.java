@@ -2,7 +2,7 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 import java.sql.*;
 import java.util.*;
 
-public class BD {
+public class DB {
 
         public static HashMap<Integer,List<String>> liste = new HashMap<>();
 
