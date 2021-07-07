@@ -19,41 +19,41 @@ stages:
   - test
   - deploy
 
-core:
-  stage: build
-  script:
-    - cd project/
-    - gradle :core:build --build-cache
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
+#core:
+#  stage: build
+#  script:
+#    - cd project/
+#    - gradle :core:build --build-cache
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    policy: push
+#    paths:
+#      - build
+#      - .gradle
 
-desktop:
-  stage: build
-  script:
-    - cd project/
-    - gradle :desktop:build --build-cache
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
+#desktop:
+#  stage: build
+#  script:
+#    - cd project/
+#    - gradle :desktop:build --build-cache
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    policy: push
+#    paths:
+#      - build
+#      - .gradle
 
-test:
-  stage: test
-  script:
-    - cd project/
-    - gradle :test
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
+#test:
+#  stage: test
+#  script:
+#    - cd project/
+#    - gradle :test
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    policy: pull
+#    paths:
+#      - build
+#      - .gradle
 
 deploy:
   stage: deploy
