@@ -31,15 +31,18 @@ public class WorldTrace
         super.create();
 
         m_camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        centerCamera();
 
         m_batch = new SpriteBatch();
-        m_texture = new Texture("assets/badlogic.jpg");
+        m_texture = new Texture("assets/earthmap4k.jpg");
         m_sprite = new Sprite(m_texture);
+        m_sprite.setOrigin(0f, 0f);
+        m_sprite.setPosition(0f, 0f);
+        m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
     }
 
     @Override
     public void render() {
-        m_camera.zoom += Gdx.graphics.getDeltaTime() * 0.1f;
 
         ScreenUtils.clear(Color.BLACK);
         super.render();
@@ -58,5 +61,19 @@ public class WorldTrace
 
         m_batch.dispose();
         m_texture.dispose();
+    }
+
+    @Override
+    public void resize(final int width, final int height) {
+        super.resize(width, height);
+
+        m_camera.viewportWidth = width;
+        m_camera.viewportHeight = height;
+        centerCamera();
+    }
+
+    private void centerCamera() {
+        m_camera.position.x = m_camera.viewportWidth / 2f;
+        m_camera.position.y = m_camera.viewportHeight / 2f;
     }
 }
