@@ -1,9 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010;
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
-
-import oracle.jdbc.driver.OracleDriver;
 
 public class BD {
 
