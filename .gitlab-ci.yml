@@ -61,13 +61,11 @@ deploy:
     - cd project/
     - gradle core:javadoc
     - gradle desktop:javadoc
-    - gradle build
     - gradle installDist
-    - gradle jpackage
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - build
       - .gradle
-  only:
-    - merge_requests
+  rules:
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH =~ /^feature/ && $CI_MERGE_REQUEST_TARGET_BRANCH =~ /^dev/'
