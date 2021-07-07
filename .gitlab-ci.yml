@@ -25,23 +25,23 @@ stages:
 #    - cd project/
 #    - gradle :core:build --build-cache
 #  cache:
-#    key: "$CI_COMMIT_REF_NAME"
+#    key: "$CI_JOB_STAGE"
 #    policy: push
 #    paths:
 #      - build
 #      - .gradle
 
-#desktop:
-#  stage: build
-#  script:
-#    - cd project/
-#    - gradle :desktop:build --build-cache
-#  cache:
-#    key: "$CI_COMMIT_REF_NAME"
-#    policy: push
-#    paths:
-#      - build
-#      - .gradle
+desktop:
+  stage: build
+  script:
+    - cd project/
+    - gradle :desktop:build --build-cache
+  cache:
+    key: "$CI_JOB_STAGE"
+    policy: push
+    paths:
+      - build
+      - .gradle
 
 #test:
 #  stage: test
@@ -49,7 +49,7 @@ stages:
 #    - cd project/
 #    - gradle :test
 #  cache:
-#    key: "$CI_COMMIT_REF_NAME"
+#    key: "$CI_JOB_STAGE"
 #    policy: pull
 #    paths:
 #      - build
@@ -63,7 +63,7 @@ deploy:
     - gradle :desktop:installDist
     - gradle :desktop:jpackage --info --stacktrace
   cache:
-    key: "$CI_COMMIT_REF_NAME"
+    key: "$CI_JOB_STAGE"
     paths:
       - build
       - .gradle
