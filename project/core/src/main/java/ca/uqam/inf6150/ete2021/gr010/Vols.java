@@ -6,8 +6,8 @@ import java.sql.Date;
 
 public class Vols {
 
-    @NonNull private final long   m_noVol;
-    @NonNull private final          String m_aeroDep;
+    @NonNull private final long          m_noVol;
+    @NonNull private final String        m_aeroDep;
     @NonNull private final String        m_aeroArr;
     @NonNull private final String        m_villeAeroDep;
     @NonNull private final String        m_villeAeroArriv;
@@ -27,23 +27,25 @@ public class Vols {
     @NonNull private final String        m_tempsVol;
 
     public Vols(
-            final long p_noVol,
-            final String p_aeroDep,
-            final String p_aeroArr,
-            final String p_villeAeroDep,
-            final String p_villeAeroArriv,
-            final String p_paysDep,
-            final String p_paysArriv,
-            final Date p_dateDepart,
-            final Date p_dateArrive,
-            final String p_heureDepart,
-            final String p_heureArriv,
-            final String p_modelAvion,
-            final String p_numeroSerieAvion,
-            final String p_iata,
-            final String p_immatric,
-            final String p_depCoor,
-            final String p_arrCoor, final String p_airline, final String p_tempsVol) {
+            @NonNull final long p_noVol,
+            @NonNull final String p_aeroDep,
+            @NonNull final String p_aeroArr,
+            @NonNull final String p_villeAeroDep,
+            @NonNull final String p_villeAeroArriv,
+            @NonNull final String p_paysDep,
+            @NonNull final String p_paysArriv,
+            @NonNull final Date p_dateDepart,
+            @NonNull final Date p_dateArrive,
+            @NonNull final String p_heureDepart,
+            @NonNull final String p_heureArriv,
+            @NonNull final String p_modelAvion,
+            @NonNull final String p_numeroSerieAvion,
+            @NonNull final String p_iata,
+            @NonNull final String p_immatric,
+            @NonNull final String p_depCoor,
+            @NonNull final String p_arrCoor,
+            @NonNull final String p_airline,
+            @NonNull final String p_tempsVol) {
         m_noVol            = p_noVol;
         m_aeroDep          = p_aeroDep;
         m_aeroArr          = p_aeroArr;
@@ -64,5 +66,5 @@ public class Vols {
         m_airline          = p_airline;
         m_tempsVol         = p_tempsVol;
     }
-
+    
 }
