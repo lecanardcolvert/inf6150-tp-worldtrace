@@ -67,5 +67,5 @@ deploy:
     paths:
       - build
       - .gradle
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH =~ /^feature/ && $CI_MERGE_REQUEST_TARGET_BRANCH =~ /^dev/'
+#  rules:
+#    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH =~ /^feature/ && $CI_MERGE_REQUEST_TARGET_BRANCH =~ /^dev/'
