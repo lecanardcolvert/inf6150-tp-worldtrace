@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class Vols {
+public final class Vols {
 
     @NonNull private final long          m_noVol;
     @NonNull private final String        m_aeroDep;
