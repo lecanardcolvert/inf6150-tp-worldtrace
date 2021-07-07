@@ -1,28 +1,30 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
+import lombok.NonNull;
+
 import java.sql.Date;
 
 public class Vols {
 
-    private final long          m_noVol;
-    private final String        m_aeroDep;
-    private final String        m_aeroArr;
-    private final String        m_villeAeroDep;
-    private final String        m_villeAeroArriv;
-    private final String        m_paysDep;
-    private final String        m_paysArriv;
-    private final java.sql.Date m_dateDepart;
-    private final java.sql.Date m_dateArrive;
-    private final String        m_heureDepart;
-    private final String        m_heureArriv;
-    private final String        m_modelAvion;
-    private final String        m_numeroSerieAvion;
-    private final String        m_iata;
-    private final String        m_immatric;
-    private final String        m_depCoor;
-    private final String        m_arrCoor;
-    private final String        m_airline;
-    private final String        m_tempsVol;
+    @NonNull private final long   m_noVol;
+    @NonNull private final          String m_aeroDep;
+    @NonNull private final String        m_aeroArr;
+    @NonNull private final String        m_villeAeroDep;
+    @NonNull private final String        m_villeAeroArriv;
+    @NonNull private final String        m_paysDep;
+    @NonNull private final String        m_paysArriv;
+    @NonNull private final java.sql.Date m_dateDepart;
+    @NonNull private final java.sql.Date m_dateArrive;
+    @NonNull private final String        m_heureDepart;
+    @NonNull private final String        m_heureArriv;
+    @NonNull private final String        m_modelAvion;
+    @NonNull private final String        m_numeroSerieAvion;
+    @NonNull private final String        m_iata;
+    @NonNull private final String        m_immatric;
+    @NonNull private final String        m_depCoor;
+    @NonNull private final String        m_arrCoor;
+    @NonNull private final String        m_airline;
+    @NonNull private final String        m_tempsVol;
 
     public Vols(
             final long p_noVol,
@@ -62,82 +64,5 @@ public class Vols {
         m_airline          = p_airline;
         m_tempsVol         = p_tempsVol;
     }
-
-    public long getNoVol() {
-        return m_noVol;
-    }
-
-    public String getAeroDep() {
-        return m_aeroDep;
-    }
-
-    public String getAeroArr() {
-        return m_aeroArr;
-    }
-
-    public String getVilleAeroDep() {
-        return m_villeAeroDep;
-    }
-
-    public String getVilleAeroArriv() {
-        return m_villeAeroArriv;
-    }
-
-    public String getPaysDep() {
-        return m_paysDep;
-    }
-
-    public String getPaysArriv() {
-        return m_paysArriv;
-    }
-
-    public Date getDateDepart() {
-        return m_dateDepart;
-    }
-
-    public Date getDateArrive() {
-        return m_dateArrive;
-    }
-
-    public String getHeureDepart() {
-        return m_heureDepart;
-    }
-
-    public String getHeureArriv() {
-        return m_heureArriv;
-    }
-
-    public String getModelAvion() {
-        return m_modelAvion;
-    }
-
-    public String getNumeroSerieAvion() {
-        return m_numeroSerieAvion;
-    }
-
-    public String getIata() {
-        return m_iata;
-    }
-
-    public String getImmatric() {
-        return m_immatric;
-    }
-
-    public String getDepCoor() {
-        return m_depCoor;
-    }
-
-    public String getArrCoor() {
-        return m_arrCoor;
-    }
-
-    public String getAirline() {
-        return m_airline;
-    }
-
-    public String getTempsVol() {
-        return m_tempsVol;
-    }
-
 
 }
