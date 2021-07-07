@@ -1,0 +1,41 @@
+import java.nio.file.Paths
+
+final jPackageName = 'jpackage'
+
+tasks.register('ensureJPackageDir') {
+    mkdir layout.buildDirectory.dir(jPackageName)
+}
+
+tasks.register('deleteOldJPackageOutput', Delete) {
+    dependsOn 'ensureJPackageDir'
+
+    def jPackageDir = layout.buildDirectory.dir(jPackageName).get()
+
+    delete fileTree(jPackageDir) {
+        include "${project.appName}-${project.version.toString()}.*"
+    }
+}
+
+tasks.jpackage {
+    dependsOn 'deleteOldJPackageOutput'
+    dependsOn 'installDist'
+
+    input = Paths.get(tasks.installDist.getDestinationDir().getPath(), 'lib')
+    destination = "${buildDir}/${jPackageName}"
+
+    appName = project.appName
+    vendor = project.vendor
+
+    mainJar = tasks.jar.archiveFileName.get()
+    mainClass = project.application.mainClassName
+
+    linux {
+        linuxShortcut = true
+    }
+
+    windows {
+        winMenu = true
+        winDirChooser = true
+        winShortcut = true
+    }
+}

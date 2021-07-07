@@ -1,0 +1,6 @@
+application {
+    mainClass.set('ca.uqam.inf6150.ete2021.gr010.desktop.DesktopLauncher')
+    applicationName = project.appName
+}
+
+apply from: 'jpackage.gradle'
