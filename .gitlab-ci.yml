@@ -62,7 +62,7 @@ deploy:
     - gradle core:javadoc
     - gradle desktop:javadoc
     - gradle :installDist
-    - gradle :jpackage
+    - gradle tasks
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
