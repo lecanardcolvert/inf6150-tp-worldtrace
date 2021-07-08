@@ -78,6 +78,7 @@ deploy_doc:
     - cd project/
     - gradle :javadoc --build-cache
     - ls -al
+    - tree
   cache:
     key: "$CI_JOB_STAGE"
     policy: pull-push
