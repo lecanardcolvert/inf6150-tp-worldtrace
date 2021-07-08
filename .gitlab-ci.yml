@@ -69,8 +69,7 @@ deploy_install:
 
 deploy_doc:
   stage: deploy
-  needs:
-    - deploy_install
+  needs: ["deploy_install:"]
   script:
     - cd project/
     - gradle :javadoc --build-cache
