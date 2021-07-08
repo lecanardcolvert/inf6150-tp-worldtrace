@@ -76,23 +76,14 @@ deploy_doc:
     - "desktop"
   script:
     - cd project/
-    - gradle :desktop:build  --build-cache
-    - gradle :core:build --build-cache
     - gradle :desktop:javadoc --build-cache
     - gradle :core:javadoc --build-cache
-    - ls -al
-    - ls -al core
-    - ls -al desktop
   cache:
     key: "$CI_JOB_STAGE"
     policy: pull-push
     paths:
-      - build/
-      - project/build/
       - project/core/build/
       - project/desktop/build/
-      - core/build/
-      - desktop/build
       - .gradle/
   artifacts:
     untracked: true
