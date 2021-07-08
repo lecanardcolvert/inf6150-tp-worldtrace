@@ -68,5 +68,5 @@ deploy:
       - build
       - .gradle
   rules:
-    - if: '$CI_COMMIT_TITLE =~ /^Merge/'
+    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
