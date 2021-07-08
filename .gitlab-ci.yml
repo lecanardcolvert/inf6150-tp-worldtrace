@@ -67,8 +67,7 @@ deploy_install:
     paths:
       - project/desktop/build/distributions
   rules:
-    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-      when: on_success
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 deploy_doc:
   stage: deploy
@@ -87,6 +86,5 @@ deploy_doc:
       - project/core/build/docs/javadoc/
       - project/desktop/build/docs/javadoc/
   rules:
-    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-      when: on_success
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
       
