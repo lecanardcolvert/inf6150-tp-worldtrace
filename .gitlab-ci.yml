@@ -78,7 +78,8 @@ deploy_doc:
     - cd project/
     - gradle :desktop:build  --build-cache
     - gradle :core:build --build-cache
-    - gradle :javadoc --build-cache
+    - gradle :desktop:javadoc --build-cache
+    - gradle :core:javadoc --build-cache
     - ls -al
     - ls -al core
     - ls -al desktop
