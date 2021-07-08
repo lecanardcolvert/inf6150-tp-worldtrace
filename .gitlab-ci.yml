@@ -65,14 +65,17 @@ deploy_doc:
     - gradle :javadoc --build-cache
   cache:
     key: "$CI_JOB_STAGE"
+    policy: push
     paths:
+      - build/
+      - project/build/
       - project/core/build/
       - project/desktop/build/
       - .gradle/
   artifacts:
     paths:
-      - project/core/docs/
-      - project/desktop/docs/
+      - project/core/docs/javadoc/index.html
+      - project/desktop/docs/javadoc/index.html
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
