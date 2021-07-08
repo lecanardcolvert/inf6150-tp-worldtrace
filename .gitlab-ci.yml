@@ -17,7 +17,7 @@ before_script:
 stages:
   - build
   - test
-  - deploy
+  - tamere
 
 core:
   stage: build
@@ -52,8 +52,8 @@ test:
     key: "$CI_JOB_STAGE"
     policy: pull
 
-deploy_install:
-  stage: deploy
+tamere_install:
+  stage: tamere
   script:
     - cd project/
     - gradle :desktop:build --build-cache
@@ -71,8 +71,8 @@ deploy_install:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
 
-deploy_doc:
-  stage: deploy
+tamere_doc:
+  stage: tamere
   script:
     - cd project/
     - gradle :desktop:javadoc --build-cache
