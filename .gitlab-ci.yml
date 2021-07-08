@@ -72,9 +72,6 @@ deploy_install:
 
 deploy_doc:
   stage: deploy
-  needs:
-    - "core"
-    - "desktop"
   script:
     - cd project/
     - gradle :desktop:javadoc --build-cache
