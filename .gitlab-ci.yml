@@ -86,7 +86,6 @@ deploy_doc:
       - project/desktop/build/
       - .gradle/
   artifacts:
-    untracked: true
     paths:
       - project/core/build/docs/javadoc/index.html
       - project/desktop/build/docs/javadoc/index.html
