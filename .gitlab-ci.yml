@@ -77,7 +77,7 @@ deploy_doc:
     - gradle :javadoc --build-cache
   cache:
     key: "$CI_JOB_STAGE"
-    policy: push
+    policy: pull-push
     paths:
       - project/core/build/docs
       - project/desktop/build/docs
