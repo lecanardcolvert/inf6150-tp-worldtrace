@@ -63,8 +63,6 @@ deploy_install:
       - project/core/build/
       - project/desktop/build/
       - .gradle/
-  artifacts:
-    untracked: true
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
@@ -89,6 +87,7 @@ deploy_doc:
     paths:
       - project/core/build/docs/javadoc/
       - project/desktop/build/docs/javadoc/
+    expire_in: 7 days
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
