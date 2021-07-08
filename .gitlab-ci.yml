@@ -76,6 +76,7 @@ deploy_doc:
     - "desktop"
   script:
     - cd project/
+    - gradle :build  --build-cahce
     - gradle :javadoc --build-cache
     - ls -al core
     - ls -al desktop
