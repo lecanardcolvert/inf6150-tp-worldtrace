@@ -60,20 +60,19 @@ test:
 
 deploy_doc:
   stage: deploy
-  artifacts:
-    untracked: true
-    paths:
-      - project/core/docs/
-      - project/desktop/docs/
   script:
     - cd project/
     - gradle :javadoc --build-cache
   cache:
     key: "$CI_JOB_STAGE"
     paths:
-      - core/build/
-      - desktop/build/
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
+  artifacts:
+    paths:
+      - project/core/docs/
+      - project/desktop/docs/
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
