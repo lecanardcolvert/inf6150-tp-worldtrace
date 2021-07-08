@@ -129,54 +129,56 @@ INSERT INTO VOLS VALUES (20,'Mexico City International Airport','Brasília–Pre
 
 
 
+
+
 INSERT INTO VOLS VALUES (21,'Warsaw Chopin Airport','Nice Côte Azur Airport',
 'Varsovie','Monaco','Pologne','Monaco','21/09/06  ','21/09/06',
-'06H05','15H05','Boeing','787-9','789','HH-5432','19.4326° N 99.1332° W',
+'16H15','18h30','Boeing','787-9','789','HH-5432','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','2h15');
 
 INSERT INTO VOLS VALUES (22,'Indira Gandhi International Airport','Beijing Capital International Airport',
 'New Delhi','Beijing','Inde','Chine','21/10/04','21/10/04',
-'06H05','15H05','Airbus','787-9','789','L-POIU','19.4326° N 99.1332° W',
+'08H00','13H15','Airbus','787-9','789','L-POIU','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','5h15');
 
 INSERT INTO VOLS VALUES (23,'Sheremetyevo International Airport.','Suvarnabhumi Airport',
 'Moscou','Bangkok','Russie','Thaïlande','21/11/24','21/11/25',
-'06H05','15H05','Airbus','787-9','789','UY-5543','19.4326° N 99.1332° W',
+'22H30','7H45','Airbus','787-9','789','UY-5543','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','9h15');
 
 INSERT INTO VOLS VALUES (24,'Soekarno–Hatta International Airport','Jomo Kenyatta International Airport',
 'Jakarta','Nairobi','Indonésie','Kenya','21/11/11','21/11/12',
-'06H05','15H05','Airbus','787-9','789','TT-5UUU','19.4326° N 99.1332° W',
+'23H15','9H25','Airbus','787-9','789','TT-5UUU','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','10h10');
 
 INSERT INTO VOLS VALUES (25,'Hazrat Shahjalal International Airport','Ministro Pistarini International Airport ',
 'Dacca','Buenos Aires','Bangladesh','Argentine','21/12/19','21/12/20',
-'06H05','15H05','Boeing','787-9','789','C-TTT9','19.4326° N 99.1332° W',
+'16H45','14H05','Boeing','787-9','789','C-TTT9','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','21h20');
 
 INSERT INTO VOLS VALUES (26,'El Dorado International Airport','José Martí international airport',
 'Bogota','La Havane','Colombie','Cuba','21/09/27','21/09/27',
-'06H05','15H05','Boeing','787-9','789','VV-9990','19.4326° N 99.1332° W',
+'01H00','04H15','Boeing','787-9','789','VV-9990','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','3h15');
 
 INSERT INTO VOLS VALUES (27,'Budapest Ferenc Liszt International Airport','La Isabela International Airport',
 'Budapest','Santo Domingo','Hongrie','Republique Dominicaine','22/01/12','22/01/13',
-'06H05','15H05','Boeing','787-9','789','JJ-000H','19.4326° N 99.1332° W',
+'16H20','03H20','Boeing','787-9','789','JJ-000H','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','11h00');
 
 INSERT INTO VOLS VALUES (28,'Václav Havel Airport Prague','King Khalid International Airport',
 'Prague','Riyad','République tchèque','Arabie Saoudite','21/10/07','21/10/07',
-'06H05','15H05','Airbus','787-9','789','XX-XX56','19.4326° N 99.1332° W',
+'13H30','18H55','Airbus','787-9','789','XX-XX56','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','5h25');
 
 INSERT INTO VOLS VALUES (29,'Tribhuvan International Airport','La Aurora International Airport',
 'Katmandou','Guatemala','Népal','Guatémala','21/12/12','21/12/13',
-'06H05','15H05','Airbus','787-9','789','QH-225H','19.4326° N 99.1332° W',
+'12H00','07H30','Airbus','787-9','789','QH-225H','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','19h30');
 
 INSERT INTO VOLS VALUES (30,'Athens International Airport Eleftherios Venizelos','Bujumbura International Airport',
 'Athènes','Bujumbura','Grèce','Burundi','21/12/05','21/12/05',
-'06H05','15H05','Airbus','787-9','789','LO-FFJJ','19.4326° N 99.1332° W',
+'11H00','17H15','Airbus','787-9','789','LO-FFJJ','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','6h15');
 
 
