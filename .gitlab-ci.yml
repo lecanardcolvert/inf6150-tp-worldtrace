@@ -59,6 +59,7 @@ deploy_install:
     - gradle :desktop:build --build-cache
   cache:
     key: "$CI_JOB_STAGE"
+    policy: pull
     paths:
       - project/core/build/
       - project/desktop/build/
@@ -78,7 +79,7 @@ deploy_doc:
     - gradle :core:javadoc --build-cache
   cache:
     key: "$CI_JOB_STAGE"
-    policy: pull-push
+    policy: pull
     paths:
       - project/core/build/
       - project/desktop/build/
