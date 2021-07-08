@@ -68,8 +68,8 @@ deploy_doc:
   stage: deploy
   script:
     - cd project/
-#    - gradle :javadoc --build-cache
-    - gradle :desktop:installDist --build-cache
+    - gradle :javadoc --build-cache
+#    - gradle :desktop:installDist --build-cache
 #    - gradle :desktop:jpackage --build-cache
   cache:
     key: "$CI_JOB_STAGE"
@@ -86,7 +86,7 @@ deploy_install:
     - cd project/
 #    - gradle :javadoc --build-cache
     - gradle :desktop:installDist --build-cache
-  #    - gradle :desktop:jpackage --build-cache
+#    - gradle :desktop:jpackage --build-cache
   cache:
     key: "$CI_JOB_STAGE"
     paths:
