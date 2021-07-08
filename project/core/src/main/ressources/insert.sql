@@ -122,15 +122,6 @@ INSERT INTO VOLS VALUES (20,'Mexico City International Airport','Brasília–Pre
 '06H05','15H05','Boeing','787-9','789','LK-5FFF','19.4326° N 99.1332° W',
 '15.7975° S 47.8919° W','Aéreo Servicio Guerrero','9h00');
 
-
-
-
-
-
-
-
-
-
 INSERT INTO VOLS VALUES (21,'Warsaw Chopin Airport','Nice Côte Azur Airport',
 'Varsovie','Monaco','Pologne','Monaco','21/09/06  ','21/09/06',
 '16H15','18h30','Boeing','787-9','789','HH-5432','19.4326° N 99.1332° W',
