@@ -68,6 +68,7 @@ deploy_install:
       - project/desktop/build/distributions
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_SHA != ""'
 
 deploy_doc:
   stage: deploy
@@ -87,4 +88,4 @@ deploy_doc:
       - project/desktop/build/docs/javadoc/
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_SHA != ""'
