@@ -4,4 +4,4 @@ Alexandre H. Bourdeau (HAMA12128907)
 Philippe Lemay-Bourbeau (LEMP02119605)  
 
 # WorldTrace
-Cliquer ce [lien](./project/README.md) pour accéder à la documentation de ce projet. 
+Cliquer ce [lien](./project/README.md) pour accéder à la documentation de ce projet.
