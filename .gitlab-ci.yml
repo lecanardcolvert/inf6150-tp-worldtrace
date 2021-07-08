@@ -61,6 +61,7 @@ test:
 deploy_doc:
   stage: deploy
   artifacts:
+    untracked: true
     paths:
       - desktop/build/docs/javadoc/index.html
       - core/build/docs/javadoc/index.html
