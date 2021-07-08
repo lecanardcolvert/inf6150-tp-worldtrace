@@ -87,8 +87,8 @@ deploy_doc:
       - .gradle/
   artifacts:
     paths:
-      - project/core/build/docs/javadoc/index.html
-      - project/desktop/build/docs/javadoc/index.html
+      - project/core/build/docs/javadoc/
+      - project/desktop/build/docs/javadoc/
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
