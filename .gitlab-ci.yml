@@ -79,8 +79,8 @@ deploy_doc:
     key: "$CI_JOB_STAGE"
     policy: pull-push
     paths:
-      - project/core/build/docs
-      - project/desktop/build/docs
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
   artifacts:
     paths:
