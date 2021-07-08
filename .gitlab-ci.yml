@@ -28,8 +28,10 @@ core:
     key: "$CI_JOB_STAGE"
     policy: push
     paths:
-      - core/build/
-      - desktop/build/
+      - build/
+      - project/build/
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
 
 desktop:
@@ -41,8 +43,10 @@ desktop:
     key: "$CI_JOB_STAGE"
     policy: push
     paths:
-      - core/build/
-      - desktop/build/
+      - build/
+      - project/build/
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
 
 test:
@@ -54,8 +58,10 @@ test:
     key: "$CI_JOB_STAGE"
     policy: pull
     paths:
-      - core/build/
-      - desktop/build/
+      - build/
+      - project/build/
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
 
 deploy_doc:
@@ -74,8 +80,8 @@ deploy_doc:
       - .gradle/
   artifacts:
     paths:
-      - project/core/docs/javadoc/index.html
-      - project/desktop/docs/javadoc/index.html
+      - project/core/build/docs/javadoc/index.html
+      - project/desktop/build/docs/javadoc/index.html
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
@@ -88,7 +94,10 @@ deploy_install:
   cache:
     key: "$CI_JOB_STAGE"
     paths:
-      - desktop/build/
+      - build/
+      - project/build/
+      - project/core/build/
+      - project/desktop/build/
       - .gradle/
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
