@@ -64,13 +64,29 @@ test:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_failure
 
-deploy:
+deploy_doc:
   stage: deploy
   script:
     - cd project/
-    - gradle :javadoc --build-cache
+#    - gradle :javadoc --build-cache
     - gradle :desktop:installDist --build-cache
 #    - gradle :desktop:jpackage --build-cache
+  cache:
+    key: "$CI_JOB_STAGE"
+    paths:
+      - build
+      - .gradle
+  rules:
+    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
+      when: on_success
+
+deploy_install:
+  stage: deploy
+  script:
+    - cd project/
+#    - gradle :javadoc --build-cache
+    - gradle :desktop:installDist --build-cache
+  #    - gradle :desktop:jpackage --build-cache
   cache:
     key: "$CI_JOB_STAGE"
     paths:
