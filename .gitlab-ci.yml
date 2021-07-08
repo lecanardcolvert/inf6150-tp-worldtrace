@@ -30,9 +30,6 @@ core:
     paths:
       - build
       - .gradle
-  rules:
-    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-      when: on_failure
 
 desktop:
   stage: build
@@ -45,9 +42,6 @@ desktop:
     paths:
       - build
       - .gradle
-  rules:
-    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-      when: on_failure
 
 test:
   stage: test
@@ -60,9 +54,6 @@ test:
     paths:
       - build
       - .gradle
-  rules:
-    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-      when: on_failure
 
 deploy_doc:
   stage: deploy
