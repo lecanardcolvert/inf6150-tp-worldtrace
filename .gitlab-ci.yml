@@ -87,6 +87,6 @@ deploy_doc:
     paths:
       - project/core/build/docs/javadoc/
       - project/desktop/build/docs/javadoc/
-#  rules:
-#    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
-#      when: on_success
+  rules:
+    - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
+      when: on_success
