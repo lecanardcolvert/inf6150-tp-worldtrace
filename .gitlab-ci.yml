@@ -62,8 +62,8 @@ deploy_doc:
   stage: deploy
   artifacts:
     paths:
-      - core/build/docs
-      - desktop/build/docs
+      - core/build/docs/javadoc/index.html
+      - desktop/build/docs/javadoc/index.html
   script:
     - cd project/
     - gradle :javadoc --build-cache
