@@ -63,6 +63,10 @@ deploy_install:
       - project/core/build/
       - project/desktop/build/
       - .gradle/
+  artifacts:
+    paths:
+      - project/core/build/
+      - project/desktop/build/distributions
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
