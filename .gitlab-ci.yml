@@ -57,6 +57,9 @@ test:
 
 deploy_doc:
   stage: deploy
+  artifacts:
+    paths:
+      - docs
   script:
     - cd project/
     - gradle :javadoc --build-cache
