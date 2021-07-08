@@ -91,3 +91,4 @@ deploy_doc:
   rules:
     - if: '$CI_COMMIT_TITLE =~ /^.Merge./'
       when: on_success
+ 
