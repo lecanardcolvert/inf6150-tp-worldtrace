@@ -66,8 +66,8 @@ deploy_install:
   artifacts:
     paths:
       - project/desktop/build/distributions
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_SOURCE_BRANCH_SHA == ""'
+  only:
+    - merge_requests
 
 deploy_doc:
   stage: deploy
@@ -85,5 +85,5 @@ deploy_doc:
     paths:
       - project/core/build/docs/javadoc/
       - project/desktop/build/docs/javadoc/
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_SOURCE_BRANCH_SHA == ""'
+  only:
+    - merge_requests
