@@ -78,7 +78,6 @@ deploy_doc:
     - cd project/
     - gradle :javadoc --build-cache
     - ls -al
-    - tree
   cache:
     key: "$CI_JOB_STAGE"
     policy: pull-push
@@ -87,6 +86,8 @@ deploy_doc:
       - project/build/
       - project/core/build/
       - project/desktop/build/
+      - core/build/
+      - desktop/build
       - .gradle/
   artifacts:
     untracked: true
