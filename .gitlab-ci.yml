@@ -77,7 +77,8 @@ deploy_doc:
   script:
     - cd project/
     - gradle :javadoc --build-cache
-    - ls -al
+    - ls -al core
+    - ls -al desktop
   cache:
     key: "$CI_JOB_STAGE"
     policy: pull-push
