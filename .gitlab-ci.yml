@@ -69,8 +69,8 @@ deploy_install:
   rules:
     - if: '$CI_COMMIT_BRANCH == "prod"'
       when: on_success
-  except:
-    - merge_requests
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
 
 deploy_doc:
   stage: deploy
@@ -91,5 +91,5 @@ deploy_doc:
   rules:
     - if: '$CI_COMMIT_BRANCH == "prod"'
       when: on_success
-  except:
-    - merge_requests
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
