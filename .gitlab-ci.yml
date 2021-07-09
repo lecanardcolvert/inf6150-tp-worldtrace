@@ -66,6 +66,9 @@ deploy_install:
   artifacts:
     paths:
       - project/desktop/build/distributions
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+      when: on_success
   except:
     - merge_requests
 
@@ -85,5 +88,8 @@ deploy_doc:
     paths:
       - project/core/build/docs/javadoc/
       - project/desktop/build/docs/javadoc/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+      when: on_success
   except:
     - merge_requests
