@@ -23,6 +23,10 @@ public class DB {
                     ("SELECT * FROM VOLS ORDER BY noVol ASC" );
 
 
+            Country e = new Country(resultat.getString("NOVOL"));
+            System.out.println(e);
+
+
             while (resultat.next ()){
                 List<String> listeString = new ArrayList<>();
 
