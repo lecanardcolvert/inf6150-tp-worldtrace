@@ -38,6 +38,7 @@ allprojects {
         lombokVersion = '1.18.20'
         jakartaAnnotationsVersion = '2.0.0'
         jakartaPersistenceVersion = '3.0.0'
+        hibernateVersion = '5.5.3.Final'
     }
 
     repositories {
@@ -76,8 +77,13 @@ project(":core") {
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
 
         implementation group: 'com.oracle.database.jdbc', name: 'ojdbc10', version: "$ojdbc10Version"
+
+        // TODO : remove persistence API ?
         implementation group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: "$jakartaAnnotationsVersion"
         implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: "$jakartaPersistenceVersion"
+
+        implementation group: 'org.hibernate', name: 'hibernate-core-jakarta', version: "$hibernateVersion"
+        implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: "$hibernateVersion"
     }
 }
 
