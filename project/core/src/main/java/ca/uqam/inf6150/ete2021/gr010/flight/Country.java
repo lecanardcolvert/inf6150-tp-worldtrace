@@ -1,8 +1,4 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
-/** Represents a country.
- * @author WorldTrace Corporation
- * @version 1.0
- */
 
 public class Country {
     private final String name;

@@ -1,8 +1,4 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
-/** Represents an aircraft manufacturer.
- * @author WorldTrace Corporation
- * @version 1.0
- */
 
 public class Manufacturer {
     private final String name;

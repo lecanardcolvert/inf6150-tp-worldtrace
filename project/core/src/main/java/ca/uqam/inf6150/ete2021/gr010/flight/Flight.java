@@ -1,8 +1,4 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
-/** Represents a plane flight.
- * @author WorldTrace Corporation
- * @version 1.0
- * */
 
 import java.time.LocalDate;
 
