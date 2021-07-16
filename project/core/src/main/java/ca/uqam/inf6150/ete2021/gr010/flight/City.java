@@ -5,10 +5,24 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
  */
 
 public class City {
-    private Country country;
-    private String name;
-    private double latitude;
-    private double longitude;
+    private final Country country;
+    private final String name;
+    private final double latitude;
+    private final double longitude;
+
+    /**
+     * City constructor.
+     * @param country   The country of the city.
+     * @param name      The name of the city.
+     * @param latitude  The latitude of the city.
+     * @param longitude The longitude of the city.
+     */
+    City(Country country, String name, double latitude, double longitude) {
+        this.country = country;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     /** Gets the country.
      * @return  The country object associated to the city.

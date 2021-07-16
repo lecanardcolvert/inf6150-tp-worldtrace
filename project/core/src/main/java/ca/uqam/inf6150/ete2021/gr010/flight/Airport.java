@@ -5,9 +5,21 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
  */
 
 public class Airport {
-    private City city;
-    private String iataCode;
-    private String name;
+    private final City city;
+    private final String iataCode;
+    private final String name;
+
+    /**
+     * Airport constructor.
+     * @param city      The city of the airport.
+     * @param iataCode  The IATA code of the airport.
+     * @param name      The name of the airport.
+     */
+    Airport(City city, String iataCode, String name) {
+        this.city = city;
+        this.iataCode = iataCode;
+        this.name = name;
+    }
 
     /** Gets the city.
      * @return  The city object associated to the airport.

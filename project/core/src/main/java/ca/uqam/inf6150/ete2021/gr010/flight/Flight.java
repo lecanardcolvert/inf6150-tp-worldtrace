@@ -2,19 +2,43 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 /** Represents a plane flight.
  * @author WorldTrace Corporation
  * @version 1.0
- */
+ * */
 
 import java.time.LocalDate;
 
 public class Flight {
-    private String departureTime;
-    private String arrivalTime;
-    private Airport airportDeparture;
-    private Airport airportArrival;
-    private Aircraft aircraft;
-    private Airline airline;
-    private LocalDate departureDate;
-    private LocalDate arrivalDate;
+    private final String departureTime;
+    private final String arrivalTime;
+    private final Airport airportDeparture;
+    private final Airport airportArrival;
+    private final Aircraft aircraft;
+    private final Airline airline;
+    private final LocalDate departureDate;
+    private final LocalDate arrivalDate;
+
+    /**
+     * Flight constructor.
+     * @param departureTime     The departure time of the flight.
+     * @param arrivalTime       The arrival time of the flight.
+     * @param airportDeparture  The departure airport of the flight.
+     * @param airportArrival    The arrival airport of the flight.
+     * @param aircraft          The aircraft of the flight.
+     * @param airline           The airline of the flight.
+     * @param departureDate     The departure time of the flight.
+     * @param arrivalDate       The arrival time of the flight.
+     */
+    Flight(String departureTime, String arrivalTime, Airport airportDeparture,
+              Airport airportArrival, Aircraft aircraft, Airline airline,
+              LocalDate departureDate, LocalDate arrivalDate) {
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.airportDeparture = airportDeparture;
+        this.airportArrival = airportArrival;
+        this.aircraft = aircraft;
+        this.airline = airline;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+    }
 
     /** Gets the departure time of the flight.
      * @return  A string representing the departure time of the flight.
