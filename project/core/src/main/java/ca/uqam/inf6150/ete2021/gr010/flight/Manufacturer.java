@@ -12,6 +12,7 @@ public class Manufacturer
         implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "MANUFACTURERNO")
     private long manufacturerno;
 

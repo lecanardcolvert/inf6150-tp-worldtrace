@@ -12,6 +12,7 @@ public class Airport
         implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "AIRPORTNO")
     private long airportno;
 

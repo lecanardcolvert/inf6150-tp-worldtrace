@@ -12,6 +12,7 @@ public class City
         implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "CITYNO")
     private long cityno;
 

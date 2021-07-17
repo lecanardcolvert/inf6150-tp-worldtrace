@@ -12,6 +12,7 @@ public class Aircraft
         implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "AIRCRAFTNO")
     private long aircraftno;
 

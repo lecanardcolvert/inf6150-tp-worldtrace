@@ -12,6 +12,7 @@ public class Flight
         implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "FLIGHTNO")
     private long flightno;
 
