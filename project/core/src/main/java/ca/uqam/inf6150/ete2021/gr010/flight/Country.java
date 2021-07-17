@@ -14,17 +14,17 @@ public class Country
     @Id
     @GeneratedValue
     @Column(name = "COUNTRYNO")
-    private long countryno;
+    private long m_id;
 
     @Column(name = "NAME")
     private String name;
 
-    public long getCountryno() {
-        return this.countryno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setCountryno(long countryno) {
-        this.countryno = countryno;
+    public void setId(long countryno) {
+        this.m_id = countryno;
     }
 
     public String getName() {

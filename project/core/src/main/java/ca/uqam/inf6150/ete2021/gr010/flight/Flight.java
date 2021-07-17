@@ -14,7 +14,7 @@ public class Flight
     @Id
     @GeneratedValue
     @Column(name = "FLIGHTNO")
-    private long flightno;
+    private long m_id;
 
     @Column(name = "DEPARTURETIME")
     private String departuretime;
@@ -44,12 +44,12 @@ public class Flight
     @Column(name = "ARRIVALDATE")
     private java.sql.Date arrivaldate;
 
-    public long getFlightno() {
-        return this.flightno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setFlightno(long flightno) {
-        this.flightno = flightno;
+    public void setId(long flightno) {
+        this.m_id = flightno;
     }
 
     public String getDeparturetime() {

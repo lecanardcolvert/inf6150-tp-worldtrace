@@ -14,7 +14,7 @@ public class City
     @Id
     @GeneratedValue
     @Column(name = "CITYNO")
-    private long cityno;
+    private long m_id;
 
     @ManyToOne
     @JoinColumn(name = "COUNTRYNO")
@@ -29,12 +29,12 @@ public class City
     @Column(name = "LONGITUDE")
     private long longitude;
 
-    public long getCityno() {
-        return this.cityno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setCityno(long cityno) {
-        this.cityno = cityno;
+    public void setId(long cityno) {
+        this.m_id = cityno;
     }
 
     public long getCountryno() {

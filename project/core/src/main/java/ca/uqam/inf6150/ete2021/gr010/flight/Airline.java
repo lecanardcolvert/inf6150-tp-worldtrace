@@ -14,17 +14,17 @@ public class Airline
     @Id
     @GeneratedValue
     @Column(name = "AIRLINENO")
-    private long airlineno;
+    private long m_id;
 
     @Column(name = "NAME")
     private String name;
 
-    public long getAirlineno() {
-        return this.airlineno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setAirlineno(long airlineno) {
-        this.airlineno = airlineno;
+    public void setId(long airlineno) {
+        this.m_id = airlineno;
     }
 
     public String getName() {

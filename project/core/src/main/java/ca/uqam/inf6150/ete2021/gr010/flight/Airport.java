@@ -14,7 +14,7 @@ public class Airport
     @Id
     @GeneratedValue
     @Column(name = "AIRPORTNO")
-    private long airportno;
+    private long m_id;
 
     @ManyToOne
     @JoinColumn(name = "CITYNO")
@@ -26,12 +26,12 @@ public class Airport
     @Column(name = "NAME")
     private String name;
 
-    public long getAirportno() {
-        return this.airportno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setAirportno(long airportno) {
-        this.airportno = airportno;
+    public void setId(long airportno) {
+        this.m_id = airportno;
     }
 
     public long getCityno() {

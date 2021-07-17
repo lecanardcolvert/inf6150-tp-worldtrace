@@ -14,7 +14,7 @@ public class Aircraft
     @Id
     @GeneratedValue
     @Column(name = "AIRCRAFTNO")
-    private long aircraftno;
+    private long m_id;
 
     @ManyToOne
     @JoinColumn(name = "MANUFACTURERNO")
@@ -23,12 +23,12 @@ public class Aircraft
     @Column(name = "MODEL")
     private String model;
 
-    public long getAircraftno() {
-        return this.aircraftno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setAircraftno(long aircraftno) {
-        this.aircraftno = aircraftno;
+    public void setId(long aircraftno) {
+        this.m_id = aircraftno;
     }
 
     public long getManufacturerno() {

@@ -14,17 +14,17 @@ public class Manufacturer
     @Id
     @GeneratedValue
     @Column(name = "MANUFACTURERNO")
-    private long manufacturerno;
+    private long m_id;
 
     @Column(name = "NAME")
     private String name;
 
-    public long getManufacturerno() {
-        return this.manufacturerno;
+    public long getId() {
+        return this.m_id;
     }
 
-    public void setManufacturerno(long manufacturerno) {
-        this.manufacturerno = manufacturerno;
+    public void setId(long manufacturerno) {
+        this.m_id = manufacturerno;
     }
 
     public String getName() {
