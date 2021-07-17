@@ -18,7 +18,7 @@ public class Aircraft
 
     @ManyToOne
     @JoinColumn(name = "MANUFACTURERNO")
-    private long manufacturerno;
+    private long m_manufacturer;
 
     @Column(name = "MODEL")
     private String model;
@@ -31,12 +31,12 @@ public class Aircraft
         this.m_id = aircraftno;
     }
 
-    public long getManufacturerno() {
-        return this.manufacturerno;
+    public long getManufacturer() {
+        return this.m_manufacturer;
     }
 
-    public void setManufacturerno(long manufacturerno) {
-        this.manufacturerno = manufacturerno;
+    public void setManufacturer(long manufacturerno) {
+        this.m_manufacturer = manufacturerno;
     }
 
     public String getModel() {

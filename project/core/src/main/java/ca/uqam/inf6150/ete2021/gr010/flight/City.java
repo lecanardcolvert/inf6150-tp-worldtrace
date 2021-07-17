@@ -18,7 +18,7 @@ public class City
 
     @ManyToOne
     @JoinColumn(name = "COUNTRYNO")
-    private long countryno;
+    private long m_country;
 
     @Column(name = "NAME")
     private String name;
@@ -37,12 +37,12 @@ public class City
         this.m_id = cityno;
     }
 
-    public long getCountryno() {
-        return this.countryno;
+    public long getCountry() {
+        return this.m_country;
     }
 
-    public void setCountryno(long countryno) {
-        this.countryno = countryno;
+    public void setCountry(long countryno) {
+        this.m_country = countryno;
     }
 
     public String getName() {

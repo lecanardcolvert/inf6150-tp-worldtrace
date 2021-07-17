@@ -24,19 +24,19 @@ public class Flight
 
     @ManyToOne
     @JoinColumn(name = "AIRPORTDEPARTURENO")
-    private long airportdepartureno;
+    private long m_beginAirport;
 
     @ManyToOne
     @JoinColumn(name = "AIRPORTARRIVALNO")
-    private long airportarrivalno;
+    private long m_endAirport;
 
     @ManyToOne
     @JoinColumn(name = "AIRCRAFTNO")
-    private long aircraftno;
+    private long m_aircraft;
 
     @ManyToOne
     @JoinColumn(name = "AIRLINENO")
-    private long airlineno;
+    private long m_airline;
 
     @Column(name = "DEPARTUREDATE")
     private java.sql.Date departuredate;
@@ -68,36 +68,36 @@ public class Flight
         this.arrivaltime = arrivaltime;
     }
 
-    public long getAirportdepartureno() {
-        return this.airportdepartureno;
+    public long getBeginAirport() {
+        return this.m_beginAirport;
     }
 
-    public void setAirportdepartureno(long airportdepartureno) {
-        this.airportdepartureno = airportdepartureno;
+    public void setBeginAirport(long airportdepartureno) {
+        this.m_beginAirport = airportdepartureno;
     }
 
-    public long getAirportarrivalno() {
-        return this.airportarrivalno;
+    public long getEndAirport() {
+        return this.m_endAirport;
     }
 
-    public void setAirportarrivalno(long airportarrivalno) {
-        this.airportarrivalno = airportarrivalno;
+    public void setEndAirport(long airportarrivalno) {
+        this.m_endAirport = airportarrivalno;
     }
 
-    public long getAircraftno() {
-        return this.aircraftno;
+    public long getAircraft() {
+        return this.m_aircraft;
     }
 
-    public void setAircraftno(long aircraftno) {
-        this.aircraftno = aircraftno;
+    public void setAircraft(long aircraftno) {
+        this.m_aircraft = aircraftno;
     }
 
-    public long getAirlineno() {
-        return this.airlineno;
+    public long getAirline() {
+        return this.m_airline;
     }
 
-    public void setAirlineno(long airlineno) {
-        this.airlineno = airlineno;
+    public void setAirline(long airlineno) {
+        this.m_airline = airlineno;
     }
 
     public java.sql.Date getDeparturedate() {

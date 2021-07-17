@@ -18,7 +18,7 @@ public class Airport
 
     @ManyToOne
     @JoinColumn(name = "CITYNO")
-    private long cityno;
+    private long m_city;
 
     @Column(name = "IATACODE")
     private String iatacode;
@@ -34,12 +34,12 @@ public class Airport
         this.m_id = airportno;
     }
 
-    public long getCityno() {
-        return this.cityno;
+    public long getCity() {
+        return this.m_city;
     }
 
-    public void setCityno(long cityno) {
-        this.cityno = cityno;
+    public void setCity(long cityno) {
+        this.m_city = cityno;
     }
 
     public String getIatacode() {
