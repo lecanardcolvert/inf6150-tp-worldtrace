@@ -2,6 +2,7 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.io.Serializable;
 
@@ -20,6 +21,7 @@ public final class City
     @JoinColumn(name = "COUNTRYNO")
     private long m_country;
 
+    @NonNull
     @Column(name = "NAME")
     private String m_name;
 

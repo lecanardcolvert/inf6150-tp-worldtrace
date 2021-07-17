@@ -2,6 +2,7 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.io.Serializable;
 
@@ -20,9 +21,11 @@ public final class Airport
     @JoinColumn(name = "CITYNO")
     private long m_city;
 
+    @NonNull
     @Column(name = "IATACODE")
     private String m_IATA;
 
+    @NonNull
     @Column(name = "NAME")
     private String m_name;
 }

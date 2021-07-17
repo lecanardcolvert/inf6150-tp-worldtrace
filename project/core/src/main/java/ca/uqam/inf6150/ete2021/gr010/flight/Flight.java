@@ -2,6 +2,7 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.io.Serializable;
 
@@ -16,9 +17,11 @@ public final class Flight
     @Column(name = "FLIGHTNO")
     private long m_id;
 
+    @NonNull
     @Column(name = "DEPARTURETIME")
     private String m_departureTime;
 
+    @NonNull
     @Column(name = "ARRIVALTIME")
     private String m_arrivalTime;
 
@@ -38,9 +41,11 @@ public final class Flight
     @JoinColumn(name = "AIRLINENO")
     private long m_airline;
 
+    @NonNull
     @Column(name = "DEPARTUREDATE")
     private java.sql.Date m_departureDate;
 
+    @NonNull
     @Column(name = "ARRIVALDATE")
     private java.sql.Date m_arrivalDate;
 }
