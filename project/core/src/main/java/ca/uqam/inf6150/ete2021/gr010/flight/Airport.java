@@ -2,8 +2,8 @@ package ca.uqam.inf6150.ete2021.gr010.flight;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import jakarta.persistence.*;
 
 @Data
 @Entity
