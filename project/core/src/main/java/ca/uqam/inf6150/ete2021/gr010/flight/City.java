@@ -28,8 +28,8 @@ public final class City
     private String m_name;
 
     @Column(name = "LATITUDE")
-    private long m_latitude;
+    private double m_latitude;
 
     @Column(name = "LONGITUDE")
-    private long m_longitude;
+    private double m_longitude;
 }
