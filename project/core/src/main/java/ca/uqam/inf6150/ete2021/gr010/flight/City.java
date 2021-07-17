@@ -21,51 +21,11 @@ public class City
     private long m_country;
 
     @Column(name = "NAME")
-    private String name;
+    private String m_name;
 
     @Column(name = "LATITUDE")
-    private long latitude;
+    private long m_latitude;
 
     @Column(name = "LONGITUDE")
-    private long longitude;
-
-    public long getId() {
-        return this.m_id;
-    }
-
-    public void setId(long cityno) {
-        this.m_id = cityno;
-    }
-
-    public long getCountry() {
-        return this.m_country;
-    }
-
-    public void setCountry(long countryno) {
-        this.m_country = countryno;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getLatitude() {
-        return this.latitude;
-    }
-
-    public void setLatitude(long latitude) {
-        this.latitude = latitude;
-    }
-
-    public long getLongitude() {
-        return this.longitude;
-    }
-
-    public void setLongitude(long longitude) {
-        this.longitude = longitude;
-    }
+    private long m_longitude;
 }

@@ -17,21 +17,5 @@ public class Manufacturer
     private long m_id;
 
     @Column(name = "NAME")
-    private String name;
-
-    public long getId() {
-        return this.m_id;
-    }
-
-    public void setId(long manufacturerno) {
-        this.m_id = manufacturerno;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String m_name;
 }

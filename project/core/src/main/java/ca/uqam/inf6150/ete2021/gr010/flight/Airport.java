@@ -21,40 +21,8 @@ public class Airport
     private long m_city;
 
     @Column(name = "IATACODE")
-    private String iatacode;
+    private String m_IATA;
 
     @Column(name = "NAME")
-    private String name;
-
-    public long getId() {
-        return this.m_id;
-    }
-
-    public void setId(long airportno) {
-        this.m_id = airportno;
-    }
-
-    public long getCity() {
-        return this.m_city;
-    }
-
-    public void setCity(long cityno) {
-        this.m_city = cityno;
-    }
-
-    public String getIatacode() {
-        return this.iatacode;
-    }
-
-    public void setIatacode(String iatacode) {
-        this.iatacode = iatacode;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String m_name;
 }
