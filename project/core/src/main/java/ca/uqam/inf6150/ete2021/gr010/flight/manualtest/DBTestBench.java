@@ -23,11 +23,6 @@ public class DBTestBench {
             ResultSet resultat = sql.executeQuery
                     ("SELECT * FROM VOLS ORDER BY noVol ASC" );
 
-
-            Country e = new Country(resultat.getString("NOVOL"));
-            System.out.println(e);
-
-
             while (resultat.next ()){
                 List<String> listeString = new ArrayList<>();
 
