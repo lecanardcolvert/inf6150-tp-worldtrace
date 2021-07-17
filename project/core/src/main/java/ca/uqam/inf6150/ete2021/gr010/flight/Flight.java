@@ -1,12 +1,14 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
 import java.io.Serializable;
 
 @Data
+@AllArgsConstructor
 @Entity
 @Table(name = "FLIGHT")
 public final class Flight
