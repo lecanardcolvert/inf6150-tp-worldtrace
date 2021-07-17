@@ -3,11 +3,12 @@ package ca.uqam.inf6150.ete2021.gr010.flight.jpatest;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "AIRLINE")
-public class Airline {
+public class Airline implements Serializable {
     @Id
     @Column(name = "AIRLINENO")
     private long airlineno;

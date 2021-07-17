@@ -3,11 +3,12 @@ package ca.uqam.inf6150.ete2021.gr010.flight.jpatest;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "COUNTRY")
-public class Country {
+public class Country implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "COUNTRYNO")
