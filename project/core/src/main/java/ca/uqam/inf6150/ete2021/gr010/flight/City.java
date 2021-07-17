@@ -21,7 +21,7 @@ public final class City
 
     @ManyToOne
     @JoinColumn(name = "COUNTRYNO")
-    private long m_country;
+    private Country m_country;
 
     @NonNull
     @Column(name = "NAME")

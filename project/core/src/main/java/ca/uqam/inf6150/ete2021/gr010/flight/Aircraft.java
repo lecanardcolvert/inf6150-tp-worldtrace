@@ -21,7 +21,7 @@ public final class Aircraft
 
     @ManyToOne
     @JoinColumn(name = "MANUFACTURERNO")
-    private long m_manufacturer;
+    private Manufacturer m_manufacturer;
 
     @NonNull
     @Column(name = "MODEL")

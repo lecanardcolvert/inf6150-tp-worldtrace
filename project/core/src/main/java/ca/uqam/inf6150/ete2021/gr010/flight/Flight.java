@@ -19,6 +19,22 @@ public final class Flight
     @Column(name = "FLIGHTNO")
     private long m_id;
 
+    @ManyToOne
+    @JoinColumn(name = "AIRPORTDEPARTURENO")
+    private Airport m_beginAirport;
+
+    @ManyToOne
+    @JoinColumn(name = "AIRPORTARRIVALNO")
+    private Airport m_endAirport;
+
+    @ManyToOne
+    @JoinColumn(name = "AIRCRAFTNO")
+    private Aircraft m_aircraft;
+
+    @ManyToOne
+    @JoinColumn(name = "AIRLINENO")
+    private Aircraft m_airline;
+
     @NonNull
     @Column(name = "DEPARTURETIME")
     private String m_departureTime;
@@ -26,22 +42,6 @@ public final class Flight
     @NonNull
     @Column(name = "ARRIVALTIME")
     private String m_arrivalTime;
-
-    @ManyToOne
-    @JoinColumn(name = "AIRPORTDEPARTURENO")
-    private long m_beginAirport;
-
-    @ManyToOne
-    @JoinColumn(name = "AIRPORTARRIVALNO")
-    private long m_endAirport;
-
-    @ManyToOne
-    @JoinColumn(name = "AIRCRAFTNO")
-    private long m_aircraft;
-
-    @ManyToOne
-    @JoinColumn(name = "AIRLINENO")
-    private long m_airline;
 
     @NonNull
     @Column(name = "DEPARTUREDATE")

@@ -21,7 +21,7 @@ public final class Airport
 
     @ManyToOne
     @JoinColumn(name = "CITYNO")
-    private long m_city;
+    private City m_city;
 
     @NonNull
     @Column(name = "IATACODE")
