@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "COUNTRY")
-public class Country
+public final class Country
         implements Serializable {
 
     @Id
