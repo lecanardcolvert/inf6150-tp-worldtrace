@@ -1,17 +1,13 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
 /**
  * Test JavaDoc generation.
@@ -34,7 +30,7 @@ public class WorldTrace
         centerCamera();
 
         m_batch   = new SpriteBatch();
-        m_texture = new Texture("assets/earthmap4k.jpg");
+        m_texture = new Texture("assets/earth/map.jpg");
         m_sprite  = new Sprite(m_texture);
         m_sprite.setOrigin(0f, 0f);
         m_sprite.setPosition(0f, 0f);
