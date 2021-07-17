@@ -1,14 +1,16 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
 
 @Data
 @Entity
 @Table(name = "AIRPORT")
-public class Airport implements Serializable {
+public class Airport
+        implements Serializable {
+
     @Id
     @Column(name = "AIRPORTNO")
     private long airportno;

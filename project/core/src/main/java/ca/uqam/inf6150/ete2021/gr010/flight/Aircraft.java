@@ -12,7 +12,6 @@ public class Aircraft
         implements Serializable {
 
     @Id
-
     @Column(name = "AIRCRAFTNO")
     private long aircraftno;
 

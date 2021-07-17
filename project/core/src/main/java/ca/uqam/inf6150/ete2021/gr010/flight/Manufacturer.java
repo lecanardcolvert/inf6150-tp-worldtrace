@@ -1,14 +1,16 @@
 package ca.uqam.inf6150.ete2021.gr010.flight;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "MANUFACTURER")
-public class Manufacturer implements Serializable {
+public class Manufacturer
+        implements Serializable {
+
     @Id
     @Column(name = "MANUFACTURERNO")
     private long manufacturerno;
