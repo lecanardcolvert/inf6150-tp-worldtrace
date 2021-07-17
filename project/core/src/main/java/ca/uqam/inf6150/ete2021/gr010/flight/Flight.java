@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
@@ -35,19 +36,13 @@ public final class Flight
     @JoinColumn(name = "AIRLINENO")
     private Aircraft m_airline;
 
+    // TODO : verify if OK. Awaiting DB changes.
     @NonNull
-    @Column(name = "DEPARTURETIME")
-    private String m_departureTime;
+    @Column(name = "DEPARTURE")
+    private Timestamp m_departure;
 
+    // TODO : verify if OK. Awaiting DB changes.
     @NonNull
-    @Column(name = "ARRIVALTIME")
-    private String m_arrivalTime;
-
-    @NonNull
-    @Column(name = "DEPARTUREDATE")
-    private java.sql.Date m_departureDate;
-
-    @NonNull
-    @Column(name = "ARRIVALDATE")
-    private java.sql.Date m_arrivalDate;
+    @Column(name = "ARRIVAL")
+    private Timestamp m_arrival;
 }
