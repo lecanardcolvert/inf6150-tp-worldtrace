@@ -36,12 +36,10 @@ public final class Flight
     @JoinColumn(name = "AIRLINENO")
     private Aircraft m_airline;
 
-    // TODO : verify if OK. Awaiting DB changes.
     @NonNull
     @Column(name = "DEPARTURE")
     private Timestamp m_departure;
 
-    // TODO : verify if OK. Awaiting DB changes.
     @NonNull
     @Column(name = "ARRIVAL")
     private Timestamp m_arrival;
