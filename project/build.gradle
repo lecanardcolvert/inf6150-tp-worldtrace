@@ -84,8 +84,6 @@ project(":core") {
 
         implementation group: 'com.oracle.database.jdbc', name: 'ojdbc10', version: "$ojdbc10Version"
 
-        // TODO : remove persistence API ?
-        implementation group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: "$jakartaAnnotationsVersion"
         implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: "$jakartaPersistenceVersion"
 
         implementation group: 'org.hibernate', name: 'hibernate-core-jakarta', version: "$hibernateVersion"
