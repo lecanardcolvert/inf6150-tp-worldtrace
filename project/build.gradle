@@ -23,6 +23,13 @@ allprojects {
         }
     }
 
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
     version = '0.0'
 
     ext {
