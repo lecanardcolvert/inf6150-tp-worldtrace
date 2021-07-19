@@ -19,7 +19,7 @@ public class Main {
     @Bean
     public CommandLineRunner demo(FlightRepo p_repo) {
         return (args) -> {
-            log.info("Fligts found with findAll():");
+            log.info("Flights found with findAll():");
             log.info("-------------------------------");
 
             for (Flight flight : p_repo.findAll()) {
