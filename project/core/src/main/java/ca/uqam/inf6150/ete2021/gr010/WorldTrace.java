@@ -73,10 +73,29 @@ public class WorldTrace
         // Speed of plane movement
         for (Iterator<Rectangle> iter = m_planes.iterator(); iter.hasNext(); ) {
             Rectangle plane = iter.next();
-            plane.x += (100.0/(end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
-            plane.y += (100.0/(end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
-            if (plane.x + 32 > end_position_x && plane.y + 32 > end_position_y) {
-                iter.remove();
+            if (Math.abs((end_position_x - start_position_x)) > Math.abs((end_position_y - start_position_y))) {
+                plane.x += (100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
+                plane.y += (100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+            } else {
+                plane.x += (100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
+                plane.y += (100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+            }
+            if (end_position_x < start_position_x) {
+                if (end_position_y < start_position_y){
+                    if (plane.x < end_position_x && plane.y < end_position_y)
+                        iter.remove();
+                }else {
+                    if (plane.x < end_position_x && plane.y > end_position_y)
+                        iter.remove();
+                }
+            } else {
+                if (end_position_y < start_position_y) {
+                    if (plane.x > end_position_x && plane.y < end_position_y)
+                        iter.remove();
+                } else {
+                    if (plane.x > end_position_x && plane.y > end_position_y)
+                        iter.remove();
+                }
             }
         }
         // selon l'exemple
