@@ -32,6 +32,11 @@ public class WorldTrace
     private Texture             m_plane_img;                                                                            // image of a plane
     private Array<Rectangle>    m_planes;
     private Sprite              m_sprite;
+    // position of city start and end
+    private int                 start_position_x;
+    private int                 start_position_y;
+    private int                 end_position_x;
+    private int                 end_position_y;
 
     @Override
     public void create() {
@@ -68,9 +73,9 @@ public class WorldTrace
         // Speed of plane movement
         for (Iterator<Rectangle> iter = m_planes.iterator(); iter.hasNext(); ) {
             Rectangle plane = iter.next();
-            plane.x += 100 * Gdx.graphics.getDeltaTime();
-            plane.y += 100 * Gdx.graphics.getDeltaTime();
-            if (plane.x + 32 > 1280 || plane.y + 32 > 720) {
+            plane.x += (100.0/(end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
+            plane.y += (100.0/(end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+            if (plane.x + 32 > end_position_x && plane.y + 32 > end_position_y) {
                 iter.remove();
             }
         }
@@ -108,8 +113,12 @@ public class WorldTrace
 
     private void spawnPlane() {
         Rectangle plane = new Rectangle();
-        plane.x = MathUtils.random(0, 1280 - 32);
-        plane.y = MathUtils.random(0, 720 - 32);
+        start_position_x = MathUtils.random(0, 1280 - 32);
+        start_position_y = MathUtils.random(0, 720 - 32);
+        end_position_x = MathUtils.random(0, 1280 - 32);
+        end_position_y = MathUtils.random(0, 720 - 32);
+        plane.x = start_position_x;
+        plane.y = start_position_y;
         plane.width = 32;
         plane.height = 32;
         m_planes.add(plane);
