@@ -4,9 +4,11 @@ import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
-import com.j256.ormlite.jdbc.db.OracleDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Synchronized;
 import lombok.extern.java.Log;
 
 import java.io.Closeable;
