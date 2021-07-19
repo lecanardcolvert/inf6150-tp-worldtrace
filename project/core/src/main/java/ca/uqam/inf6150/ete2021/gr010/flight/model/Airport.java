@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight;
+package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,20 +12,24 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AIRCRAFT")
-public final class Aircraft
+@Table(name = "AIRPORT")
+public final class Airport
         implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "AIRCRAFTNO")
+    @Column(name = "AIRPORTNO")
     private long m_id;
 
     @ManyToOne
-    @JoinColumn(name = "MANUFACTURERNO")
-    private Manufacturer m_manufacturer;
+    @JoinColumn(name = "CITYNO")
+    private City m_city;
 
     @NonNull
-    @Column(name = "MODEL")
-    private String m_model;
+    @Column(name = "IATACODE")
+    private String m_IATA;
+
+    @NonNull
+    @Column(name = "NAME")
+    private String m_name;
 }

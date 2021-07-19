@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight;
+package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AIRLINE")
-public final class Airline
+@Table(name = "COUNTRY")
+public final class Country
         implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "AIRLINENO")
+    @Column(name = "COUNTRYNO")
     private long m_id;
 
     @NonNull

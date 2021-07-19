@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight;
+package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
