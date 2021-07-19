@@ -1,14 +1,12 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.db;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.model.Country;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
 import com.j256.ormlite.jdbc.db.OracleDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Synchronized;
 import lombok.extern.java.Log;
 
 import java.io.Closeable;
@@ -25,9 +23,20 @@ public final class DBConnection
     private static final String USERNAME = "bj991090";
     private static final String PASSWORD = "iTfunnzz";
 
+    private static DBConnection singleton;
+
     private ConnectionSource m_connection;
 
-    public DBConnection() {
+    @Synchronized
+    public static DBConnection getOrCreate() {
+        if (singleton == null) {
+            singleton = new DBConnection();
+        }
+
+        return singleton;
+    }
+
+    private DBConnection() {
         open();
     }
 
@@ -71,23 +80,5 @@ public final class DBConnection
 
     private void releaseConnectionHandle() {
         setConnection(null);
-    }
-
-    public static void main(String[] args) {
-        // TODO : Remove
-        try (var connectionSource = new JdbcPooledConnectionSource(
-                URL,
-                USERNAME,
-                PASSWORD,
-                new OracleDatabaseType())) {
-
-            Dao<Country, Long> countryDao = DaoManager.createDao(connectionSource, Country.class);
-
-            Country fetchedCountry = countryDao.queryForId(1L);
-            log.info(fetchedCountry.toString());
-        }
-        catch (SQLException | IOException p_throwables) {
-            p_throwables.printStackTrace();
-        }
     }
 }
