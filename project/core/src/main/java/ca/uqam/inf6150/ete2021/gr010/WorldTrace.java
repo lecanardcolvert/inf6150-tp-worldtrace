@@ -8,9 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FillViewport;
@@ -37,6 +36,9 @@ public class WorldTrace
     private int                 start_position_y;
     private int                 end_position_x;
     private int                 end_position_y;
+    private ShapeRenderer       shape_start;
+    private ShapeRenderer       shape_end;
+    private Circle              m_arrival;
 
     @Override
     public void create() {
@@ -55,6 +57,11 @@ public class WorldTrace
 
         // Test for plane image
         m_planes = new Array<Rectangle>();
+
+
+        shape_start = new ShapeRenderer();
+        shape_end = new ShapeRenderer();
+        m_arrival = new Circle();
         spawnPlane();
     }
 
@@ -73,29 +80,18 @@ public class WorldTrace
         // Speed of plane movement
         for (Iterator<Rectangle> iter = m_planes.iterator(); iter.hasNext(); ) {
             Rectangle plane = iter.next();
-            if (Math.abs((end_position_x - start_position_x)) > Math.abs((end_position_y - start_position_y))) {
-                plane.x += (100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
-                plane.y += (100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
-            } else {
-                plane.x += (100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
-                plane.y += (100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+
+
+            if (Intersector.overlaps(m_arrival, plane)){
+                iter.remove();
             }
-            if (end_position_x < start_position_x) {
-                if (end_position_y < start_position_y){
-                    if (plane.x < end_position_x && plane.y < end_position_y)
-                        iter.remove();
-                }else {
-                    if (plane.x < end_position_x && plane.y > end_position_y)
-                        iter.remove();
-                }
+
+            if (Math.abs((end_position_x - start_position_x)) > Math.abs((end_position_y - start_position_y))) {
+                plane.x += Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
+                plane.y += Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
             } else {
-                if (end_position_y < start_position_y) {
-                    if (plane.x > end_position_x && plane.y < end_position_y)
-                        iter.remove();
-                } else {
-                    if (plane.x > end_position_x && plane.y > end_position_y)
-                        iter.remove();
-                }
+                plane.x += Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
+                plane.y += Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
             }
         }
         // selon l'exemple
@@ -103,6 +99,12 @@ public class WorldTrace
             m_batch.draw(m_plane_img, plane.x, plane.y);
         }
         m_batch.end();
+        shape_start.begin(ShapeRenderer.ShapeType.Filled);
+        shape_start.circle(start_position_x,start_position_y,3);
+        shape_start.end();
+        shape_end.begin(ShapeRenderer.ShapeType.Filled);
+        shape_end.circle(end_position_x,end_position_y, 3);
+        shape_end.end();
     }
 
     @Override
@@ -112,6 +114,8 @@ public class WorldTrace
         m_batch.dispose();
         m_texture.dispose();
         m_plane_img.dispose();
+        shape_start.dispose();
+        shape_end.dispose();
     }
 
     @Override
@@ -132,10 +136,13 @@ public class WorldTrace
 
     private void spawnPlane() {
         Rectangle plane = new Rectangle();
-        start_position_x = MathUtils.random(0, 1280 - 32);
-        start_position_y = MathUtils.random(0, 720 - 32);
-        end_position_x = MathUtils.random(0, 1280 - 32);
-        end_position_y = MathUtils.random(0, 720 - 32);
+        start_position_x = 640;
+        start_position_y = 360;
+        end_position_x = 640 - 259;
+        end_position_y = 180 + 360;
+        m_arrival.x = end_position_x;
+        m_arrival.y = end_position_y;
+        m_arrival.radius = 3;
         plane.x = start_position_x;
         plane.y = start_position_y;
         plane.width = 32;
