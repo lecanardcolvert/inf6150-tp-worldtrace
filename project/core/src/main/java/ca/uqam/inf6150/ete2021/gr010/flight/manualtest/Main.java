@@ -1,6 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.manualtest;
 
-import jakarta.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.EntityType;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.Session;
@@ -25,7 +25,8 @@ public class Main {
     }
 
     public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
+    //    return ourSessionFactory.openSession();
+        return DBConnectivity.getOrBuildSessionFactory().openSession();
     }
 
     public static void main(final String[] args) {

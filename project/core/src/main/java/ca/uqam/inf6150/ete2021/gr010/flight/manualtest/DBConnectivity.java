@@ -34,7 +34,7 @@ public class DBConnectivity {
 
     private static Metadata buildMetadata(final StandardServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
-        metadataSources.addPackage(getAnnotatedBeansPackage());
+        metadataSources.addPackage(ANNOTATED_BEANS_PACKAGE_NAME);
 
         return metadataSources.buildMetadata();
     }
@@ -45,9 +45,5 @@ public class DBConnectivity {
         return serviceRegistryBuilder
                 .configure(HIBERNATE_CONFIG_FILE_PATH)
                 .build();
-    }
-
-    private static Package getAnnotatedBeansPackage() {
-        return ClassLoader.getSystemClassLoader().getDefinedPackage(ANNOTATED_BEANS_PACKAGE_NAME);
     }
 }
