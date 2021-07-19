@@ -1,37 +1,32 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
-import javax.persistence.*;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "CITY")
+@DatabaseTable(tableName = "CITY")
 public final class City
         implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "CITYNO")
+    @DatabaseField(columnName = "CITYNO", generatedId = true, canBeNull = false)
     private long m_id;
 
-    @ManyToOne
-    @JoinColumn(name = "COUNTRYNO")
+    @DatabaseField(columnName = "COUNTRYNO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private Country m_country;
 
-    @NonNull
-    @Column(name = "NAME")
+    @DatabaseField(columnName = "NAME", canBeNull = false)
     private String m_name;
 
-    @Column(name = "LATITUDE")
+    @DatabaseField(columnName = "LATITUDE", canBeNull = false)
     private double m_latitude;
 
-    @Column(name = "LONGITUDE")
+    @DatabaseField(columnName = "LONGITUDE", canBeNull = false)
     private double m_longitude;
 }

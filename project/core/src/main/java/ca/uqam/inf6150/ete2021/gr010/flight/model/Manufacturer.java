@@ -1,27 +1,23 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
-import javax.persistence.*;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "MANUFACTURER")
+@DatabaseTable(tableName = "MANUFACTURER")
 public final class Manufacturer
         implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "MANUFACTURERNO")
+    @DatabaseField(columnName = "MANUFACTURERNO", generatedId = true, canBeNull = false)
     private long m_id;
 
-    @NonNull
-    @Column(name = "NAME")
+    @DatabaseField(columnName = "NAME", canBeNull = false)
     private String m_name;
 }

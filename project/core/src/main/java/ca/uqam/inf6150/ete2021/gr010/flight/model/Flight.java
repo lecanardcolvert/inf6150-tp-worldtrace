@@ -1,10 +1,10 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
-import javax.persistence.*;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -12,37 +12,28 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "FLIGHT")
+@DatabaseTable(tableName = "FLIGHT")
 public final class Flight
         implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "FLIGHTNO")
+    @DatabaseField(columnName = "AIRLINENO", generatedId = true, canBeNull = false)
     private long m_id;
 
-    @ManyToOne
-    @JoinColumn(name = "AIRPORTDEPARTURENO")
+    @DatabaseField(columnName = "AIRPORTDEPARTURENO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private Airport m_beginAirport;
 
-    @ManyToOne
-    @JoinColumn(name = "AIRPORTARRIVALNO")
+    @DatabaseField(columnName = "AIRPORTARRIVALNO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private Airport m_endAirport;
 
-    @ManyToOne
-    @JoinColumn(name = "AIRCRAFTNO")
+    @DatabaseField(columnName = "AIRCRAFTNO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private Aircraft m_aircraft;
 
-    @ManyToOne
-    @JoinColumn(name = "AIRLINENO")
+    @DatabaseField(columnName = "AIRLINENO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private Airline m_airline;
 
-    @NonNull
-    @Column(name = "DEPARTURE")
+    @DatabaseField(columnName = "DEPARTURE", canBeNull = false)
     private Timestamp m_departure;
 
-    @NonNull
-    @Column(name = "ARRIVAL")
+    @DatabaseField(columnName = "ARRIVAL", canBeNull = false)
     private Timestamp m_arrival;
 }

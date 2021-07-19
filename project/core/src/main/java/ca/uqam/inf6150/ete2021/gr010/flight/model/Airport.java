@@ -1,35 +1,29 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.model;
 
-import javax.persistence.*;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "AIRPORT")
+@DatabaseTable(tableName = "AIRPORT")
 public final class Airport
         implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "AIRPORTNO")
+    @DatabaseField(columnName = "AIRPORTNO", generatedId = true, canBeNull = false)
     private long m_id;
 
-    @ManyToOne
-    @JoinColumn(name = "CITYNO")
+    @DatabaseField(columnName = "CITYNO", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 4, canBeNull = false)
     private City m_city;
 
-    @NonNull
-    @Column(name = "IATACODE")
+    @DatabaseField(columnName = "IATACODE", canBeNull = false)
     private String m_IATA;
 
-    @NonNull
-    @Column(name = "NAME")
+    @DatabaseField(columnName = "NAME", canBeNull = false)
     private String m_name;
 }
