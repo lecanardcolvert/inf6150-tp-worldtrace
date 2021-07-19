@@ -36,7 +36,7 @@ public final class Flight
 
     @ManyToOne
     @JoinColumn(name = "AIRLINENO")
-    private Aircraft m_airline;
+    private Airline m_airline;
 
     @NonNull
     @Column(name = "DEPARTURE")
