@@ -39,8 +39,7 @@ public final class DBConnection
         open();
     }
 
-    @SneakyThrows
-    public <TClass> Dao<TClass, Long> getDao(Class<TClass> p_entityClass) {
+    public <TClass> Dao<TClass, Long> getDao(Class<TClass> p_entityClass) throws SQLException {
         return DaoManager.createDao(getSource(), p_entityClass);
     }
 
