@@ -11,7 +11,7 @@ public interface FlightAPI {
         return Flight.class;
     }
 
-    default Flight getLatest() throws SQLException {
+    static Flight getLatest() throws SQLException {
         var dao = DBConnection.getOrCreate().getDao(getEntityClass());
 
         return dao.queryBuilder()
