@@ -1,5 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.manualtest;
 
+import lombok.NonNull;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -8,10 +9,23 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class DBConnectivity {
 
-    private static final String HIBERNATE_CONFIG_FILE_PATH   = "hibernate.cfg.xml";
+    @NonNull
+    private static final String HIBERNATE_CONFIG_FILE_PATH = "hibernate.cfg.xml";
+
+    @NonNull
     private static final String ANNOTATED_BEANS_PACKAGE_NAME = "ca.uqam.inf6150.ete2021.gr010.flight";
 
-    public static SessionFactory buildSessionFactory() {
+    private static SessionFactory sessionFactorySingleton = null;
+
+    public static SessionFactory getOrBuildSessionFactory() {
+        if (sessionFactorySingleton == null) {
+            sessionFactorySingleton = buildSessionFactory();
+        }
+
+        return sessionFactorySingleton;
+    }
+
+    private static SessionFactory buildSessionFactory() {
         StandardServiceRegistry serviceRegistry = buildServiceRegistry();
         Metadata                metadata        = buildMetadata(serviceRegistry);
 
