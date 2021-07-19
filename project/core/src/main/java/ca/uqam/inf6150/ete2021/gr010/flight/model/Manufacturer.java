@@ -17,7 +17,7 @@ public final class Manufacturer
         implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "MANUFACTURERNO")
     private long m_id;
 

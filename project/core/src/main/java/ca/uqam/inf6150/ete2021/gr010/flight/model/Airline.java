@@ -17,7 +17,7 @@ public final class Airline
         implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "AIRLINENO")
     private long m_id;
 

@@ -17,7 +17,7 @@ public final class Country
         implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "COUNTRYNO")
     private long m_id;
 

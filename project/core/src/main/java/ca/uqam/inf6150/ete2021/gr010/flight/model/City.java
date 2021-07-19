@@ -17,7 +17,7 @@ public final class City
         implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "CITYNO")
     private long m_id;
 
