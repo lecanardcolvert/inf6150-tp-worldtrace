@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Test JavaDoc generation.
@@ -26,8 +27,8 @@ public class WorldTrace
     private SpriteBatch         m_batch;
     private Texture             m_texture;
     private Texture             m_plane_img;                                                                            // image of a plane
-    private Array<Rectangle>    m_planes;
-    private Sprite m_background;
+    private LinkedList<Sprite>  m_planes;
+    private Sprite              m_background;
     // position of city start and end
     private int                 start_position_x;
     private int                 start_position_y;
@@ -49,15 +50,13 @@ public class WorldTrace
 
         m_plane_img     = new Texture("assets/plane.png");
 
-
         m_background = new Sprite(m_texture);
         m_background.setOrigin(0f, 0f);
         m_background.setPosition(0f, 0f);
         m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
         // Test for plane image
-        m_planes = new Array<Rectangle>();
-
+        m_planes = new LinkedList<>();
 
         shape_start = new ShapeRenderer();
         shape_end = new ShapeRenderer();
@@ -75,28 +74,22 @@ public class WorldTrace
         m_batch.setProjectionMatrix(m_camera.combined);
 
         m_batch.begin();
-        // l'exemple utilise batch
         m_background.draw(m_batch);
         // Speed of plane movement
-        for (Iterator<Rectangle> iter = m_planes.iterator(); iter.hasNext(); ) {
-            Rectangle plane = iter.next();
-
-
-            if (Intersector.overlaps(m_arrival, plane)){
+        for (Iterator<Sprite> iter = m_planes.iterator(); iter.hasNext(); ) {
+            Sprite plane = iter.next();
+            if (Intersector.overlaps(m_arrival, plane.getBoundingRectangle())){
                 iter.remove();
             }
 
             if (Math.abs((end_position_x - start_position_x)) > Math.abs((end_position_y - start_position_y))) {
-                plane.x += Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
-                plane.y += Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+                plane.translate((float) Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime(), (float) Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime());
             } else {
-                plane.x += Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime();
-                plane.y += Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime();
+                plane.translate((float) Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime(), (float) Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime());
             }
         }
-        // selon l'exemple
-        for (Rectangle plane: m_planes){
-            m_batch.draw(m_plane_img, plane.x, plane.y);
+        for (Sprite plane: m_planes){
+            plane.draw(m_batch);
         }
         m_batch.end();
         shape_start.begin(ShapeRenderer.ShapeType.Filled);
@@ -135,7 +128,8 @@ public class WorldTrace
     }
 
     private void spawnPlane() {
-        Rectangle plane = new Rectangle();
+        Sprite plane = new Sprite(m_plane_img);
+        plane.setSize(32, 32);
         start_position_x = 640 - 419;
         start_position_y = 360 + 132;
         end_position_x = 640 - 259;
@@ -143,8 +137,13 @@ public class WorldTrace
         m_arrival.x = end_position_x;
         m_arrival.y = end_position_y;
         m_arrival.radius = 3;
-        plane.x = start_position_x;
-        plane.y = start_position_y;
+        plane.setCenter( (float) start_position_x, (float) start_position_y);
+        if (end_position_x < start_position_x) {
+            plane.flip(true, false);
+        } else {
+            plane.flip(false,false);
+        }
         m_planes.add(plane);
+
     }
 }
