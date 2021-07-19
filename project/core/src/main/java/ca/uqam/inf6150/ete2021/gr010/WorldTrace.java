@@ -1,7 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,8 +11,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
 import java.util.Iterator;
 
@@ -30,7 +27,7 @@ public class WorldTrace
     private Texture             m_texture;
     private Texture             m_plane_img;                                                                            // image of a plane
     private Array<Rectangle>    m_planes;
-    private Sprite              m_sprite;
+    private Sprite m_background;
     // position of city start and end
     private int                 start_position_x;
     private int                 start_position_y;
@@ -49,11 +46,14 @@ public class WorldTrace
 
         m_batch         = new SpriteBatch();
         m_texture       = new Texture("assets/earthmap4k.jpg");
-        m_plane_img     = new Texture("assets/airplane.png");                                                 // image of a plane
-        m_sprite        = new Sprite(m_texture);
-        m_sprite.setOrigin(0f, 0f);
-        m_sprite.setPosition(0f, 0f);
-        m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+
+        m_plane_img     = new Texture("assets/plane.png");
+
+
+        m_background = new Sprite(m_texture);
+        m_background.setOrigin(0f, 0f);
+        m_background.setPosition(0f, 0f);
+        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
         // Test for plane image
         m_planes = new Array<Rectangle>();
@@ -76,7 +76,7 @@ public class WorldTrace
 
         m_batch.begin();
         // l'exemple utilise batch
-        m_sprite.draw(m_batch);
+        m_background.draw(m_batch);
         // Speed of plane movement
         for (Iterator<Rectangle> iter = m_planes.iterator(); iter.hasNext(); ) {
             Rectangle plane = iter.next();
@@ -124,7 +124,7 @@ public class WorldTrace
 
         m_camera.viewportWidth  = width;
         m_camera.viewportHeight = height;
-        m_sprite.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
         centerCamera();
     }
@@ -136,8 +136,8 @@ public class WorldTrace
 
     private void spawnPlane() {
         Rectangle plane = new Rectangle();
-        start_position_x = 640;
-        start_position_y = 360;
+        start_position_x = 640 - 419;
+        start_position_y = 360 + 132;
         end_position_x = 640 - 259;
         end_position_y = 180 + 360;
         m_arrival.x = end_position_x;
@@ -145,8 +145,6 @@ public class WorldTrace
         m_arrival.radius = 3;
         plane.x = start_position_x;
         plane.y = start_position_y;
-        plane.width = 32;
-        plane.height = 32;
         m_planes.add(plane);
     }
 }
