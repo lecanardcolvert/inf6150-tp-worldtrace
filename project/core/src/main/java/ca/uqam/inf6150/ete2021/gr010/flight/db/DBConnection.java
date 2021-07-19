@@ -1,12 +1,11 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.db;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
 import com.j256.ormlite.jdbc.db.OracleDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Synchronized;
+import lombok.*;
 import lombok.extern.java.Log;
 
 import java.io.Closeable;
@@ -25,7 +24,7 @@ public final class DBConnection
 
     private static DBConnection singleton;
 
-    private ConnectionSource m_connection;
+    private ConnectionSource m_source;
 
     @Synchronized
     public static DBConnection getOrCreate() {
@@ -38,6 +37,11 @@ public final class DBConnection
 
     private DBConnection() {
         open();
+    }
+
+    @SneakyThrows
+    public <TClass> Dao<TClass, Long> getDao(Class<TClass> p_entityClass) {
+        return DaoManager.createDao(getSource(), p_entityClass);
     }
 
     public void open() {
@@ -56,7 +60,7 @@ public final class DBConnection
                     PASSWORD,
                     new OracleDatabaseType());
 
-            setConnection(connectionPlaceholder);
+            setSource(connectionPlaceholder);
 
             log.info("DB successfully connected.");
         }
@@ -69,16 +73,16 @@ public final class DBConnection
     @Override
     public void close() throws IOException {
         if (isOpen()) {
-            getConnection().close();
+            getSource().close();
             releaseConnectionHandle();
         }
     }
 
     public boolean isOpen() {
-        return getConnection() != null;
+        return getSource() != null;
     }
 
     private void releaseConnectionHandle() {
-        setConnection(null);
+        setSource(null);
     }
 }
