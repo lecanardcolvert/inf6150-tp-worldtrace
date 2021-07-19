@@ -1,5 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.db;
 
+import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -57,7 +58,7 @@ public final class DBConnection
                     URL,
                     USERNAME,
                     PASSWORD,
-                    new OracleDatabaseType());
+                    new CustomOracleDatabaseType());
 
             setSource(connectionPlaceholder);
 
@@ -83,5 +84,10 @@ public final class DBConnection
 
     private void releaseConnectionHandle() {
         setSource(null);
+    }
+
+    public static void main(String[] args) throws SQLException {
+        var latestFlight = FlightAPI.getLatest();
+        log.info(latestFlight.toString());
     }
 }
