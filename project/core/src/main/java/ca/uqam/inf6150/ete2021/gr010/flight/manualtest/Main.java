@@ -22,6 +22,8 @@ public class Main {
             log.info("Flights found with findAll():");
             log.info("-------------------------------");
 
+            log.info(p_repo.findById(1).toString());
+
             for (Flight flight : p_repo.findAll()) {
                 log.info(flight.toString());
             }
