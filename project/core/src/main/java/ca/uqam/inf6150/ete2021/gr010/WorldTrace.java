@@ -35,8 +35,6 @@ public class WorldTrace
 
     private int start_position_x;
     private int start_position_y;
-    private int end_position_x;
-    private int end_position_y;
 
     private ShapeRenderer m_shapeRenderer;
     private Circle        m_arrivalAirport;
@@ -54,16 +52,14 @@ public class WorldTrace
         m_earthTexture = new Texture("assets/earth/map.jpg");
         m_planeTexture = new Texture("assets/plane.png");
 
-        m_airportRadius = 3f;
 
-        m_background = new Sprite(m_earthTexture);
-        m_background.setOrigin(0f, 0f);
-        m_background.setPosition(0f, 0f);
-        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+        setupBackground();
+
+        m_airportRadius  = 3f;
+        m_arrivalAirport = new Circle();
 
         m_planes = new LinkedList<>();
 
-        m_arrivalAirport = new Circle();
         spawnPlane();
     }
 
@@ -95,13 +91,13 @@ public class WorldTrace
                 iter.remove();
             }
 
-            if (Math.abs((end_position_x - start_position_x)) > Math.abs((end_position_y - start_position_y))) {
-                plane.translate((float) Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (end_position_x - start_position_x)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime());
+            if (Math.abs((m_arrivalAirport.x - start_position_x)) > Math.abs((m_arrivalAirport.y - start_position_y))) {
+                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - start_position_x)) * (m_arrivalAirport.x - start_position_x) * Gdx.graphics.getDeltaTime(),
+                                (float) Math.abs(100.0 / (m_arrivalAirport.x - start_position_x)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
             }
             else {
-                plane.translate((float) Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_x - start_position_x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (end_position_y - start_position_y)) * (end_position_y - start_position_y) * Gdx.graphics.getDeltaTime());
+                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.x - start_position_x) * Gdx.graphics.getDeltaTime(),
+                                (float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
             }
         }
         for (Sprite plane : m_planes) {
@@ -110,7 +106,7 @@ public class WorldTrace
         m_batch.end();
         m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         m_shapeRenderer.circle(start_position_x, start_position_y, m_airportRadius);
-        m_shapeRenderer.circle(end_position_x, end_position_y, m_airportRadius);
+        m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
 
         m_shapeRenderer.end();
     }
@@ -130,11 +126,18 @@ public class WorldTrace
         m_camera.position.y = m_camera.viewportHeight / 2f;
     }
 
+    private void setupBackground() {
+        m_background = new Sprite(m_earthTexture);
+        m_background.setOrigin(0f, 0f);
+        m_background.setPosition(0f, 0f);
+        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+    }
+
     private void spawnPlane() {
         start_position_x = 640 - 419;
         start_position_y = 360 + 132;
-        end_position_x   = 640 - 259;
-        end_position_y   = 180 + 360;
+        int end_position_x = 640 - 259;
+        int end_position_y = 180 + 360;
 
         m_arrivalAirport.x      = end_position_x;
         m_arrivalAirport.y      = end_position_y;
