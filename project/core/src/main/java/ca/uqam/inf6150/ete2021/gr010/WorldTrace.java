@@ -88,15 +88,6 @@ public class WorldTrace
         batchDrawShapes();
     }
 
-    private void batchDrawSprites() {
-        m_batch.begin();
-
-        drawEarthMap();
-        drawPlanes();
-
-        m_batch.end();
-    }
-
     private void translatePlanes() {
         for (Iterator<Sprite> iter = m_planes.iterator(); iter.hasNext(); ) {
             Sprite plane = iter.next();
@@ -115,20 +106,29 @@ public class WorldTrace
         }
     }
 
-    private void drawPlanes() {
-        for (Sprite plane : m_planes) {
-            plane.draw(m_batch);
-        }
-    }
+    private void batchDrawSprites() {
+        m_batch.begin();
 
-    private void drawEarthMap() {
-        m_earthMap.draw(m_batch);
+        drawEarthMap();
+        drawPlanes();
+
+        m_batch.end();
     }
 
     private void batchDrawShapes() {
         m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         drawAirports();
         m_shapeRenderer.end();
+    }
+
+    private void drawEarthMap() {
+        m_earthMap.draw(m_batch);
+    }
+
+    private void drawPlanes() {
+        for (Sprite plane : m_planes) {
+            plane.draw(m_batch);
+        }
     }
 
     private void drawAirports() {
