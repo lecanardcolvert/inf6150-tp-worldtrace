@@ -11,7 +11,9 @@ import java.util.List;
 public interface FlightAPI {
 
     static List<Flight> getAll() throws SQLException {
-        return getDao().queryForAll();
+        return getDao().queryBuilder()
+                       .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                       .query();
     }
 
     static Dao<Flight, Long> getDao() throws SQLException {
@@ -19,12 +21,10 @@ public interface FlightAPI {
     }
 
     static Flight getLatest() throws SQLException {
-        var dao = getDao();
-
-        return dao.queryBuilder()
-                  .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
-                  .limit(1L)
-                  .queryForFirst();
+        return getDao().queryBuilder()
+                       .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                       .limit(1L)
+                       .queryForFirst();
     }
 
     private static Class<Flight> getEntityClass() {
