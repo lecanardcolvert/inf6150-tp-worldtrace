@@ -91,5 +91,11 @@ public final class DBConnection
     public static void main(String[] args) throws SQLException {
         var latestFlight = FlightAPI.getLatest();
         log.info(latestFlight.toString());
+        log.info("");
+        log.info("");
+        log.info("");
+
+        var allFlights = FlightAPI.getAll();
+        log.info(allFlights.toString());
     }
 }
