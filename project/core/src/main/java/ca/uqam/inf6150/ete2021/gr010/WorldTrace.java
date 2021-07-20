@@ -75,17 +75,26 @@ public class WorldTrace
 
     @Override
     public void render() {
-        ScreenUtils.clear(Color.BLACK);
-        super.render();
+        update();
+        draw();
+    }
 
-        m_camera.update();
-        m_batch.setProjectionMatrix(m_camera.combined);
-        m_shapeRenderer.setProjectionMatrix(m_camera.combined);
-
+    private void update() {
+        updateCamera();
         translatePlanes();
+    }
+
+    private void draw() {
+        prepareScreen();
 
         batchDrawSprites();
         batchDrawShapes();
+    }
+
+    private void updateCamera() {
+        m_camera.update();
+        m_batch.setProjectionMatrix(m_camera.combined);
+        m_shapeRenderer.setProjectionMatrix(m_camera.combined);
     }
 
     private void translatePlanes() {
@@ -105,6 +114,11 @@ public class WorldTrace
                                 (float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
             }
         }
+    }
+
+    private void prepareScreen() {
+        ScreenUtils.clear(Color.BLACK);
+        super.render();
     }
 
     private void batchDrawSprites() {
