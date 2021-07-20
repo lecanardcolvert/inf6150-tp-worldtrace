@@ -61,7 +61,6 @@ public class WorldTrace
         m_background.setPosition(0f, 0f);
         m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
-        // Test for plane image
         m_planes = new LinkedList<>();
 
         m_arrivalAirport = new Circle();
