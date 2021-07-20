@@ -26,7 +26,7 @@ public class WorldTrace
 
     private SpriteBatch m_batch;
     private Texture     m_earthTexture;
-    private Texture     m_plane_img;
+    private Texture     m_planeTexture;
     private float       m_airportRadius;
 
 
@@ -52,7 +52,7 @@ public class WorldTrace
         m_shapeRenderer = new ShapeRenderer();
 
         m_earthTexture = new Texture("assets/earth/map.jpg");
-        m_plane_img    = new Texture("assets/plane.png");
+        m_planeTexture = new Texture("assets/plane.png");
 
         m_airportRadius = 3f;
 
@@ -122,7 +122,7 @@ public class WorldTrace
 
         m_batch.dispose();
         m_earthTexture.dispose();
-        m_plane_img.dispose();
+        m_planeTexture.dispose();
         m_shapeRenderer.dispose();
     }
 
@@ -141,7 +141,7 @@ public class WorldTrace
         m_arrival.y      = end_position_y;
         m_arrival.radius = m_airportRadius;
 
-        Sprite plane = new Sprite(m_plane_img);
+        Sprite plane = new Sprite(m_planeTexture);
         plane.setSize(32, 32);
         plane.setCenter((float) start_position_x, (float) start_position_y);
         plane.flip(end_position_x < start_position_x, false);
