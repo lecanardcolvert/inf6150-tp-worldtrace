@@ -25,7 +25,7 @@ public class WorldTrace
     private OrthographicCamera m_camera;
 
     private SpriteBatch m_batch;
-    private Texture     m_texture;
+    private Texture     m_earthTexture;
     private Texture     m_plane_img;
     private float       m_airportRadius;
 
@@ -51,12 +51,12 @@ public class WorldTrace
         m_batch         = new SpriteBatch();
         m_shapeRenderer = new ShapeRenderer();
 
-        m_texture   = new Texture("assets/earth/map.jpg");
-        m_plane_img = new Texture("assets/plane.png");
+        m_earthTexture = new Texture("assets/earth/map.jpg");
+        m_plane_img    = new Texture("assets/plane.png");
 
         m_airportRadius = 3f;
 
-        m_background = new Sprite(m_texture);
+        m_background = new Sprite(m_earthTexture);
         m_background.setOrigin(0f, 0f);
         m_background.setPosition(0f, 0f);
         m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
@@ -121,7 +121,7 @@ public class WorldTrace
         super.dispose();
 
         m_batch.dispose();
-        m_texture.dispose();
+        m_earthTexture.dispose();
         m_plane_img.dispose();
         m_shapeRenderer.dispose();
     }
