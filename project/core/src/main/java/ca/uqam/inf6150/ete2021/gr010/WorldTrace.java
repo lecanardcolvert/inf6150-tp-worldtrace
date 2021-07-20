@@ -131,24 +131,19 @@ public class WorldTrace
     }
 
     private void spawnPlane() {
-        Sprite plane = new Sprite(m_plane_img);
-        plane.setSize(32, 32);
         start_position_x = 640 - 419;
         start_position_y = 360 + 132;
         end_position_x   = 640 - 259;
         end_position_y   = 180 + 360;
+        
         m_arrival.x      = end_position_x;
         m_arrival.y      = end_position_y;
         m_arrival.radius = 3;
+
+        Sprite plane = new Sprite(m_plane_img);
+        plane.setSize(32, 32);
         plane.setCenter((float) start_position_x, (float) start_position_y);
-
-        if (end_position_x < start_position_x) {
-            plane.flip(true, false);
-        }
-        else {
-            plane.flip(false, false);
-        }
-
+        plane.flip(end_position_x < start_position_x, false);
         m_planes.add(plane);
     }
 }
