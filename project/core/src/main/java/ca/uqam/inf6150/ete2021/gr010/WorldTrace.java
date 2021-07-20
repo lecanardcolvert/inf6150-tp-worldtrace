@@ -1,5 +1,7 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
+import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
+import ca.uqam.inf6150.ete2021.gr010.flight.model.Flight;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -33,11 +35,12 @@ public class WorldTrace
     private Sprite             m_earthMap;
     private LinkedList<Sprite> m_planes;
 
-    private int start_position_x;
-    private int start_position_y;
+    private float start_position_x;
+    private float start_position_y;
 
     private ShapeRenderer m_shapeRenderer;
     private Circle        m_arrivalAirport;
+    private Circle        m_departureAirport;
 
     @Override
     public void create() {
@@ -56,6 +59,7 @@ public class WorldTrace
 
         m_airportRadius  = 3f;
         m_arrivalAirport = new Circle();
+        m_departureAirport = new Circle();
 
         m_planes = new LinkedList<>();
 
@@ -105,13 +109,13 @@ public class WorldTrace
                 iter.remove();
             }
 
-            if (Math.abs((m_arrivalAirport.x - start_position_x)) > Math.abs((m_arrivalAirport.y - start_position_y))) {
-                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - start_position_x)) * (m_arrivalAirport.x - start_position_x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (m_arrivalAirport.x - start_position_x)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
+            if (Math.abs((m_arrivalAirport.x - m_departureAirport.x)) > Math.abs((m_arrivalAirport.y - m_departureAirport.y))) {
+                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
+                                (float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
             }
             else {
-                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.x - start_position_x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
+                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
+                                (float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
             }
         }
     }
@@ -147,7 +151,7 @@ public class WorldTrace
     }
 
     private void drawAirports() {
-        m_shapeRenderer.circle(start_position_x, start_position_y, m_airportRadius);
+        m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, m_airportRadius);
         m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
     }
 
@@ -174,19 +178,24 @@ public class WorldTrace
     }
 
     private void spawnPlane() {
-        start_position_x = 640 - 419;
-        start_position_y = 360 + 132;
-        int end_position_x = 640 - 259;
-        int end_position_y = 180 + 360;
+        Flight flight = new Flight();
+        try {
+            flight = FlightAPI.getLatest();
+        } catch (Exception e) {
+            System.out.println("Erreur");
+        }
+        m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
+        m_departureAirport.y = (float) ((flight.getBeginAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
+        m_arrivalAirport.x = (float) ((flight.getEndAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
+        m_arrivalAirport.y = (float) ((flight.getEndAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
 
-        m_arrivalAirport.x      = end_position_x;
-        m_arrivalAirport.y      = end_position_y;
         m_arrivalAirport.radius = m_airportRadius;
+        m_departureAirport.radius = m_airportRadius;
 
         Sprite plane = new Sprite(m_planeTexture);
         plane.setSize(32, 32);
-        plane.setCenter((float) start_position_x, (float) start_position_y);
-        plane.flip(end_position_x < start_position_x, false);
+        plane.setCenter( m_departureAirport.x, m_departureAirport.y);
+        plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
         m_planes.add(plane);
     }
 }
