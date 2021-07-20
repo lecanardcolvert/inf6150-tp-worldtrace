@@ -30,8 +30,8 @@ public class WorldTrace
     private float       m_airportRadius;
 
 
-    private LinkedList<Sprite> m_planes;
     private Sprite             m_background;
+    private LinkedList<Sprite> m_planes;
 
     private int start_position_x;
     private int start_position_y;
@@ -39,7 +39,7 @@ public class WorldTrace
     private int end_position_y;
 
     private ShapeRenderer m_shapeRenderer;
-    private Circle        m_arrival;
+    private Circle        m_arrivalAirport;
 
     @Override
     public void create() {
@@ -64,7 +64,7 @@ public class WorldTrace
         // Test for plane image
         m_planes = new LinkedList<>();
 
-        m_arrival = new Circle();
+        m_arrivalAirport = new Circle();
         spawnPlane();
     }
 
@@ -92,7 +92,7 @@ public class WorldTrace
         // Speed of plane movement
         for (Iterator<Sprite> iter = m_planes.iterator(); iter.hasNext(); ) {
             Sprite plane = iter.next();
-            if (Intersector.overlaps(m_arrival, plane.getBoundingRectangle())) {
+            if (Intersector.overlaps(m_arrivalAirport, plane.getBoundingRectangle())) {
                 iter.remove();
             }
 
@@ -137,9 +137,9 @@ public class WorldTrace
         end_position_x   = 640 - 259;
         end_position_y   = 180 + 360;
 
-        m_arrival.x      = end_position_x;
-        m_arrival.y      = end_position_y;
-        m_arrival.radius = m_airportRadius;
+        m_arrivalAirport.x      = end_position_x;
+        m_arrivalAirport.y      = end_position_y;
+        m_arrivalAirport.radius = m_airportRadius;
 
         Sprite plane = new Sprite(m_planeTexture);
         plane.setSize(32, 32);
