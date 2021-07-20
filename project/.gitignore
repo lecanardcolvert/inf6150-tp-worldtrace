@@ -42,6 +42,7 @@ proguard/
 captures/
 
 # IntelliJ
+.jpb
 *.iml
 .idea/workspace.xml
 .idea/tasks.xml
