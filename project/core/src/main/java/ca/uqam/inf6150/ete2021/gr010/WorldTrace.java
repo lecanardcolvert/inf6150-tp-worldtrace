@@ -47,7 +47,7 @@ public class WorldTrace
         centerCamera();
 
         m_batch   = new SpriteBatch();
-        m_texture = new Texture("assets/earthmap4k.jpg");
+        m_texture = new Texture("assets/earth/map.jpg");
 
         m_plane_img = new Texture("assets/plane.png");
 
@@ -135,7 +135,7 @@ public class WorldTrace
         start_position_y = 360 + 132;
         end_position_x   = 640 - 259;
         end_position_y   = 180 + 360;
-        
+
         m_arrival.x      = end_position_x;
         m_arrival.y      = end_position_y;
         m_arrival.radius = 3;
