@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -31,12 +32,8 @@ public class WorldTrace
     private Texture     m_planeTexture;
     private float       m_airportRadius;
 
-
     private Sprite             m_earthMap;
     private LinkedList<Sprite> m_planes;
-
-    private float start_position_x;
-    private float start_position_y;
 
     private ShapeRenderer m_shapeRenderer;
     private Circle        m_arrivalAirport;
@@ -178,11 +175,21 @@ public class WorldTrace
     }
 
     private void spawnPlane() {
+        findingCoordinate();
+
+        Sprite plane = new Sprite(m_planeTexture);
+        plane.setSize(32, 32);
+        plane.setCenter( m_departureAirport.x, m_departureAirport.y);
+        plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
+        m_planes.add(plane);
+    }
+
+    private void findingCoordinate() {
         Flight flight = new Flight();
         try {
             flight = FlightAPI.getLatest();
-        } catch (Exception e) {
-            System.out.println("Erreur");
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL exception");
         }
         m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
         m_departureAirport.y = (float) ((flight.getBeginAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
@@ -191,11 +198,5 @@ public class WorldTrace
 
         m_arrivalAirport.radius = m_airportRadius;
         m_departureAirport.radius = m_airportRadius;
-
-        Sprite plane = new Sprite(m_planeTexture);
-        plane.setSize(32, 32);
-        plane.setCenter( m_departureAirport.x, m_departureAirport.y);
-        plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
-        m_planes.add(plane);
     }
 }
