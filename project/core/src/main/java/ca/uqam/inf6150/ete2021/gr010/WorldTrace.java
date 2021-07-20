@@ -30,7 +30,7 @@ public class WorldTrace
     private float       m_airportRadius;
 
 
-    private Sprite             m_background;
+    private Sprite             m_earthMap;
     private LinkedList<Sprite> m_planes;
 
     private int start_position_x;
@@ -69,7 +69,7 @@ public class WorldTrace
 
         m_camera.viewportWidth  = width;
         m_camera.viewportHeight = height;
-        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+        m_earthMap.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
 
         centerCamera();
     }
@@ -82,9 +82,22 @@ public class WorldTrace
         m_camera.update();
         m_batch.setProjectionMatrix(m_camera.combined);
 
+        translatePlanes();
+
+        batchDrawSprites();
+        batchDrawShapes();
+    }
+
+    private void batchDrawSprites() {
         m_batch.begin();
-        m_background.draw(m_batch);
-        // Speed of plane movement
+
+        drawEarthMap();
+        drawPlanes();
+
+        m_batch.end();
+    }
+
+    private void translatePlanes() {
         for (Iterator<Sprite> iter = m_planes.iterator(); iter.hasNext(); ) {
             Sprite plane = iter.next();
             if (Intersector.overlaps(m_arrivalAirport, plane.getBoundingRectangle())) {
@@ -100,15 +113,27 @@ public class WorldTrace
                                 (float) Math.abs(100.0 / (m_arrivalAirport.y - start_position_y)) * (m_arrivalAirport.y - start_position_y) * Gdx.graphics.getDeltaTime());
             }
         }
+    }
+
+    private void drawPlanes() {
         for (Sprite plane : m_planes) {
             plane.draw(m_batch);
         }
-        m_batch.end();
+    }
+
+    private void drawEarthMap() {
+        m_earthMap.draw(m_batch);
+    }
+
+    private void batchDrawShapes() {
         m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        drawAirports();
+        m_shapeRenderer.end();
+    }
+
+    private void drawAirports() {
         m_shapeRenderer.circle(start_position_x, start_position_y, m_airportRadius);
         m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
-
-        m_shapeRenderer.end();
     }
 
     @Override
@@ -127,10 +152,10 @@ public class WorldTrace
     }
 
     private void setupBackground() {
-        m_background = new Sprite(m_earthTexture);
-        m_background.setOrigin(0f, 0f);
-        m_background.setPosition(0f, 0f);
-        m_background.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
+        m_earthMap = new Sprite(m_earthTexture);
+        m_earthMap.setOrigin(0f, 0f);
+        m_earthMap.setPosition(0f, 0f);
+        m_earthMap.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
     }
 
     private void spawnPlane() {
