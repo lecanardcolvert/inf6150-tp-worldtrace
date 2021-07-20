@@ -52,7 +52,6 @@ public class WorldTrace
         m_earthTexture = new Texture("assets/earth/map.jpg");
         m_planeTexture = new Texture("assets/plane.png");
 
-
         setupBackground();
 
         m_airportRadius  = 3f;
@@ -81,6 +80,7 @@ public class WorldTrace
 
         m_camera.update();
         m_batch.setProjectionMatrix(m_camera.combined);
+        m_shapeRenderer.setProjectionMatrix(m_camera.combined);
 
         translatePlanes();
 
@@ -91,6 +91,7 @@ public class WorldTrace
     private void translatePlanes() {
         for (Iterator<Sprite> iter = m_planes.iterator(); iter.hasNext(); ) {
             Sprite plane = iter.next();
+
             if (Intersector.overlaps(m_arrivalAirport, plane.getBoundingRectangle())) {
                 iter.remove();
             }
