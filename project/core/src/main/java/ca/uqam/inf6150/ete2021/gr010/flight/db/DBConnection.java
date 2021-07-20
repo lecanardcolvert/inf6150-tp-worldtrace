@@ -1,6 +1,5 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.db;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -29,6 +28,10 @@ public final class DBConnection
 
     private ConnectionSource m_source;
 
+    private DBConnection() {
+        open();
+    }
+
     @Synchronized
     public static DBConnection getOrCreate() {
         if (singleton == null) {
@@ -36,10 +39,6 @@ public final class DBConnection
         }
 
         return singleton;
-    }
-
-    private DBConnection() {
-        open();
     }
 
     public <TClass> Dao<TClass, Long> getDao(Class<TClass> p_entityClass) throws SQLException {
@@ -86,16 +85,5 @@ public final class DBConnection
 
     private void releaseConnectionHandle() {
         setSource(null);
-    }
-
-    public static void main(String[] args) throws SQLException {
-        var latestFlight = FlightAPI.getLatest();
-        log.info(latestFlight.toString());
-        log.info("");
-        log.info("");
-        log.info("");
-
-        var allFlights = FlightAPI.getAll();
-        log.info(allFlights.toString());
     }
 }
