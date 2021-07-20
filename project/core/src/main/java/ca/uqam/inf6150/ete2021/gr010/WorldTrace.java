@@ -24,9 +24,12 @@ public class WorldTrace
 
     private OrthographicCamera m_camera;
 
-    private SpriteBatch        m_batch;
-    private Texture            m_texture;
-    private Texture            m_plane_img;
+    private SpriteBatch m_batch;
+    private Texture     m_texture;
+    private Texture     m_plane_img;
+    private float       m_airportRadius;
+
+
     private LinkedList<Sprite> m_planes;
     private Sprite             m_background;
 
@@ -35,8 +38,7 @@ public class WorldTrace
     private int end_position_x;
     private int end_position_y;
 
-    private ShapeRenderer shape_start;
-    private ShapeRenderer shape_end;
+    private ShapeRenderer m_shapeRenderer;
     private Circle        m_arrival;
 
     @Override
@@ -46,10 +48,13 @@ public class WorldTrace
         m_camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         centerCamera();
 
-        m_batch   = new SpriteBatch();
-        m_texture = new Texture("assets/earth/map.jpg");
+        m_batch         = new SpriteBatch();
+        m_shapeRenderer = new ShapeRenderer();
 
+        m_texture   = new Texture("assets/earth/map.jpg");
         m_plane_img = new Texture("assets/plane.png");
+
+        m_airportRadius = 3f;
 
         m_background = new Sprite(m_texture);
         m_background.setOrigin(0f, 0f);
@@ -59,9 +64,7 @@ public class WorldTrace
         // Test for plane image
         m_planes = new LinkedList<>();
 
-        shape_start = new ShapeRenderer();
-        shape_end   = new ShapeRenderer();
-        m_arrival   = new Circle();
+        m_arrival = new Circle();
         spawnPlane();
     }
 
@@ -106,12 +109,11 @@ public class WorldTrace
             plane.draw(m_batch);
         }
         m_batch.end();
-        shape_start.begin(ShapeRenderer.ShapeType.Filled);
-        shape_start.circle(start_position_x, start_position_y, 3);
-        shape_start.end();
-        shape_end.begin(ShapeRenderer.ShapeType.Filled);
-        shape_end.circle(end_position_x, end_position_y, 3);
-        shape_end.end();
+        m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        m_shapeRenderer.circle(start_position_x, start_position_y, m_airportRadius);
+        m_shapeRenderer.circle(end_position_x, end_position_y, m_airportRadius);
+
+        m_shapeRenderer.end();
     }
 
     @Override
@@ -121,8 +123,7 @@ public class WorldTrace
         m_batch.dispose();
         m_texture.dispose();
         m_plane_img.dispose();
-        shape_start.dispose();
-        shape_end.dispose();
+        m_shapeRenderer.dispose();
     }
 
     private void centerCamera() {
@@ -138,7 +139,7 @@ public class WorldTrace
 
         m_arrival.x      = end_position_x;
         m_arrival.y      = end_position_y;
-        m_arrival.radius = 3;
+        m_arrival.radius = m_airportRadius;
 
         Sprite plane = new Sprite(m_plane_img);
         plane.setSize(32, 32);
