@@ -34,6 +34,7 @@ public class WorldTrace
 
     private Sprite             m_earthMap;
     private LinkedList<Sprite> m_planes;
+    private float              m_planeSize;
 
     private ShapeRenderer m_shapeRenderer;
     private Circle        m_arrivalAirport;
@@ -54,11 +55,12 @@ public class WorldTrace
 
         setupBackground();
 
+        m_planes    = new LinkedList<>();
+        m_planeSize = 32f;
+
         m_airportRadius    = 3f;
         m_arrivalAirport   = new Circle();
         m_departureAirport = new Circle();
-
-        m_planes = new LinkedList<>();
 
         try {
             spawnPlane();
@@ -183,7 +185,7 @@ public class WorldTrace
         findCoordinates();
 
         Sprite plane = new Sprite(m_planeTexture);
-        plane.setSize(32, 32);
+        plane.setSize(m_planeSize, m_planeSize);
         plane.setCenter(m_departureAirport.x, m_departureAirport.y);
         plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
         m_planes.add(plane);
