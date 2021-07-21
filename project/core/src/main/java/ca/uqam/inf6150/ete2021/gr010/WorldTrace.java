@@ -19,8 +19,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import java.sql.SQLException;
 
 /**
- * Test JavaDoc generation.
- * TODO : remove JavaDoc test.
+ * Main World Trace application.
+ *
+ * <p>
+ * Use infographics technologies to render onto the screen plane flights.
+ * </p>
  */
 public class WorldTrace
         extends ApplicationAdapter {
