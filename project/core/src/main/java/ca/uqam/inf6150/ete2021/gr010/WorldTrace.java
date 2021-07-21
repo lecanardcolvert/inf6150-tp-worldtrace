@@ -60,7 +60,7 @@ public class WorldTrace
         setupBackground();
 
         m_planeSize     = 32f;
-        m_planeSize     = 10f;
+        m_planeSpeed    = 100f;
         m_airportRadius = 3f;
 
         try {
@@ -115,22 +115,8 @@ public class WorldTrace
                 destroyFlight();
             }
             else {
-                if (Math.abs((m_arrivalAirport.x - m_departureAirport.x)) > Math.abs((m_arrivalAirport.y - m_departureAirport.y))) {
-                    m_plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x))
-                                      * (m_arrivalAirport.x - m_departureAirport.x)
-                                      * Gdx.graphics.getDeltaTime(),
-                                      (float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x))
-                                      * (m_arrivalAirport.y - m_departureAirport.y)
-                                      * Gdx.graphics.getDeltaTime());
-                }
-                else {
-                    m_plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y))
-                                      * (m_arrivalAirport.x - m_departureAirport.x)
-                                      * Gdx.graphics.getDeltaTime(),
-                                      (float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y))
-                                      * (m_arrivalAirport.y - m_departureAirport.y)
-                                      * Gdx.graphics.getDeltaTime());
-                }
+                Vector2 translation = new Vector2(m_planeDir).scl(m_planeSpeed).scl(Gdx.graphics.getDeltaTime());
+                m_plane.translate(translation.x, translation.y);
             }
         }
     }
