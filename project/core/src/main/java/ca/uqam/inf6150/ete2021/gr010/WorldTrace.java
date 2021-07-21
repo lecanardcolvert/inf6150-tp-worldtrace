@@ -114,14 +114,15 @@ public class WorldTrace
             if (Intersector.overlaps(m_arrivalAirport, plane.getBoundingRectangle())) {
                 iter.remove();
             }
-
-            if (Math.abs((m_arrivalAirport.x - m_departureAirport.x)) > Math.abs((m_arrivalAirport.y - m_departureAirport.y))) {
-                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
-            }
             else {
-                plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
-                                (float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
+                if (Math.abs((m_arrivalAirport.x - m_departureAirport.x)) > Math.abs((m_arrivalAirport.y - m_departureAirport.y))) {
+                    plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
+                                    (float) Math.abs(100.0 / (m_arrivalAirport.x - m_departureAirport.x)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
+                }
+                else {
+                    plane.translate((float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.x - m_departureAirport.x) * Gdx.graphics.getDeltaTime(),
+                                    (float) Math.abs(100.0 / (m_arrivalAirport.y - m_departureAirport.y)) * (m_arrivalAirport.y - m_departureAirport.y) * Gdx.graphics.getDeltaTime());
+                }
             }
         }
     }
