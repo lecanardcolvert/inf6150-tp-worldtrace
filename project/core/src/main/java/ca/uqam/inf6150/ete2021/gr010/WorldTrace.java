@@ -60,7 +60,12 @@ public class WorldTrace
 
         m_planes = new LinkedList<>();
 
-        spawnPlane();
+        try {
+            spawnPlane();
+        }
+        catch (SQLException p_ignored) {
+            // Ignore exceptions
+        }
     }
 
     @Override
@@ -174,7 +179,7 @@ public class WorldTrace
         m_earthMap.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
     }
 
-    private void spawnPlane() {
+    private void spawnPlane() throws SQLException {
         findingCoordinate();
 
         Sprite plane = new Sprite(m_planeTexture);
@@ -184,14 +189,9 @@ public class WorldTrace
         m_planes.add(plane);
     }
 
-    private void findingCoordinate() {
-        Flight flight = new Flight();
-        try {
-            flight = FlightAPI.getLatest();
-        }
-        catch (SQLException e) {
-            System.out.println("Erreur SQL exception");
-        }
+    private void findingCoordinate() throws SQLException {
+        Flight flight = FlightAPI.getLatest();
+
         m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
         m_departureAirport.y = (float) ((flight.getBeginAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
         m_arrivalAirport.x   = (float) ((flight.getEndAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
