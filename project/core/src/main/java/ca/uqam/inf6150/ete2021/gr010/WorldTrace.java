@@ -219,6 +219,10 @@ public class WorldTrace
         City    beginAirport = flight.getBeginAirport().getCity();
         City    endAirport   = flight.getEndAirport().getCity();
 
+        spawnAirports(halfViewport, beginAirport, endAirport);
+    }
+
+    private void spawnAirports(final Vector2 halfViewport, final City beginAirport, final City endAirport) {
         m_arrivalAirport     = new Circle();
         m_departureAirport   = new Circle();
         m_departureAirport.x = halfViewport.x + (float) ((beginAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
