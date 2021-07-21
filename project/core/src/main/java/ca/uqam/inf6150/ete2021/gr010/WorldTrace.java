@@ -38,9 +38,10 @@ public class WorldTrace
     private float m_planeSize;
     private float m_airportRadius;
 
-    private Sprite m_plane;
-    private Circle m_arrivalAirport;
-    private Circle m_departureAirport;
+    private Sprite  m_plane;
+    private Circle  m_arrivalAirport;
+    private Circle  m_departureAirport;
+    private Vector2 m_planeDir;
 
     @Override
     public void create() {
@@ -156,6 +157,7 @@ public class WorldTrace
         m_plane            = null;
         m_arrivalAirport   = null;
         m_departureAirport = null;
+        m_planeDir.setZero();
     }
 
     private void drawEarthMap() {
@@ -233,5 +235,10 @@ public class WorldTrace
 
         m_arrivalAirport.radius   = m_airportRadius;
         m_departureAirport.radius = m_airportRadius;
+
+        Vector2 start = new Vector2(m_departureAirport.x, m_departureAirport.y);
+        Vector2 end   = new Vector2(m_arrivalAirport.x, m_arrivalAirport.y);
+
+        m_planeDir = end.sub(start).nor();
     }
 }
