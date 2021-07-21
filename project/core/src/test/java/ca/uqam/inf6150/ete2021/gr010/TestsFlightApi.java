@@ -20,6 +20,7 @@ class TestsFlightApi {
         assertEquals(testTimeStampDepart,TimeStampDepart);
     }
 
+    //Test de la méthode FlightAPI.getall()
     @Test
     public void testArrive() throws SQLException {
         Timestamp TimeStampArrive = Collections.singletonList(FlightAPI.getAll().get(5).getArrival()).get(0);
@@ -27,33 +28,40 @@ class TestsFlightApi {
         assertEquals(testTimeStampArrive,TimeStampArrive);
     }
 
+    //Test de la méthode FlightAPI.getall()
     @Test
     public void testPaysDepart() throws SQLException {
         String pays = FlightAPI.getAll().get(8).getBeginAirport().getCity().getCountry().getName();
         assertEquals("Taîwan",pays);
     }
 
+    //Test de la méthode FlightAPI.getall()
     @Test
     public void testManufacturier() throws SQLException {
         String manufacturier = FlightAPI.getAll().get(17).getAircraft().getManufacturer().getName();
         assertNotEquals("Airbus",manufacturier);
     }
 
+    //Test de la méthode FlightAPI.getDao()
     @Test
     public void testNombreVols() throws  SQLException {
         assertEquals(30,FlightAPI.getDao().countOf());
     }
+
+    //Test de la méthode FlightAPI.getDao()
     @Test
     public void testFlight() throws  SQLException {
        assertEquals("FLIGHT",FlightAPI.getDao().getTableName());
     }
 
+    //Test de la méthode FlightAPI.getall()
     @Test
     public void testCoordonnesArriveeLat() throws SQLException {
         double testCoorArr = FlightAPI.getAll().get(27).getEndAirport().getCity().getLatitude();
         assertEquals(-4.2634,testCoorArr);
     }
 
+    //Test de la méthode FlightAPI.getall()
     @Test
     public void testCoordonnesDepLong() throws SQLException {
         double testCoorDep= FlightAPI.getAll().get(14).getBeginAirport().getCity().getLongitude();
