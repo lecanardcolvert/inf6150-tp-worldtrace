@@ -54,8 +54,8 @@ public class WorldTrace
 
         setupBackground();
 
-        m_airportRadius  = 3f;
-        m_arrivalAirport = new Circle();
+        m_airportRadius    = 3f;
+        m_arrivalAirport   = new Circle();
         m_departureAirport = new Circle();
 
         m_planes = new LinkedList<>();
@@ -179,7 +179,7 @@ public class WorldTrace
 
         Sprite plane = new Sprite(m_planeTexture);
         plane.setSize(32, 32);
-        plane.setCenter( m_departureAirport.x, m_departureAirport.y);
+        plane.setCenter(m_departureAirport.x, m_departureAirport.y);
         plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
         m_planes.add(plane);
     }
@@ -188,15 +188,16 @@ public class WorldTrace
         Flight flight = new Flight();
         try {
             flight = FlightAPI.getLatest();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             System.out.println("Erreur SQL exception");
         }
         m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
         m_departureAirport.y = (float) ((flight.getBeginAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
-        m_arrivalAirport.x = (float) ((flight.getEndAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
-        m_arrivalAirport.y = (float) ((flight.getEndAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
+        m_arrivalAirport.x   = (float) ((flight.getEndAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
+        m_arrivalAirport.y   = (float) ((flight.getEndAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
 
-        m_arrivalAirport.radius = m_airportRadius;
+        m_arrivalAirport.radius   = m_airportRadius;
         m_departureAirport.radius = m_airportRadius;
     }
 }
