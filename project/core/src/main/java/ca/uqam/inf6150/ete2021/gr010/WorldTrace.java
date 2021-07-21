@@ -1,6 +1,7 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
+import ca.uqam.inf6150.ete2021.gr010.flight.model.City;
 import ca.uqam.inf6150.ete2021.gr010.flight.model.Flight;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.sql.SQLException;
@@ -194,10 +196,14 @@ public class WorldTrace
     private void findCoordinates() throws SQLException {
         Flight flight = FlightAPI.getLatest();
 
-        m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
-        m_departureAirport.y = (float) ((flight.getBeginAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
-        m_arrivalAirport.x   = (float) ((flight.getEndAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
-        m_arrivalAirport.y   = (float) ((flight.getEndAirport().getCity().getLatitude() / 90 * (m_camera.viewportHeight / 2)) + (m_camera.viewportHeight / 2));
+        Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
+        City    beginAirport = flight.getBeginAirport().getCity();
+        City    endAirport   = flight.getEndAirport().getCity();
+
+        m_departureAirport.x = halfViewport.x + (float) ((beginAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
+        m_departureAirport.y = halfViewport.y + (float) ((beginAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
+        m_arrivalAirport.x   = halfViewport.x + (float) ((endAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
+        m_arrivalAirport.y   = halfViewport.y + (float) ((endAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
 
         m_arrivalAirport.radius   = m_airportRadius;
         m_departureAirport.radius = m_airportRadius;
