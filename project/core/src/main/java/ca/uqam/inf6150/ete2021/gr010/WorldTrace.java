@@ -180,7 +180,7 @@ public class WorldTrace
     }
 
     private void spawnPlane() throws SQLException {
-        findingCoordinate();
+        findCoordinates();
 
         Sprite plane = new Sprite(m_planeTexture);
         plane.setSize(32, 32);
@@ -189,7 +189,7 @@ public class WorldTrace
         m_planes.add(plane);
     }
 
-    private void findingCoordinate() throws SQLException {
+    private void findCoordinates() throws SQLException {
         Flight flight = FlightAPI.getLatest();
 
         m_departureAirport.x = (float) ((flight.getBeginAirport().getCity().getLongitude() / 180 * (m_camera.viewportWidth / 2)) + (m_camera.viewportWidth / 2));
