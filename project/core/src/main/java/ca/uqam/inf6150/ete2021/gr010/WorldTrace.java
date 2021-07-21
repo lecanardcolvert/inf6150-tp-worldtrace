@@ -106,8 +106,11 @@ public class WorldTrace
 
     private void translatePlane() {
         if (m_plane != null) {
+            assert m_arrivalAirport != null;
+            assert m_departureAirport != null;
+
             if (Intersector.overlaps(m_arrivalAirport, m_plane.getBoundingRectangle())) {
-                m_plane = null;
+                destroyFlight();
             }
             else {
                 if (Math.abs((m_arrivalAirport.x - m_departureAirport.x)) > Math.abs((m_arrivalAirport.y - m_departureAirport.y))) {
@@ -150,6 +153,12 @@ public class WorldTrace
         m_shapeRenderer.end();
     }
 
+    private void destroyFlight() {
+        m_plane            = null;
+        m_arrivalAirport   = null;
+        m_departureAirport = null;
+    }
+
     private void drawEarthMap() {
         m_earthMap.draw(m_batch);
     }
@@ -161,8 +170,10 @@ public class WorldTrace
     }
 
     private void drawAirports() {
-        m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, m_airportRadius);
-        m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
+        if (m_departureAirport != null && m_arrivalAirport != null) {
+            m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, m_airportRadius);
+            m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
+        }
     }
 
     @Override
@@ -188,6 +199,9 @@ public class WorldTrace
     }
 
     private void spawnPlane() throws SQLException {
+        assert m_arrivalAirport != null;
+        assert m_departureAirport != null;
+
         findCoordinates();
 
         m_plane = new Sprite(m_planeTexture);
@@ -197,6 +211,9 @@ public class WorldTrace
     }
 
     private void findCoordinates() throws SQLException {
+        assert m_arrivalAirport != null;
+        assert m_departureAirport != null;
+
         Flight flight = FlightAPI.getLatest();
 
         Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
