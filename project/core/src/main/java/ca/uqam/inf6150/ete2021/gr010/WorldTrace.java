@@ -57,9 +57,8 @@ public class WorldTrace
 
         m_planeSize = 32f;
 
-        m_airportRadius    = 3f;
-        m_arrivalAirport   = new Circle();
-        m_departureAirport = new Circle();
+        m_airportRadius = 3f;
+
 
         try {
             spawnPlane();
@@ -220,6 +219,8 @@ public class WorldTrace
         City    beginAirport = flight.getBeginAirport().getCity();
         City    endAirport   = flight.getEndAirport().getCity();
 
+        m_arrivalAirport     = new Circle();
+        m_departureAirport   = new Circle();
         m_departureAirport.x = halfViewport.x + (float) ((beginAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
         m_departureAirport.y = halfViewport.y + (float) ((beginAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
         m_arrivalAirport.x   = halfViewport.x + (float) ((endAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
