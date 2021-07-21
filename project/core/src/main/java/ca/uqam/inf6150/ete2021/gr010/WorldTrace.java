@@ -36,6 +36,7 @@ public class WorldTrace
     private Sprite m_earthMap;
 
     private float m_planeSize;
+    private float m_planeSpeed;
     private float m_airportRadius;
 
     private Sprite  m_plane;
@@ -59,6 +60,7 @@ public class WorldTrace
         setupBackground();
 
         m_planeSize     = 32f;
+        m_planeSize     = 10f;
         m_airportRadius = 3f;
 
         try {
