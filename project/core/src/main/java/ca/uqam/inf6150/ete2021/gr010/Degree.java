@@ -7,10 +7,10 @@ import lombok.Getter;
 @Getter
 public enum Degree {
     ZERO(0.0),
-    QUARTER(90),
-    HALF(180),
-    THREE_QUARTERS(270),
-    FULL(360);
+    QUARTER(90.0),
+    HALF(180.0),
+    THREE_QUARTERS(270.0),
+    FULL(360.0);
 
     private final double m_degrees;
 }
