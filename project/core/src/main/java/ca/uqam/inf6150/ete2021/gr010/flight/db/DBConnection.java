@@ -8,13 +8,13 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Synchronized;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.XSlf4j;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Log
+@XSlf4j
 @Getter()
 @Setter(AccessLevel.PRIVATE)
 public final class DBConnection
@@ -50,7 +50,7 @@ public final class DBConnection
             close();
         }
         catch (IOException p_thrown) {
-            log.severe(p_thrown.getMessage());
+            log.catching(p_thrown);
             releaseConnectionHandle();
         }
 
@@ -66,7 +66,7 @@ public final class DBConnection
             log.info("DB successfully connected.");
         }
         catch (SQLException p_thrown) {
-            log.severe(p_thrown.getMessage());
+            log.catching(p_thrown);
             releaseConnectionHandle();
         }
     }
