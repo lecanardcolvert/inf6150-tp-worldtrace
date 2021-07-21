@@ -27,18 +27,20 @@ public class WorldTrace
 
     private OrthographicCamera m_camera;
 
-    private SpriteBatch m_batch;
-    private Texture     m_earthTexture;
-    private Texture     m_planeTexture;
-    private float       m_airportRadius;
+    private SpriteBatch   m_batch;
+    private ShapeRenderer m_shapeRenderer;
+
+    private Texture m_earthTexture;
+    private Texture m_planeTexture;
 
     private Sprite m_earthMap;
-    private Sprite m_plane;
-    private float  m_planeSize;
 
-    private ShapeRenderer m_shapeRenderer;
-    private Circle        m_arrivalAirport;
-    private Circle        m_departureAirport;
+    private float m_planeSize;
+    private float m_airportRadius;
+
+    private Sprite m_plane;
+    private Circle m_arrivalAirport;
+    private Circle m_departureAirport;
 
     @Override
     public void create() {
