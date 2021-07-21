@@ -55,10 +55,8 @@ public class WorldTrace
 
         setupBackground();
 
-        m_planeSize = 32f;
-
+        m_planeSize     = 32f;
         m_airportRadius = 3f;
-
 
         try {
             spawnPlane();
