@@ -11,23 +11,41 @@ import java.util.List;
 public interface FlightAPI {
 
     static List<Flight> getAll() throws SQLException {
-        return getDao().queryBuilder()
-                       .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
-                       .query();
+        try {
+            return getDao().queryBuilder()
+                           .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                           .query();
+        }
+        catch (SQLException p_thrown) {
+            FlightAPIImpl.getLogger().error("Failed to get all flights from the DB", p_thrown);
+            throw p_thrown;
+        }
     }
 
     static Dao<Flight, Long> getDao() throws SQLException {
-        return DBConnection.getOrCreate().getDao(getEntityClass());
-    }
-
-    static Flight getLatest() throws SQLException {
-        return getDao().queryBuilder()
-                       .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
-                       .limit(1L)
-                       .queryForFirst();
+        try {
+            return DBConnection.getOrCreate().getDao(getEntityClass());
+        }
+        catch (SQLException p_thrown) {
+            FlightAPIImpl.getLogger().error("Failed to get or create the Flight's table Dao from the DB", p_thrown);
+            throw p_thrown;
+        }
     }
 
     private static Class<Flight> getEntityClass() {
         return Flight.class;
+    }
+
+    static Flight getLatest() throws SQLException {
+        try {
+            return getDao().queryBuilder()
+                           .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                           .limit(1L)
+                           .queryForFirst();
+        }
+        catch (SQLException p_thrown) {
+            FlightAPIImpl.getLogger().error("Failed to get the latest flight from the DB", p_thrown);
+            throw p_thrown;
+        }
     }
 }
