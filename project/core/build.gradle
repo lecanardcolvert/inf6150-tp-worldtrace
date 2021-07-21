@@ -3,7 +3,7 @@
 sourceSets {
     main {
         resources {
-            srcDirs += ['src/main/assets']
+            srcDirs = ['assets']
         }
     }
 }
