@@ -162,9 +162,9 @@ public class WorldTrace
         super.dispose();
 
         m_batch.dispose();
+        m_shapeRenderer.dispose();
         m_earthTexture.dispose();
         m_planeTexture.dispose();
-        m_shapeRenderer.dispose();
     }
 
     private void centerCamera() {
