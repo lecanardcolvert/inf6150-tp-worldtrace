@@ -2,11 +2,16 @@ package ca.uqam.inf6150.ete2021.gr010.flight.api;
 
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.extern.slf4j.XSlf4j;
+import org.slf4j.ext.XLogger;
 
+@XSlf4j
 @Value
 @NoArgsConstructor
 public class FlightAPIImpl
         implements FlightAPI {
 
-    static final java.util.logging.Logger log = java.util.logging.Logger.getLogger(FlightAPI.class.getName());
+    public static XLogger getLogger() {
+        return log;
+    }
 }
