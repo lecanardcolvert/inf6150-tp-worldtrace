@@ -59,7 +59,14 @@ public interface FlightAPI {
         final int sequenceQuantity = 1;
         final int firstFlightIndex = 0;
 
-        return fetchLatestSequence(p_timeLimit, sequenceQuantity).get(firstFlightIndex);
+        Flight       latestFlight   = null;
+        List<Flight> latestSequence = fetchLatestSequence(p_timeLimit, sequenceQuantity);
+
+        if (!latestSequence.isEmpty()) {
+            latestFlight = latestSequence.get(firstFlightIndex);
+        }
+
+        return latestFlight;
     }
 
     @NonNull
