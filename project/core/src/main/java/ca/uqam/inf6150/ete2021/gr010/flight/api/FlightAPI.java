@@ -27,7 +27,7 @@ public interface FlightAPI {
             return DBConnection.getOrCreate().getDao(getEntityClass());
         }
         catch (SQLException p_thrown) {
-            FlightAPIImpl.getLogger().error("Failed to get or create the Flight's table Dao from the DB", p_thrown);
+            FlightAPIImpl.getLogger().error("Failed to fetch or create the Flight's table Dao from the DB", p_thrown);
             throw p_thrown;
         }
     }
@@ -44,7 +44,7 @@ public interface FlightAPI {
                            .queryForFirst();
         }
         catch (SQLException p_thrown) {
-            FlightAPIImpl.getLogger().error("Failed to get the foremost in time flight from the DB", p_thrown);
+            FlightAPIImpl.getLogger().error("Failed to fetch the foremost in time flight from the DB", p_thrown);
             throw p_thrown;
         }
     }
@@ -57,7 +57,7 @@ public interface FlightAPI {
                            .queryForFirst();
         }
         catch (SQLException p_thrown) {
-            FlightAPIImpl.getLogger().error("Failed to get the latest flight from the DB", p_thrown);
+            FlightAPIImpl.getLogger().error("Failed to fetch the latest flight from the DB", p_thrown);
             throw p_thrown;
         }
     }
