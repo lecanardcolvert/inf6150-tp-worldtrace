@@ -44,6 +44,19 @@ public interface FlightAPI {
                            .queryForFirst();
         }
         catch (SQLException p_thrown) {
+            FlightAPIImpl.getLogger().error("Failed to get the foremost in time flight from the DB", p_thrown);
+            throw p_thrown;
+        }
+    }
+
+    static Flight fetchLatest() throws SQLException {
+        try {
+            return getDao().queryBuilder()
+                           .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                           .limit(1L)
+                           .queryForFirst();
+        }
+        catch (SQLException p_thrown) {
             FlightAPIImpl.getLogger().error("Failed to get the latest flight from the DB", p_thrown);
             throw p_thrown;
         }
