@@ -4,6 +4,7 @@ import ca.uqam.inf6150.ete2021.gr010.flight.db.DBConnection;
 import ca.uqam.inf6150.ete2021.gr010.flight.model.Flight;
 import ca.uqam.inf6150.ete2021.gr010.flight.model.meta.FlightTable;
 import com.j256.ormlite.dao.Dao;
+import lombok.NonNull;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -34,10 +35,6 @@ public interface FlightAPI {
         }
     }
 
-    private static Class<Flight> getEntityClass() {
-        return Flight.class;
-    }
-
     static Flight fetchForemostInTime() throws SQLException {
         try {
             return getDao().queryBuilder()
@@ -63,11 +60,13 @@ public interface FlightAPI {
         return fetchLatestSequence(p_timeLimit, sequenceQuantity).get(firstFlightIndex);
     }
 
+    @NonNull
     static List<Flight> fetchLatestSequence(int p_sequenceQuantity) throws SQLException {
         Timestamp now = now();
         return fetchLatestSequence(now, p_sequenceQuantity);
     }
 
+    @NonNull
     static List<Flight> fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
         try {
             return getDao().queryBuilder()
@@ -87,6 +86,12 @@ public interface FlightAPI {
         }
     }
 
+    @NonNull
+    private static Class<Flight> getEntityClass() {
+        return Flight.class;
+    }
+
+    @NonNull
     private static Timestamp now() {
         return Timestamp.from(Instant.now());
     }
