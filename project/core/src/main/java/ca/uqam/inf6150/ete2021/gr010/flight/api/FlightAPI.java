@@ -13,6 +13,7 @@ import java.util.List;
 
 public interface FlightAPI {
 
+    @NonNull
     static List<Flight> fetchAll() throws SQLException {
         try {
             return getDao().queryBuilder()
@@ -25,6 +26,7 @@ public interface FlightAPI {
         }
     }
 
+    @NonNull
     static Dao<Flight, Long> getDao() throws SQLException {
         try {
             return DBConnection.getOrCreate().getDao(getEntityClass());
