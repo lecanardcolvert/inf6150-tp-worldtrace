@@ -68,14 +68,14 @@ public interface FlightAPI {
         }
     }
 
-    static Flight fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
+    static List<Flight> fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
         try {
             return getDao().queryBuilder()
                            .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
                            .limit((long) p_sequenceQuantity)
                            .where()
                            .le(FlightTable.COL_NAME_DEPARTURE, p_timeLimit)
-                           .queryForFirst();
+                           .query();
         }
         catch (SQLException p_thrown) {
             FlightAPIImpl.getLogger()
