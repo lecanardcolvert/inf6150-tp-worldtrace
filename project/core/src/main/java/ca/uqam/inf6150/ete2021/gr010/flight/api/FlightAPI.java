@@ -52,7 +52,7 @@ public interface FlightAPI {
     }
 
     static Flight fetchLatest() throws SQLException {
-        Timestamp now = Timestamp.from(Instant.now());
+        Timestamp now = now();
         return fetchLatest(now);
     }
 
@@ -61,6 +61,11 @@ public interface FlightAPI {
         final int firstFlightIndex = 0;
 
         return fetchLatestSequence(p_timeLimit, sequenceQuantity).get(firstFlightIndex);
+    }
+
+    static List<Flight> fetchLatestSequence(int p_sequenceQuantity) throws SQLException {
+        Timestamp now = now();
+        return fetchLatestSequence(now, p_sequenceQuantity);
     }
 
     static List<Flight> fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
@@ -80,5 +85,9 @@ public interface FlightAPI {
                                 p_thrown);
             throw p_thrown;
         }
+    }
+
+    private static Timestamp now() {
+        return Timestamp.from(Instant.now());
     }
 }
