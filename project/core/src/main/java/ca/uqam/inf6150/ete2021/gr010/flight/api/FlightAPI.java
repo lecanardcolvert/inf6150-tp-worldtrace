@@ -6,6 +6,8 @@ import ca.uqam.inf6150.ete2021.gr010.flight.model.meta.FlightTable;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 public interface FlightAPI {
@@ -50,10 +52,14 @@ public interface FlightAPI {
     }
 
     static Flight fetchLatest() throws SQLException {
+        Timestamp now = Timestamp.from(Instant.now());
+
         try {
             return getDao().queryBuilder()
                            .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
                            .limit(1L)
+                           .where()
+                           .le(FlightTable.COL_NAME_DEPARTURE, now)
                            .queryForFirst();
         }
         catch (SQLException p_thrown) {
