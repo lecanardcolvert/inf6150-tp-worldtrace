@@ -68,14 +68,14 @@ class TestsFlightApi {
 
     @Test
     public void testLatestDepart() throws SQLException {
-        Timestamp TimestampDepart = FlightAPI.fetchLatest().getDeparture();
+        Timestamp TimestampDepart = FlightAPI.fetchForemostInTime().getDeparture();
         Timestamp testTimeStampDepart = Timestamp.valueOf("2022-02-10 21:05:00.0");
         assertEquals(testTimeStampDepart,TimestampDepart);
     }
 
     @Test
     public void testLatestAirline() throws SQLException {
-        String airline = FlightAPI.fetchLatest().getAirline().getName();
+        String airline = FlightAPI.fetchForemostInTime().getAirline().getName();
         assertEquals("Vietnam National Airlines",airline);
     }
 

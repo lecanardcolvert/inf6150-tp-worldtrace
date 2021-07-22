@@ -206,7 +206,7 @@ public class WorldTrace
         assert m_arrivalAirport != null;
         assert m_departureAirport != null;
 
-        Flight flight = FlightAPI.fetchLatest();
+        Flight flight = FlightAPI.fetchForemostInTime();
 
         Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
         City    beginAirport = flight.getBeginAirport().getCity();

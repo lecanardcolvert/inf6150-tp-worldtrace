@@ -36,7 +36,7 @@ public interface FlightAPI {
         return Flight.class;
     }
 
-    static Flight fetchLatest() throws SQLException {
+    static Flight fetchForemostInTime() throws SQLException {
         try {
             return getDao().queryBuilder()
                            .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
