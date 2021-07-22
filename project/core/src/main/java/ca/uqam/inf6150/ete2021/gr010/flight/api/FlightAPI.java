@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface FlightAPI {
 
-    static List<Flight> getAll() throws SQLException {
+    static List<Flight> fetchAll() throws SQLException {
         try {
             return getDao().queryBuilder()
                            .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
@@ -36,7 +36,7 @@ public interface FlightAPI {
         return Flight.class;
     }
 
-    static Flight getLatest() throws SQLException {
+    static Flight fetchLatest() throws SQLException {
         try {
             return getDao().queryBuilder()
                            .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
