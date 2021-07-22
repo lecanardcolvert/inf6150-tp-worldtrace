@@ -67,4 +67,23 @@ public interface FlightAPI {
             throw p_thrown;
         }
     }
+
+    static Flight fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
+        try {
+            return getDao().queryBuilder()
+                           .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
+                           .limit((long) p_sequenceQuantity)
+                           .where()
+                           .le(FlightTable.COL_NAME_DEPARTURE, p_timeLimit)
+                           .queryForFirst();
+        }
+        catch (SQLException p_thrown) {
+            FlightAPIImpl.getLogger()
+                         .error("Failed to fetch the latest flight sequence from the DB parameterized with p_timeLimit={} and p_sequenceQuantity={}",
+                                p_timeLimit,
+                                p_sequenceQuantity,
+                                p_thrown);
+            throw p_thrown;
+        }
+    }
 }
