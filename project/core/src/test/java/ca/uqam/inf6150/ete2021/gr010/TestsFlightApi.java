@@ -1,6 +1,7 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
+import lombok.extern.slf4j.XSlf4j;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -8,7 +9,7 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
+@XSlf4j
 class TestsFlightApi {
     //Test de la méthode FlightAPI.getall()
     @Test
@@ -67,16 +68,26 @@ class TestsFlightApi {
     }
 
     @Test
-    public void testLatestDepart() throws SQLException {
+    public void testLatestDepart2022() throws SQLException {
         Timestamp TimestampDepart = FlightAPI.fetchForemostInTime().getDeparture();
-        Timestamp testTimeStampDepart = Timestamp.valueOf("2022-02-10 21:05:00.0");
-        assertEquals(testTimeStampDepart,TimestampDepart);
+      Timestamp testTimeStampDepart = Timestamp.valueOf("2022-02-10 21:05:00.0");
+       assertEquals(testTimeStampDepart,TimestampDepart);
+
     }
 
     @Test
     public void testLatestAirline() throws SQLException {
         String airline = FlightAPI.fetchForemostInTime().getAirline().getName();
         assertEquals("Vietnam National Airlines",airline);
+        log.debug(airline);
+    }
+
+    @Test
+    public void testLatestDepart2021() throws SQLException {
+        Timestamp TimestamplLatest = FlightAPI.fetchLatest().getDeparture();
+        Timestamp testTimestampLatest = Timestamp.valueOf("2021-07-19 23:55:00.0");
+        assertEquals(testTimestampLatest,TimestamplLatest);
+        log.debug("Vol le plus proche de notre date: " + TimestamplLatest.toString());
     }
 
 

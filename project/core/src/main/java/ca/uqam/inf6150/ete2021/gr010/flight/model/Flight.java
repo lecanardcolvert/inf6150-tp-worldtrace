@@ -38,4 +38,6 @@ public final class Flight
     private Timestamp m_departure;
     @DatabaseField(columnName = FlightTable.COL_NAME_ARRIVAL, canBeNull = false)
     private Timestamp m_arrival;
+
+
 }
