@@ -52,20 +52,12 @@ public interface FlightAPI {
     }
 
     static Flight fetchLatest() throws SQLException {
+        final int sequenceQuantity = 1;
+        final int firstFlightIndex = 0;
+
         Timestamp now = Timestamp.from(Instant.now());
 
-        try {
-            return getDao().queryBuilder()
-                           .orderByNullsLast(FlightTable.COL_NAME_DEPARTURE, false)
-                           .limit(1L)
-                           .where()
-                           .le(FlightTable.COL_NAME_DEPARTURE, now)
-                           .queryForFirst();
-        }
-        catch (SQLException p_thrown) {
-            FlightAPIImpl.getLogger().error("Failed to fetch the latest flight from the DB", p_thrown);
-            throw p_thrown;
-        }
+        return fetchLatestSequence(now, sequenceQuantity).get(firstFlightIndex);
     }
 
     static List<Flight> fetchLatestSequence(Timestamp p_timeLimit, int p_sequenceQuantity) throws SQLException {
