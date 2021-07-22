@@ -1,0 +1,19 @@
+<!-- Taken from https://stackoverflow.com/a/67149389/2924010 -->
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy.MM.dd HH:mm:ss.SSS} %-5level [%thread] [%X{worker_name}] [%logger{36}/%method\(%line\)] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- log level for ORMLite -->
+    <logger name="com.j256.ormlite" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- log level for your application -->
+    <root level="ALL">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
