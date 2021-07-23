@@ -72,7 +72,7 @@ public class WorldTrace
         m_planeSpeed    = 100f;
         m_airportRadius = 3f;
 
-        m_flightList = new LinkedList<Flight>();
+        m_flightList = new LinkedList<>();
         try {
             fetchFlights();
             spawnFlight();
@@ -231,7 +231,9 @@ public class WorldTrace
         m_plane = new Sprite(m_planeTexture);
         m_plane.setSize(m_planeSize, m_planeSize);
         m_plane.setCenter(m_departureAirport.x, m_departureAirport.y);
+        m_plane.setOriginCenter();
         m_plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
+        m_plane.rotate(findFlightAngle());
     }
 
     private void findAirportCoordinates() throws SQLException {
@@ -263,5 +265,12 @@ public class WorldTrace
         Vector2 end   = new Vector2(m_arrivalAirport.x, m_arrivalAirport.y);
 
         m_planeDir = end.sub(start).nor();
+    }
+
+    private float findFlightAngle() {
+        float deltaX = (m_departureAirport.x - m_arrivalAirport.x);
+        float deltaY = (m_departureAirport.y - m_arrivalAirport.y);
+
+        return (float) Math.toDegrees(Math.tan(deltaY/deltaX));
     }
 }
