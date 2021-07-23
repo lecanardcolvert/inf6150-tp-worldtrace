@@ -236,7 +236,7 @@ public class WorldTrace
         m_plane.rotate(findFlightAngle());
     }
 
-    private void findAirportCoordinates() throws SQLException {
+    private void findAirportCoordinates() {
         assert m_arrivalAirport != null;
         assert m_departureAirport != null;
 
