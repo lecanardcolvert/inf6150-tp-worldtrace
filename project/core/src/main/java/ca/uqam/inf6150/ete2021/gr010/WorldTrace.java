@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
+
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.LinkedList;
@@ -95,10 +96,9 @@ public class WorldTrace
     public void render() {
         if (m_flightList.size() == MIN_LIST_SIZE) {
             fetchFlights();
-        } else {
-            update();
-            draw();
         }
+        update();
+        draw();
     }
 
     private void update() {
@@ -211,11 +211,10 @@ public class WorldTrace
 
         try {
             if (m_flightList.isEmpty()) {
-                // Timestamp timestamp = new Timestamp(2023, 01, 01, 01, 01, 01, 01);
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(FETCH_SIZE));
             } else {
                 Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getArrival();
-                // Timestamp tsFetch = new Timestamp(tsFlight.getTime() + 1);
+                m_flightList.removeLast();
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FETCH_SIZE));
             }
         } catch (SQLException e) {
