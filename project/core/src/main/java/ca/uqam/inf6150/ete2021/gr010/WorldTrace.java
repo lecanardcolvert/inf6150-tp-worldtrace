@@ -73,12 +73,9 @@ public class WorldTrace
         m_airportRadius = 3f;
 
         m_flightList = new LinkedList<>();
-        try {
-            fetchFlights();
-            spawnFlight();
-        } catch (SQLException p_ignored) {
-            // Ignore exceptions
-        }
+
+        fetchFlights();
+        spawnFlight();
     }
 
     @Override
@@ -125,12 +122,8 @@ public class WorldTrace
 
             if (Intersector.overlaps(m_arrivalAirport, m_plane.getBoundingRectangle())) {
                 destroyFlight();
-                try {
-                    if (!m_flightList.isEmpty()) {
-                        spawnFlight();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                if (!m_flightList.isEmpty()) {
+                    spawnFlight();
                 }
             }
             else {
@@ -222,7 +215,7 @@ public class WorldTrace
         }
     }
 
-    private void spawnFlight() throws SQLException {
+    private void spawnFlight() {
         assert m_arrivalAirport != null;
         assert m_departureAirport != null;
 
