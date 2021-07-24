@@ -13,7 +13,6 @@ import com.badlogic.gdx.math.Vector2;
 
 public class FlightBuilder {
     // plane info
-    private final float     m_planeSize;
     private final float     m_planeSpeed;
     private Sprite          m_plane;
 
@@ -23,12 +22,11 @@ public class FlightBuilder {
     private Circle          m_departureAirport;
 
     // info flight
-    private float           angle;
     private Vector2         m_planeDir;
 
     public FlightBuilder() {
         Texture planeTexture = new Texture("assets/plane.png");
-        m_planeSize     = 32f;
+        float m_planeSize = 32f;
         m_planeSpeed    = 100f;
         m_airportRadius = 3f;
         m_plane = new Sprite(planeTexture);
@@ -37,8 +35,7 @@ public class FlightBuilder {
     }
 
     public void findAirportCoordinates(Flight flight, Vector2 halfViewport) {
-        assert m_arrivalAirport != null;
-        assert m_departureAirport != null;
+        assert airportExist();
 
         City    beginAirport = flight.getBeginAirport().getCity();
         City    endAirport   = flight.getEndAirport().getCity();
@@ -73,8 +70,7 @@ public class FlightBuilder {
     private float findFlightAngle() {
         float deltaX = (m_departureAirport.x - m_arrivalAirport.x);
         float deltaY = (m_departureAirport.y - m_arrivalAirport.y);
-        angle = (float) Math.toDegrees(Math.tan(deltaY/deltaX));
-        return angle;
+        return (float) Math.toDegrees(Math.tan(deltaY/deltaX));
     }
 
     public void destroyFlight() {
