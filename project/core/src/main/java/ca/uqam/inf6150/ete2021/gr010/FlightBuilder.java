@@ -63,14 +63,18 @@ public class FlightBuilder {
 
     public void setFlightOrientation() {
         m_plane.setCenter(m_departureAirport.x, m_departureAirport.y);
-        m_plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
+        m_plane.flip(true, m_departureAirport.x < m_arrivalAirport.x);
         m_plane.rotate(findFlightAngle());
     }
 
     private float findFlightAngle() {
-        float deltaX = (m_departureAirport.x - m_arrivalAirport.x);
-        float deltaY = (m_departureAirport.y - m_arrivalAirport.y);
-        return (float) Math.toDegrees(Math.tan(deltaY/deltaX));
+        float deltaX = m_departureAirport.x - m_arrivalAirport.x;
+        float deltaY = m_departureAirport.y - m_arrivalAirport.y;
+        float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+        if (angle < 360) {
+            angle += 360;
+        }
+        return angle;
     }
 
     public void destroyFlight() {
