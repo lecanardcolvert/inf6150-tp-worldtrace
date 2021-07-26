@@ -72,9 +72,11 @@ public class FlightBuilder {
         float deltaX = m_departureAirport.x - m_arrivalAirport.x;
         float deltaY = m_departureAirport.y - m_arrivalAirport.y;
         float angle  = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+
         if (angle < 360) {
             angle += 360;
         }
+        
         return angle;
     }
 
