@@ -8,7 +8,7 @@ import org.slf4j.ext.XLogger;
 @XSlf4j
 @Value
 @NoArgsConstructor
-public class FlightAPIImpl
+class FlightAPIImpl
         implements FlightAPI {
 
     public static XLogger getLogger() {
