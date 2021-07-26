@@ -211,7 +211,9 @@ public class WorldTrace
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(/*timestamp,*/ FETCH_SIZE));
             }
             else {
-                Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getArrival();
+                Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getDeparture();
+                tsFlight.setTime(tsFlight.getTime() + 1L);
+
                 m_flightList.removeLast();
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FETCH_SIZE));
             }
