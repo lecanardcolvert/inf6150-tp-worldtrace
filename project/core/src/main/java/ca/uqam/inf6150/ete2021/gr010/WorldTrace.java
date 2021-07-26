@@ -27,7 +27,7 @@ import java.util.LinkedList;
 public class WorldTrace
         extends ApplicationAdapter {
 
-    private final int MIN_FLIGHT_SEQUENCE_QUANTITY = 3;
+    private final int FLIGHT_SEQUENCE_FETCH_THRESHOLD = 3;
 
     private OrthographicCamera m_camera;
 
@@ -71,7 +71,7 @@ public class WorldTrace
 
     @Override
     public void render() {
-        if (m_flightList.size() <= MIN_FLIGHT_SEQUENCE_QUANTITY) {
+        if (m_flightList.size() <= FLIGHT_SEQUENCE_FETCH_THRESHOLD) {
             fetchFlights();
         }
 
@@ -171,18 +171,18 @@ public class WorldTrace
     }
 
     private void fetchFlights() {
-        final int FETCH_SIZE = 5;
+        final int FLIGHT_SEQUENCE_FETCH_QUANTITY = 10;
 
         try {
             if (m_flightList.isEmpty()) {
-                m_flightList.addAll(FlightAPI.fetchLatestSequence(FETCH_SIZE));
+                m_flightList.addAll(FlightAPI.fetchLatestSequence(FLIGHT_SEQUENCE_FETCH_QUANTITY));
             }
             else {
-                Timestamp tsFlight = m_flightList.get(MIN_FLIGHT_SEQUENCE_QUANTITY - 1).getDeparture();
+                Timestamp tsFlight = m_flightList.get(FLIGHT_SEQUENCE_FETCH_THRESHOLD - 1).getDeparture();
                 tsFlight.setTime(tsFlight.getTime() + 1L);
 
                 m_flightList.removeLast();
-                m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FETCH_SIZE));
+                m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY));
             }
         }
         catch (SQLException e) {
