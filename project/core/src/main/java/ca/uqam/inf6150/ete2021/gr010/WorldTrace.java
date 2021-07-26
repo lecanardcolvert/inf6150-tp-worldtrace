@@ -51,11 +51,9 @@ public class WorldTrace
         m_shapeRenderer = new ShapeRenderer();
 
         m_earthTexture = new Texture("assets/earth/map.jpg");
-
         setupBackground();
 
         m_flightList = new LinkedList<>();
-
         fetchFlights();
         spawnFlight();
     }
@@ -76,6 +74,7 @@ public class WorldTrace
         if (m_flightList.size() == MIN_LIST_SIZE) {
             fetchFlights();
         }
+
         update();
         draw();
     }
@@ -112,6 +111,7 @@ public class WorldTrace
 
             if (m_currentFlight.planeOverlapsAirport()) {
                 destroyFlight();
+
                 if (!m_flightList.isEmpty()) {
                     spawnFlight();
                 }
