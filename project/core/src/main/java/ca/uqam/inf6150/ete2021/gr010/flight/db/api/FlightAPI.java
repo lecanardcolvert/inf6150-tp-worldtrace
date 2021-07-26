@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.api;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.api;
 
 import ca.uqam.inf6150.ete2021.gr010.flight.db.DBConnection;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.Flight;

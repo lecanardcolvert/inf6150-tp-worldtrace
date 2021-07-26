@@ -1,6 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
+import ca.uqam.inf6150.ete2021.gr010.flight.db.api.FlightAPI;
 import lombok.extern.slf4j.XSlf4j;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
