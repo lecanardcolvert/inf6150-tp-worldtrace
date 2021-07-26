@@ -107,8 +107,6 @@ public class WorldTrace
 
     private void translatePlane() {
         if (m_currentFlight.planeExist()) {
-            assert m_currentFlight.airportExist();
-
             if (m_currentFlight.planeOverlapsAirport()) {
                 destroyFlight();
 

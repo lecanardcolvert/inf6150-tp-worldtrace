@@ -99,7 +99,10 @@ public class FlightBuilder {
     }
 
     public boolean planeExist() {
-        return m_plane != null;
+        final boolean planeExist = m_plane != null;
+        assert planeExist == airportExist();
+
+        return planeExist;
     }
 
     public boolean airportExist() {
