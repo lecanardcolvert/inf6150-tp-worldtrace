@@ -12,24 +12,24 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 
 public class FlightBuilder {
-    // plane info
-    private final float     m_planeSpeed;
-    private Sprite          m_plane;
 
+    // plane info
+    private final float  m_planeSpeed;
     // Airport info
-    private final float     m_airportRadius;
-    private Circle          m_arrivalAirport;
-    private Circle          m_departureAirport;
+    private final float  m_airportRadius;
+    private       Sprite m_plane;
+    private       Circle m_arrivalAirport;
+    private       Circle m_departureAirport;
 
     // info flight
-    private Vector2         m_planeDir;
+    private Vector2 m_planeDir;
 
     public FlightBuilder() {
         Texture planeTexture = new Texture("assets/plane.png");
-        float m_planeSize = 32f;
+        float   m_planeSize  = 32f;
         m_planeSpeed    = 100f;
         m_airportRadius = 3f;
-        m_plane = new Sprite(planeTexture);
+        m_plane         = new Sprite(planeTexture);
         m_plane.setSize(m_planeSize, m_planeSize);
         m_plane.setOriginCenter();
     }
@@ -37,8 +37,8 @@ public class FlightBuilder {
     public void findAirportCoordinates(Flight flight, Vector2 halfViewport) {
         assert airportExist();
 
-        City    beginAirport = flight.getBeginAirport().getCity();
-        City    endAirport   = flight.getEndAirport().getCity();
+        City beginAirport = flight.getBeginAirport().getCity();
+        City endAirport   = flight.getEndAirport().getCity();
 
         spawnAirports(halfViewport, beginAirport, endAirport);
     }
@@ -70,7 +70,7 @@ public class FlightBuilder {
     private float findFlightAngle() {
         float deltaX = m_departureAirport.x - m_arrivalAirport.x;
         float deltaY = m_departureAirport.y - m_arrivalAirport.y;
-        float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+        float angle  = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
         if (angle < 360) {
             angle += 360;
         }

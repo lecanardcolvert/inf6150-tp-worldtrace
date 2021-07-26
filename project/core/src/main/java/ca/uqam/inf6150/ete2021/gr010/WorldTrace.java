@@ -1,7 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
 import ca.uqam.inf6150.ete2021.gr010.flight.api.FlightAPI;
-import ca.uqam.inf6150.ete2021.gr010.flight.model.City;
 import ca.uqam.inf6150.ete2021.gr010.flight.model.Flight;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -11,8 +10,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -75,7 +72,6 @@ public class WorldTrace
 //        m_airportRadius = 3f;
 
 
-
         m_flightList = new LinkedList<>();
 
         fetchFlights();
@@ -100,6 +96,16 @@ public class WorldTrace
         }
         update();
         draw();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+
+        m_batch.dispose();
+        m_shapeRenderer.dispose();
+        m_earthTexture.dispose();
+//        m_planeTexture.dispose();
     }
 
     private void update() {
@@ -184,16 +190,6 @@ public class WorldTrace
 //        }
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-
-        m_batch.dispose();
-        m_shapeRenderer.dispose();
-        m_earthTexture.dispose();
-//        m_planeTexture.dispose();
-    }
-
     private void centerCamera() {
         m_camera.position.x = m_camera.viewportWidth / 2f;
         m_camera.position.y = m_camera.viewportHeight / 2f;
@@ -213,12 +209,14 @@ public class WorldTrace
             if (m_flightList.isEmpty()) {
 //                Timestamp timestamp = new Timestamp(2023,01,01,01,01,01,01);
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(/*timestamp,*/ FETCH_SIZE));
-            } else {
+            }
+            else {
                 Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getArrival();
                 m_flightList.removeLast();
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FETCH_SIZE));
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             System.out.println("Error while fetching the latest flights.");
         }
     }
