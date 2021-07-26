@@ -27,7 +27,7 @@ import java.util.LinkedList;
 public class WorldTrace
         extends ApplicationAdapter {
 
-    private final int MIN_LIST_SIZE = 3;
+    private final int MIN_FLIGHT_SEQUENCE_QUANTITY = 3;
 
     private OrthographicCamera m_camera;
 
@@ -71,7 +71,7 @@ public class WorldTrace
 
     @Override
     public void render() {
-        if (m_flightList.size() == MIN_LIST_SIZE) {
+        if (m_flightList.size() <= MIN_FLIGHT_SEQUENCE_QUANTITY) {
             fetchFlights();
         }
 
@@ -178,7 +178,7 @@ public class WorldTrace
                 m_flightList.addAll(FlightAPI.fetchLatestSequence(FETCH_SIZE));
             }
             else {
-                Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getDeparture();
+                Timestamp tsFlight = m_flightList.get(MIN_FLIGHT_SEQUENCE_QUANTITY - 1).getDeparture();
                 tsFlight.setTime(tsFlight.getTime() + 1L);
 
                 m_flightList.removeLast();
