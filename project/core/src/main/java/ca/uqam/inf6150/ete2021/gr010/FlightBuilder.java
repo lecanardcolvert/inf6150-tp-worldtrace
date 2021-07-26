@@ -3,6 +3,7 @@ package ca.uqam.inf6150.ete2021.gr010;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.City;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.Flight;
 import ca.uqam.inf6150.ete2021.gr010.flight.gui.math.Degree;
+import ca.uqam.inf6150.ete2021.gr010.flight.gui.math.LibGDXMathUtils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -69,15 +70,10 @@ public class FlightBuilder {
     }
 
     private float findFlightAngle() {
-        float deltaX = m_departureAirport.x - m_arrivalAirport.x;
-        float deltaY = m_departureAirport.y - m_arrivalAirport.y;
-        float angle  = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+        final Vector2 departurePosition = LibGDXMathUtils.getCirclePosition(m_departureAirport);
+        final Vector2 arrivalPosition   = LibGDXMathUtils.getCirclePosition(m_arrivalAirport);
 
-        if (angle < 360) {
-            angle += 360;
-        }
-        
-        return angle;
+        return arrivalPosition.angleDeg(departurePosition);
     }
 
     public void destroyFlight() {
