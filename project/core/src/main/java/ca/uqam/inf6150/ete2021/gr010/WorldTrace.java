@@ -108,7 +108,7 @@ public class WorldTrace
     private void translatePlane() {
         if (m_currentFlight.planeExist()) {
             if (m_currentFlight.planeOverlapsAirport()) {
-                destroyFlight();
+                m_currentFlight.destroyFlight();
 
                 if (!m_flightList.isEmpty()) {
                     spawnFlight();
@@ -138,10 +138,6 @@ public class WorldTrace
         m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         drawAirports();
         m_shapeRenderer.end();
-    }
-
-    private void destroyFlight() {
-        m_currentFlight.destroyFlight();
     }
 
     private void drawEarthMap() {
