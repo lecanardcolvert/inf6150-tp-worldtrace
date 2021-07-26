@@ -35,21 +35,9 @@ public class WorldTrace
     private ShapeRenderer m_shapeRenderer;
 
     private Texture m_earthTexture;
-//    private Texture m_planeTexture;
+    private Sprite  m_earthMap;
 
-    private Sprite m_earthMap;
-
-//    private float m_planeSize;
-//    private float m_planeSpeed;
-//    private float m_airportRadius;
-//
-//    private Sprite  m_plane;
-//    private Circle  m_arrivalAirport;
-//    private Circle  m_departureAirport;
-//    private Vector2 m_planeDir;
-
-    private FlightBuilder m_currentFlight;
-
+    private FlightBuilder      m_currentFlight;
     private LinkedList<Flight> m_flightList;
 
     @Override
@@ -63,14 +51,8 @@ public class WorldTrace
         m_shapeRenderer = new ShapeRenderer();
 
         m_earthTexture = new Texture("assets/earth/map.jpg");
-//        m_planeTexture = new Texture("assets/plane.png");
 
         setupBackground();
-
-//        m_planeSize     = 32f;
-//        m_planeSpeed    = 100f;
-//        m_airportRadius = 3f;
-
 
         m_flightList = new LinkedList<>();
 
@@ -137,8 +119,6 @@ public class WorldTrace
             }
             else {
                 m_currentFlight.planeTranslation();
-//                Vector2 translation = new Vector2(m_planeDir).scl(m_planeSpeed).scl(Gdx.graphics.getDeltaTime());
-//                m_plane.translate(translation.x, translation.y);
             }
         }
     }
@@ -165,10 +145,6 @@ public class WorldTrace
 
     private void destroyFlight() {
         m_currentFlight.destroyFlight();
-//        m_plane            = null;
-//        m_arrivalAirport   = null;
-//        m_departureAirport = null;
-//        m_planeDir.setZero();
     }
 
     private void drawEarthMap() {
@@ -177,17 +153,10 @@ public class WorldTrace
 
     private void drawPlane() {
         m_currentFlight.drawPlane(m_batch);
-//        if (m_plane != null) {
-//            m_plane.draw(m_batch);
-//        }
     }
 
     private void drawAirports() {
         m_currentFlight.drawAirports(m_shapeRenderer);
-//        if (m_departureAirport != null && m_arrivalAirport != null) {
-//            m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, m_airportRadius);
-//            m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
-//        }
     }
 
     private void centerCamera() {
@@ -207,8 +176,7 @@ public class WorldTrace
 
         try {
             if (m_flightList.isEmpty()) {
-//                Timestamp timestamp = new Timestamp(2023,01,01,01,01,01,01);
-                m_flightList.addAll(FlightAPI.fetchLatestSequence(/*timestamp,*/ FETCH_SIZE));
+                m_flightList.addAll(FlightAPI.fetchLatestSequence(FETCH_SIZE));
             }
             else {
                 Timestamp tsFlight = m_flightList.get(MIN_LIST_SIZE - 1).getDeparture();
@@ -224,8 +192,6 @@ public class WorldTrace
     }
 
     private void spawnFlight() {
-//        assert m_arrivalAirport != null;
-//        assert m_departureAirport != null;
         m_currentFlight = new FlightBuilder();
         Flight flight = m_flightList.pop();
 
@@ -233,49 +199,5 @@ public class WorldTrace
 
         m_currentFlight.findAirportCoordinates(flight, halfViewport);
         m_currentFlight.setFlightOrientation();
-//        m_plane = new Sprite(m_planeTexture);
-//        m_plane.setSize(m_planeSize, m_planeSize);
-//        m_plane.setCenter(m_departureAirport.x, m_departureAirport.y);
-//        m_plane.setOriginCenter();
-//        m_plane.flip(m_arrivalAirport.x < m_departureAirport.x, false);
-//        m_plane.rotate(findFlightAngle());
     }
-
-//    private void findAirportCoordinates() {
-//        assert m_arrivalAirport != null;
-//        assert m_departureAirport != null;
-//
-//        Flight flight = m_flightList.pop();
-//
-//        Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
-//        City    beginAirport = flight.getBeginAirport().getCity();
-//        City    endAirport   = flight.getEndAirport().getCity();
-//
-//        spawnAirports(halfViewport, beginAirport, endAirport);
-//    }
-
-//    private void spawnAirports(final Vector2 halfViewport, final City beginAirport, final City endAirport) {
-//        m_arrivalAirport   = new Circle();
-//        m_departureAirport = new Circle();
-//
-//        m_departureAirport.x = halfViewport.x + (float) ((beginAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
-//        m_departureAirport.y = halfViewport.y + (float) ((beginAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
-//        m_arrivalAirport.x   = halfViewport.x + (float) ((endAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
-//        m_arrivalAirport.y   = halfViewport.y + (float) ((endAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
-//
-//        m_arrivalAirport.radius   = m_airportRadius;
-//        m_departureAirport.radius = m_airportRadius;
-//
-//        Vector2 start = new Vector2(m_departureAirport.x, m_departureAirport.y);
-//        Vector2 end   = new Vector2(m_arrivalAirport.x, m_arrivalAirport.y);
-//
-//        m_planeDir = end.sub(start).nor();
-//    }
-//
-//    private float findFlightAngle() {
-//        float deltaX = (m_departureAirport.x - m_arrivalAirport.x);
-//        float deltaY = (m_departureAirport.y - m_arrivalAirport.y);
-//
-//        return (float) Math.toDegrees(Math.tan(deltaY/deltaX));
-//    }
 }
