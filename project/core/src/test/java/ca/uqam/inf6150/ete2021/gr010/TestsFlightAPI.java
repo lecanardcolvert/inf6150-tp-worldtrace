@@ -10,7 +10,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 @XSlf4j
-class TestsFlightApi {
+class TestsFlightAPI {
     //Test de la méthode FlightAPI.fetchAll()
     @Test
     public void testDepart() throws SQLException {
