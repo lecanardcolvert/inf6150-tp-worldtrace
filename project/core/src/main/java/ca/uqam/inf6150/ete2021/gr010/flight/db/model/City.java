@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.model;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

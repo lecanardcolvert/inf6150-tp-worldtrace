@@ -1,7 +1,7 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.model.City;
-import ca.uqam.inf6150.ete2021.gr010.flight.model.Flight;
+import ca.uqam.inf6150.ete2021.gr010.flight.db.model.City;
+import ca.uqam.inf6150.ete2021.gr010.flight.db.model.Flight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
