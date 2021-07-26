@@ -87,7 +87,6 @@ public class WorldTrace
         m_batch.dispose();
         m_shapeRenderer.dispose();
         m_earthTexture.dispose();
-//        m_planeTexture.dispose();
     }
 
     private void update() {
