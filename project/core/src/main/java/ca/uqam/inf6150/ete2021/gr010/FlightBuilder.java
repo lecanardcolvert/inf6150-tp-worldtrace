@@ -66,10 +66,10 @@ public class FlightBuilder {
     public void setFlightOrientation() {
         m_plane.setCenter(m_departureAirport.x, m_departureAirport.y);
         m_plane.flip(true, m_departureAirport.x < m_arrivalAirport.x);
-        m_plane.rotate(findFlightAngle());
+        m_plane.rotate(computeFlightRotation());
     }
 
-    private float findFlightAngle() {
+    private float computeFlightRotation() {
         final Vector2 departurePosition = LibGDXMathUtils.getCirclePosition(m_departureAirport);
         final Vector2 arrivalPosition   = LibGDXMathUtils.getCirclePosition(m_arrivalAirport);
 
