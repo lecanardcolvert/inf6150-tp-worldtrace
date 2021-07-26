@@ -1,6 +1,6 @@
 package ca.uqam.inf6150.ete2021.gr010.flight.db.api;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.db.DBConnection;
+import ca.uqam.inf6150.ete2021.gr010.flight.db.connection.DBConnection;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.Flight;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.meta.FlightTable;
 import com.j256.ormlite.dao.Dao;
