@@ -73,7 +73,7 @@ public class WorldTrace
 
     @Override
     public void render() {
-        if (m_flightList.size() <= FLIGHT_SEQUENCE_FETCH_THRESHOLD) {
+        if (m_flightList.size() == FLIGHT_SEQUENCE_FETCH_THRESHOLD) {
             fetchFlights();
         }
 
