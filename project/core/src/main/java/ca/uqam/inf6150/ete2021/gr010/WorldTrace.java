@@ -88,6 +88,10 @@ public class WorldTrace
         m_batch.dispose();
         m_shapeRenderer.dispose();
         m_earthTexture.dispose();
+
+        if (m_currentFlight != null) {
+            m_currentFlight.dispose();
+        }
     }
 
     private void update() {

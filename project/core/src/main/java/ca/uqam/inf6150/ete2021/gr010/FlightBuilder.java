@@ -12,13 +12,17 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Disposable;
 
-public class FlightBuilder {
+public class FlightBuilder
+        implements Disposable {
 
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
 
     private final float m_planeSpeed;
     private final float m_airportRadius;
+
+    private Texture m_planeTexture;
 
     private Sprite m_plane;
     private Circle m_arrivalAirport;
@@ -27,11 +31,12 @@ public class FlightBuilder {
     private Vector2 m_planeDir;
 
     public FlightBuilder() {
-        Texture planeTexture = new Texture(PLANE_TEXTURE_PATH);
-        float   m_planeSize  = 32f;
+        m_planeTexture = new Texture(PLANE_TEXTURE_PATH);
+
+        float m_planeSize = 32f;
         m_planeSpeed    = 100f;
         m_airportRadius = 3f;
-        m_plane         = new Sprite(planeTexture);
+        m_plane         = new Sprite(m_planeTexture);
         m_plane.setSize(m_planeSize, m_planeSize);
         m_plane.setOriginCenter();
     }
@@ -81,6 +86,11 @@ public class FlightBuilder {
         m_arrivalAirport   = null;
         m_departureAirport = null;
         m_planeDir.setZero();
+    }
+
+    @Override
+    public void dispose() {
+        m_planeTexture.dispose();
     }
 
     public void drawPlane(Batch m_batch) {
