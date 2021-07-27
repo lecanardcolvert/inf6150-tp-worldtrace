@@ -8,7 +8,8 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FlightList extends LinkedList<Flight> {
+public class FlightList
+        extends LinkedList<Flight> {
 
     static final int FLIGHT_SEQUENCE_FETCH_QUANTITY = 10;
 
@@ -27,7 +28,7 @@ public class FlightList extends LinkedList<Flight> {
             }
             else {
                 Timestamp tsFlight = this.get(FLIGHT_SEQUENCE_FETCH_THRESHOLD - 1).getDeparture();
-                this.removeLast();
+                tsFlight.setTime(tsFlight.getTime() - 1L);
 
                 fetchedFlights = FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY);
             }
