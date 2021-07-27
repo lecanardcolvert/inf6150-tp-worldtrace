@@ -15,8 +15,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class FlightBuilder {
 
-    private static final String PLANE_IMG_PATH = "assets/plane.png";
-    
+    private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
+
     private final float m_planeSpeed;
     private final float m_airportRadius;
 
@@ -27,7 +27,7 @@ public class FlightBuilder {
     private Vector2 m_planeDir;
 
     public FlightBuilder() {
-        Texture planeTexture = new Texture(PLANE_IMG_PATH);
+        Texture planeTexture = new Texture(PLANE_TEXTURE_PATH);
         float   m_planeSize  = 32f;
         m_planeSpeed    = 100f;
         m_airportRadius = 3f;

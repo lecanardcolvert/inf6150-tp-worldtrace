@@ -28,7 +28,8 @@ import java.util.List;
 public class WorldTrace
         extends ApplicationAdapter {
 
-    private final int FLIGHT_SEQUENCE_FETCH_THRESHOLD = 3;
+    private static final String EARTH_TEXTURE_PATH              = "assets/earth/map.jpg";
+    private static final int    FLIGHT_SEQUENCE_FETCH_THRESHOLD = 3;
 
     private OrthographicCamera m_camera;
 
@@ -51,7 +52,7 @@ public class WorldTrace
         m_batch         = new SpriteBatch();
         m_shapeRenderer = new ShapeRenderer();
 
-        m_earthTexture = new Texture("assets/earth/map.jpg");
+        m_earthTexture = new Texture(EARTH_TEXTURE_PATH);
         setupBackground();
 
         m_flightList = new LinkedList<>();
