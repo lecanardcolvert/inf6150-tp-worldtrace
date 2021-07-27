@@ -18,11 +18,11 @@ public class FlightBuilder
         implements Disposable {
 
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
+    private static final float  PLANE_SIZE         = 32f;
+    private static final float  PLANE_SPEED        = 100f;
+    private static final float  AIRPORT_RADIUS     = 3f;
 
-    private final float m_planeSpeed;
-    private final float m_airportRadius;
-
-    private Texture m_planeTexture;
+    private final Texture m_planeTexture;
 
     private Sprite m_plane;
     private Circle m_arrivalAirport;
@@ -33,11 +33,8 @@ public class FlightBuilder
     public FlightBuilder() {
         m_planeTexture = new Texture(PLANE_TEXTURE_PATH);
 
-        float m_planeSize = 32f;
-        m_planeSpeed    = 100f;
-        m_airportRadius = 3f;
-        m_plane         = new Sprite(m_planeTexture);
-        m_plane.setSize(m_planeSize, m_planeSize);
+        m_plane = new Sprite(m_planeTexture);
+        m_plane.setSize(PLANE_SIZE, PLANE_SIZE);
         m_plane.setOriginCenter();
     }
 
@@ -59,8 +56,8 @@ public class FlightBuilder
         m_arrivalAirport.x   = halfViewport.x + (float) ((endAirport.getLongitude() / Degree.HALF.getDegrees() * halfViewport.x));
         m_arrivalAirport.y   = halfViewport.y + (float) ((endAirport.getLatitude() / Degree.QUARTER.getDegrees() * halfViewport.y));
 
-        m_arrivalAirport.radius   = m_airportRadius;
-        m_departureAirport.radius = m_airportRadius;
+        m_arrivalAirport.radius   = AIRPORT_RADIUS;
+        m_departureAirport.radius = AIRPORT_RADIUS;
 
         Vector2 start = new Vector2(m_departureAirport.x, m_departureAirport.y);
         Vector2 end   = new Vector2(m_arrivalAirport.x, m_arrivalAirport.y);
@@ -101,8 +98,8 @@ public class FlightBuilder
 
     public void drawAirports(ShapeRenderer m_shapeRenderer) {
         if (m_departureAirport != null && m_arrivalAirport != null) {
-            m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, m_airportRadius);
-            m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, m_airportRadius);
+            m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, AIRPORT_RADIUS);
+            m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, AIRPORT_RADIUS);
         }
     }
 
@@ -122,7 +119,7 @@ public class FlightBuilder
     }
 
     public void translatePlane() {
-        Vector2 translation = new Vector2(m_planeDir).scl(m_planeSpeed).scl(Gdx.graphics.getDeltaTime());
+        Vector2 translation = new Vector2(m_planeDir).scl(PLANE_SPEED).scl(Gdx.graphics.getDeltaTime());
         m_plane.translate(translation.x, translation.y);
     }
 }
