@@ -73,7 +73,19 @@ public class FlightBuilder
         final Vector2 departurePosition = LibGDXMathUtils.getCirclePosition(m_departureAirport);
         final Vector2 arrivalPosition   = LibGDXMathUtils.getCirclePosition(m_arrivalAirport);
 
-        return arrivalPosition.angleDeg(departurePosition);
+        final float deltaX = departurePosition.x - arrivalPosition.x;
+        final float deltaY = departurePosition.y - arrivalPosition.y;
+
+//        marche pas
+//        return arrivalPosition.angleDeg(departurePosition);
+//
+        float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+
+        if (angle < 360) {
+            angle += 360;
+        }
+
+        return angle;
     }
 
     public void destroyFlight() {
