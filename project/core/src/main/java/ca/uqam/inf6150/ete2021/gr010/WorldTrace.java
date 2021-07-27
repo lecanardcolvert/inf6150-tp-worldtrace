@@ -39,7 +39,7 @@ public class WorldTrace
     private Texture m_earthTexture;
     private Sprite  m_earthMap;
 
-    private FlightBuilder m_currentFlight;
+    private FlightAnimation m_currentFlight;
     private LinkedList<Flight> m_flightList;
 
     @Override
@@ -195,7 +195,7 @@ public class WorldTrace
     }
 
     private void spawnFlight() {
-        m_currentFlight = new FlightBuilder();
+        m_currentFlight = new FlightAnimation();
         Flight flight = m_flightList.pop();
 
         Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);

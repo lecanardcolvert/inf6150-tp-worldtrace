@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 
-public class FlightBuilder
+public class FlightAnimation
         implements Disposable {
 
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
@@ -30,7 +30,7 @@ public class FlightBuilder
 
     private Vector2 m_planeDir;
 
-    public FlightBuilder() {
+    public FlightAnimation() {
         m_planeTexture = new Texture(PLANE_TEXTURE_PATH);
 
         m_plane = new Sprite(m_planeTexture);
