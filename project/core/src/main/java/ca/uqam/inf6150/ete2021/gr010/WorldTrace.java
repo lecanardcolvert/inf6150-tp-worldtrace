@@ -39,7 +39,7 @@ public class WorldTrace
     private Texture m_earthTexture;
     private Sprite  m_earthMap;
 
-    private FlightBuilder      m_currentFlight;
+    private FlightBuilder m_currentFlight;
     private LinkedList<Flight> m_flightList;
 
     @Override

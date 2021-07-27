@@ -70,15 +70,9 @@ public class FlightBuilder
     }
 
     private float computeFlightRotation() {
-        final Vector2 departurePosition = LibGDXMathUtils.getCirclePosition(m_departureAirport);
-        final Vector2 arrivalPosition   = LibGDXMathUtils.getCirclePosition(m_arrivalAirport);
+        final float deltaX = m_departureAirport.x - m_arrivalAirport.x;
+        final float deltaY = m_departureAirport.y - m_arrivalAirport.y;
 
-        final float deltaX = departurePosition.x - arrivalPosition.x;
-        final float deltaY = departurePosition.y - arrivalPosition.y;
-
-//        marche pas
-//        return arrivalPosition.angleDeg(departurePosition);
-//
         float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
 
         if (Degree.smallerThan(angle, Degree.FULL)) {
