@@ -1,6 +1,5 @@
 package ca.uqam.inf6150.ete2021.gr010;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.db.api.FlightAPI;
 import ca.uqam.inf6150.ete2021.gr010.flight.db.model.Flight;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -13,11 +12,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Main WorldTrace application.
  *
@@ -29,7 +23,6 @@ public class WorldTrace
         extends ApplicationAdapter {
 
     private static final String EARTH_TEXTURE_PATH              = "assets/earth/map.jpg";
-    private static final int    FLIGHT_SEQUENCE_FETCH_THRESHOLD = 3;
 
     private OrthographicCamera m_camera;
 
@@ -39,8 +32,8 @@ public class WorldTrace
     private Texture m_earthTexture;
     private Sprite  m_earthMap;
 
-    private FlightHandler m_currentFlight;
-    private LinkedList<Flight> m_flightList;
+    private FlightAnimation m_currentFlight;
+    private FlightList m_flightList;
 
     @Override
     public void create() {
@@ -55,8 +48,7 @@ public class WorldTrace
         m_earthTexture = new Texture(EARTH_TEXTURE_PATH);
         setupBackground();
 
-        m_flightList = new LinkedList<>();
-        fetchFlights();
+        m_flightList = new FlightList();
         spawnFlight();
     }
 
@@ -73,10 +65,6 @@ public class WorldTrace
 
     @Override
     public void render() {
-        if (m_flightList.size() == FLIGHT_SEQUENCE_FETCH_THRESHOLD) {
-            fetchFlights();
-        }
-
         update();
         draw();
     }
@@ -170,32 +158,8 @@ public class WorldTrace
         m_earthMap.setSize(m_camera.viewportWidth, m_camera.viewportHeight);
     }
 
-    private void fetchFlights() {
-        final int FLIGHT_SEQUENCE_FETCH_QUANTITY = 10;
-
-        List<Flight> fetchedFlights = null;
-
-        try {
-            if (m_flightList.isEmpty()) {
-                fetchedFlights = FlightAPI.fetchLatestSequence(FLIGHT_SEQUENCE_FETCH_QUANTITY);
-            }
-            else {
-                Timestamp tsFlight = m_flightList.get(FLIGHT_SEQUENCE_FETCH_THRESHOLD - 1).getDeparture();
-                m_flightList.removeLast();
-
-                fetchedFlights = FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY);
-            }
-        }
-        catch (SQLException e) {
-            // 1 does not mean anything. Only exit anomalously.
-            System.exit(1);
-        }
-
-        m_flightList.addAll(fetchedFlights);
-    }
-
     private void spawnFlight() {
-        m_currentFlight = new FlightHandler();
+        m_currentFlight = new FlightAnimation();
         Flight flight = m_flightList.pop();
 
         Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
