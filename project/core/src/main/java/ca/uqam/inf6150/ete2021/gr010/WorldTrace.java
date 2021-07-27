@@ -117,7 +117,7 @@ public class WorldTrace
                 }
             }
             else {
-                m_currentFlight.planeTranslation();
+                m_currentFlight.translatePlane();
             }
         }
     }

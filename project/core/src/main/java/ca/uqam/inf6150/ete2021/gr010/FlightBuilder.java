@@ -111,7 +111,7 @@ public class FlightBuilder {
         return Intersector.overlaps(m_arrivalAirport, m_plane.getBoundingRectangle());
     }
 
-    public void planeTranslation() {
+    public void translatePlane() {
         Vector2 translation = new Vector2(m_planeDir).scl(m_planeSpeed).scl(Gdx.graphics.getDeltaTime());
         m_plane.translate(translation.x, translation.y);
     }
