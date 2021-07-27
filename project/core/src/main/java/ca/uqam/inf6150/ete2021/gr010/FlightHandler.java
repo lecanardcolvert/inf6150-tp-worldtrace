@@ -65,21 +65,17 @@ public class FlightHandler
 
     public void setFlightOrientation() {
         m_plane.setCenter(m_departureAirport.x, m_departureAirport.y);
-        m_plane.flip(true, m_departureAirport.x < m_arrivalAirport.x);
+        m_plane.flip(false, m_arrivalAirport.x < m_departureAirport.x);
         m_plane.rotate(computeFlightRotation());
     }
 
     private float computeFlightRotation() {
-        final float deltaX = m_departureAirport.x - m_arrivalAirport.x;
-        final float deltaY = m_departureAirport.y - m_arrivalAirport.y;
+        final Vector2 departurePosition = LibGDXMathUtils.getCirclePosition(m_departureAirport);
+        final Vector2 arrivalPosition   = LibGDXMathUtils.getCirclePosition(m_arrivalAirport);
 
-        float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
+        Vector2 relativePosition = new Vector2(arrivalPosition).sub(departurePosition);
 
-        if (Degree.smallerThan(angle, Degree.FULL)) {
-            angle = Degree.addAngle(angle, Degree.FULL);
-        }
-
-        return angle;
+        return relativePosition.angleDeg();
     }
 
     public void destroyFlight() {
