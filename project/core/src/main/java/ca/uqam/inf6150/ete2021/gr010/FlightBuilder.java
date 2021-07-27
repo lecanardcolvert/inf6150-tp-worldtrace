@@ -15,15 +15,13 @@ import com.badlogic.gdx.math.Vector2;
 
 public class FlightBuilder {
 
-    // plane info
-    private final float  m_planeSpeed;
-    // Airport info
-    private final float  m_airportRadius;
-    private       Sprite m_plane;
-    private       Circle m_arrivalAirport;
-    private       Circle m_departureAirport;
+    private final float m_planeSpeed;
+    private final float m_airportRadius;
 
-    // info flight
+    private Sprite m_plane;
+    private Circle m_arrivalAirport;
+    private Circle m_departureAirport;
+
     private Vector2 m_planeDir;
 
     public FlightBuilder() {
