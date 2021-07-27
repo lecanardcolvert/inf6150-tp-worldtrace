@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Main WorldTrace application.
@@ -167,21 +168,25 @@ public class WorldTrace
     private void fetchFlights() {
         final int FLIGHT_SEQUENCE_FETCH_QUANTITY = 10;
 
+        List<Flight> fetchedFlights = null;
+
         try {
             if (m_flightList.isEmpty()) {
-                m_flightList.addAll(FlightAPI.fetchLatestSequence(FLIGHT_SEQUENCE_FETCH_QUANTITY));
+                fetchedFlights = FlightAPI.fetchLatestSequence(FLIGHT_SEQUENCE_FETCH_QUANTITY);
             }
             else {
                 Timestamp tsFlight = m_flightList.get(FLIGHT_SEQUENCE_FETCH_THRESHOLD - 1).getDeparture();
                 tsFlight.setTime(tsFlight.getTime() + 1L);
 
-                m_flightList.removeLast();
-                m_flightList.addAll(FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY));
+                fetchedFlights = FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY);
             }
         }
         catch (SQLException e) {
-            System.out.println("Error while fetching the latest flights.");
+            // 1 does not mean anything. Only exit anomalously.
+            System.exit(1);
         }
+
+        m_flightList.addAll(fetchedFlights);
     }
 
     private void spawnFlight() {
