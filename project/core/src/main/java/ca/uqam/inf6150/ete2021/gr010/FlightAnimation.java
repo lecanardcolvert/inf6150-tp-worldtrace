@@ -18,7 +18,7 @@ public class FlightAnimation
         implements Disposable {
 
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
-    private static final float  PLANE_SIZE         = 32f;
+    private static final float  PLANE_SIZE         = 24f;
     private static final float  PLANE_SPEED        = 100f;
     private static final float  AIRPORT_RADIUS     = 3f;
 
