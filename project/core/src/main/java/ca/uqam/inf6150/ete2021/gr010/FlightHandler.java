@@ -14,11 +14,11 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 
-public class FlightAnimation
+public class FlightHandler
         implements Disposable {
 
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
-    private static final float  PLANE_SIZE         = 32f;
+    private static final float  PLANE_SIZE         = 24f;
     private static final float  PLANE_SPEED        = 100f;
     private static final float  AIRPORT_RADIUS     = 3f;
 
@@ -30,7 +30,7 @@ public class FlightAnimation
 
     private Vector2 m_planeDir;
 
-    public FlightAnimation() {
+    public FlightHandler() {
         m_planeTexture = new Texture(PLANE_TEXTURE_PATH);
 
         m_plane = new Sprite(m_planeTexture);
