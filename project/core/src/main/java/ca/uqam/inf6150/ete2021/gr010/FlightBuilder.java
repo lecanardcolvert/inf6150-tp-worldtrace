@@ -39,8 +39,6 @@ public class FlightBuilder
     }
 
     public void findAirportCoordinates(Flight flight, Vector2 halfViewport) {
-        assert airportExist();
-
         City beginAirport = flight.getBeginAirport().getCity();
         City endAirport   = flight.getEndAirport().getCity();
 
