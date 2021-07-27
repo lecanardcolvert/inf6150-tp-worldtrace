@@ -13,4 +13,12 @@ public enum Degree {
     FULL(360.0);
 
     private final double m_degrees;
+
+    public static boolean smallerThan(float angle, Degree degree) {
+        return angle < degree.getDegrees();
+    }
+
+    public static float addAngle(float angle, Degree degree) {
+        return  angle + (float) degree.getDegrees();
+    }
 }

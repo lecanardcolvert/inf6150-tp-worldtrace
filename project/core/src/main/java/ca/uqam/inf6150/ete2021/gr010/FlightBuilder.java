@@ -81,8 +81,8 @@ public class FlightBuilder
 //
         float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
 
-        if (angle < Degree.FULL.getDegrees()) {
-            angle += Degree.FULL.getDegrees();
+        if (Degree.smallerThan(angle, Degree.FULL)) {
+            angle = Degree.addAngle(angle, Degree.FULL);
         }
 
         return angle;
