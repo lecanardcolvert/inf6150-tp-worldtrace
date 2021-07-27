@@ -181,7 +181,7 @@ public class WorldTrace
             }
             else {
                 Timestamp tsFlight = m_flightList.get(FLIGHT_SEQUENCE_FETCH_THRESHOLD - 1).getDeparture();
-                tsFlight.setTime(tsFlight.getTime() + 1L);
+                m_flightList.removeLast();
 
                 fetchedFlights = FlightAPI.fetchLatestSequence(tsFlight, FLIGHT_SEQUENCE_FETCH_QUANTITY);
             }
