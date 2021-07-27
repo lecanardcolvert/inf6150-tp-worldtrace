@@ -81,8 +81,8 @@ public class FlightBuilder
 //
         float angle = (float) Math.toDegrees(Math.atan2(deltaY, deltaX));
 
-        if (angle < 360) {
-            angle += 360;
+        if (angle < Degree.FULL.getDegrees()) {
+            angle += Degree.FULL.getDegrees();
         }
 
         return angle;
@@ -101,13 +101,13 @@ public class FlightBuilder
     }
 
     public void drawPlane(Batch m_batch) {
-        if (m_plane != null) {
+        if (planeExist()) {
             m_plane.draw(m_batch);
         }
     }
 
     public void drawAirports(ShapeRenderer m_shapeRenderer) {
-        if (m_departureAirport != null && m_arrivalAirport != null) {
+        if (airportExist()) {
             m_shapeRenderer.circle(m_departureAirport.x, m_departureAirport.y, AIRPORT_RADIUS);
             m_shapeRenderer.circle(m_arrivalAirport.x, m_arrivalAirport.y, AIRPORT_RADIUS);
         }
