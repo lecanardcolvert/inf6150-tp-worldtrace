@@ -22,7 +22,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class WorldTrace
         extends ApplicationAdapter {
 
-    private static final String EARTH_TEXTURE_PATH              = "assets/earth/map.jpg";
+    private static final String EARTH_TEXTURE_PATH = "assets/earth/map.jpg";
 
     private OrthographicCamera m_camera;
 
@@ -32,8 +32,8 @@ public class WorldTrace
     private Texture m_earthTexture;
     private Sprite  m_earthMap;
 
-    private FlightAnimation m_currentFlight;
-    private FlightList m_flightList;
+    private FlightHandler m_currentFlight;
+    private FlightList    m_flightList;
 
     @Override
     public void create() {
@@ -159,7 +159,7 @@ public class WorldTrace
     }
 
     private void spawnFlight() {
-        m_currentFlight = new FlightAnimation();
+        m_currentFlight = new FlightHandler();
         Flight flight = m_flightList.pop();
 
         Vector2 halfViewport = new Vector2(m_camera.viewportWidth, m_camera.viewportHeight).scl(0.5f);
