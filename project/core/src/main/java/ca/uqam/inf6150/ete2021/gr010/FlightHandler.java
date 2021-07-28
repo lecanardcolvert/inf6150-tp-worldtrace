@@ -20,7 +20,7 @@ public class FlightHandler
     private static final String PLANE_TEXTURE_PATH = "assets/plane.png";
     private static final float  PLANE_SIZE         = 24f;
     private static final float  PLANE_SPEED        = 100f;
-    private static final float  AIRPORT_RADIUS     = 3f;
+    private static final float  AIRPORT_RADIUS     = 5f;
 
     private final Texture m_planeTexture;
 
