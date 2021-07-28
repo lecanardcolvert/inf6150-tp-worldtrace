@@ -150,6 +150,4 @@ class TestsFlightAPI {
         assertEquals("717",model);
         log.debug("Model d'avion du 3eme vol avant celui du 11 novembre 2021: "+model);
     }
-
-
 }
