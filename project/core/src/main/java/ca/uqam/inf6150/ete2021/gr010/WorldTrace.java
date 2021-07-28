@@ -129,6 +129,7 @@ public class WorldTrace
     }
 
     private void batchDrawShapes() {
+        m_shapeRenderer.setColor(Color.RED);
         m_shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         drawAirports();
         m_shapeRenderer.end();
