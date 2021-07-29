@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.db;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.connection;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
