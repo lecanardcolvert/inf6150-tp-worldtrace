@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.model;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -11,11 +11,11 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@DatabaseTable(tableName = "AIRLINE")
-public final class Airline
+@DatabaseTable(tableName = "COUNTRY")
+public final class Country
         implements Serializable {
 
-    @DatabaseField(columnName = "AIRLINENO", generatedId = true, canBeNull = false)
+    @DatabaseField(columnName = "COUNTRYNO", generatedId = true, canBeNull = false)
     private long m_id;
 
     @DatabaseField(columnName = "NAME", canBeNull = false)

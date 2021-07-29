@@ -1,4 +1,4 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.model.meta;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.model.meta;
 
 public interface FlightTable {
 

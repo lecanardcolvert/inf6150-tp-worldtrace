@@ -1,9 +1,6 @@
-package ca.uqam.inf6150.ete2021.gr010.flight.model;
+package ca.uqam.inf6150.ete2021.gr010.flight.db.model;
 
-import ca.uqam.inf6150.ete2021.gr010.flight.model.Aircraft;
-import ca.uqam.inf6150.ete2021.gr010.flight.model.Airline;
-import ca.uqam.inf6150.ete2021.gr010.flight.model.Airport;
-import ca.uqam.inf6150.ete2021.gr010.flight.model.meta.FlightTable;
+import ca.uqam.inf6150.ete2021.gr010.flight.db.model.meta.FlightTable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
